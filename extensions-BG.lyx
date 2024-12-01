@@ -1,0 +1,3043 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+%\usepackage{pstricks}
+%\usepackage{pst-plot}
+%\usepackage{pst-eps}
+%\usepackage{pst-grad}
+\usepackage{tikz}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-starred
+\end_modules
+\maintain_unincluded_children false
+\language bulgarian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style german
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Продължения на функции в 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Александър Гудев
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\da}{\partial^{\alpha}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\dy}{\operatorname{dy}}
+{\text{dy}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+Нека 
+\begin_inset Formula $\Omega\subseteq\Omega'$
+\end_inset
+
+ и 
+\begin_inset Formula $f\in L_{2}(\Omega)$
+\end_inset
+
+.
+ Продължение на 
+\begin_inset Formula $f$
+\end_inset
+
+ в 
+\begin_inset Formula $\Omega'$
+\end_inset
+
+ се нарича всяка функция 
+\begin_inset Formula $f'\in L_{2}(\Omega')$
+\end_inset
+
+, за която 
+\begin_inset Formula $f'\big|_{\Omega}=f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example*
+Всяко 
+\begin_inset Formula $f\in L_{2}(\Omega)$
+\end_inset
+
+ можем да продължим до 
+\begin_inset Formula $\Omega'$
+\end_inset
+
+, нулирайки 
+\begin_inset Formula $f$
+\end_inset
+
+ извън 
+\begin_inset Formula $\Omega$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+f'\coloneqq\begin{cases}
+f & \text{в }\Omega\\
+0 & \text{в }\Omega'\setminus\Omega
+\end{cases}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+Целта ни е да продължим функцията 
+\begin_inset Formula $f\in H^{k}(\Omega)$
+\end_inset
+
+ до 
+\begin_inset Formula $\Omega'$
+\end_inset
+
+ така, че продължението да е от 
+\begin_inset Formula $H^{k}(\Omega')$
+\end_inset
+
+.
+ В горната дефинция това не се изисква — както е ясно от примера, продълженията
+ могат по принцип дори да са прекъснати.
+\end_layout
+
+\begin_layout Section
+Продължение от полукуб до куб
+\end_layout
+
+\begin_layout Standard
+По-долу с 
+\begin_inset Formula $\left\{ y_{n}>0\right\} $
+\end_inset
+
+ и аналогичен запис бележим подмножеството на 
+\begin_inset Formula $\mathbb{R}^{n}$
+\end_inset
+
+ от векторите 
+\begin_inset Formula $\left(y_{1},\ldots,y_{n}\right)$
+\end_inset
+
+, удовлетворяващи условието в скобите.
+\end_layout
+
+\begin_layout Standard
+Даваме следните означения за хиперкуба, центриран около нулата с радиус
+ 
+\begin_inset Formula $a$
+\end_inset
+
+, и 
+\begin_inset Quotes gld
+\end_inset
+
+горната
+\begin_inset Quotes grd
+\end_inset
+
+ и 
+\begin_inset Quotes gld
+\end_inset
+
+долната
+\begin_inset Quotes grd
+\end_inset
+
+ му половина:
+\begin_inset Formula 
+\begin{align*}
+K_{a} & \coloneqq\left\{ \left(y_{1},\ldots,y_{n}\right)\in\mathbb{R}^{n}:\left|y_{i}\right|<a\;\forall i\right\} \\
+K_{a}^{+} & \coloneqq K_{a}\cap\left\{ y_{n}>0\right\} \\
+K_{a}^{0} & \coloneqq K_{a}\cap\left\{ y_{n}=0\right\} \\
+K_{a}^{-} & \coloneqq K_{a}\cap\left\{ y_{n}<0\right\} .
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Означаваме още с 
+\begin_inset Formula $y'$
+\end_inset
+
+ за произволен вектор 
+\begin_inset Formula $y=\left(y_{1},\ldots,y_{n}\right)\in\mathbb{R}^{n}$
+\end_inset
+
+ вектора 
+\begin_inset Formula $y'\coloneqq\left(y_{1},\ldots,y_{n-1}\right)$
+\end_inset
+
+.
+ За краткост за 
+\begin_inset Formula $y\in\mathbb{R}^{n}$
+\end_inset
+
+ с 
+\begin_inset Formula $\left(y',c\right)$
+\end_inset
+
+ ще отбелязваме вектора 
+\begin_inset Formula $(y_{1},\ldots,y_{n-1},c)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[scale=1.5]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[thick] (1,1) rectangle (-1,-1);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw (0,1.2) to (0,-1.2);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw (-1.2,0) to (1.2,0);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[densely dotted] (0.4,1.2) to (0.4,-1.2);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+fill (0.4, 0.7) circle(1pt);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+fill (0.4, 0.4) circle(1pt);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+fill (0.4, 0.2) circle(1pt);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+fill (0.4, 0.1) circle(1pt);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+fill (0.4, -0.7) circle(1.5pt);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node at(0.6, -0.7) {$y$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Стойността на 
+\begin_inset Formula $Z$
+\end_inset
+
+ в 
+\begin_inset Formula $y$
+\end_inset
+
+ се определя от стойността на 
+\begin_inset Formula $z$
+\end_inset
+
+ в точките 
+\begin_inset Formula $\left(y',-\frac{y_{n}}{i}\right).$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+На функции от 
+\begin_inset Formula $C^{k}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Построяване
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Нека 
+\begin_inset Formula $z(y)\in C^{k}(\overline{K_{a}^{+}})$
+\end_inset
+
+.
+ Ще я продължим до 
+\begin_inset Formula $K_{a}$
+\end_inset
+
+.
+ Върху точките 
+\begin_inset Formula $y\in\overline{K_{a}^{-}}$
+\end_inset
+
+ продължението дефинираме с помощта на точки от 
+\begin_inset Formula $K_{a}^{+}$
+\end_inset
+
+ от вида 
+\begin_inset Formula $\left(y',-\frac{y_{n}}{i}\right).$
+\end_inset
+
+ Полагаме 
+\begin_inset Formula 
+\begin{align*}
+Z\big|_{\overline{K_{a}^{+}}} & \coloneqq z,\\
+Z\big|_{\overline{K_{a}^{-}}} & \coloneqq\sum_{i=1}^{m}A_{i}z\left(p_{i}(y)\right)
+\end{align*}
+
+\end_inset
+
+където 
+\begin_inset Formula $p:\overline{K_{a}^{-}}\to\overline{K_{a}^{+}}$
+\end_inset
+
+ е функцията 
+\begin_inset Formula 
+\[
+p_{i}(y)\coloneqq\left(y',-\frac{y_{n}}{i}\right),
+\]
+
+\end_inset
+
+a числото 
+\begin_inset Formula $m$
+\end_inset
+
+ коефициентите 
+\begin_inset Formula $\left(A_{1},\ldots,A_{m}\right)$
+\end_inset
+
+ ще определим по-късно по такъв начин, че полученото продължение 
+\begin_inset Formula $Z:\overline{K_{a}}\to\mathbb{R}$
+\end_inset
+
+ на 
+\begin_inset Formula $z:\overline{K_{a}^{+}}\to\mathbb{R}$
+\end_inset
+
+ да бъде от клас 
+\begin_inset Formula $C^{k}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Непрекъснатост на продължението
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $Z$
+\end_inset
+
+ е непрекъсната в 
+\begin_inset Formula $K_{a}^{+}$
+\end_inset
+
+ по построение.
+ Лесно се вижда, че 
+\begin_inset Formula $Z$
+\end_inset
+
+ е непрекъсната и в 
+\begin_inset Formula $K_{a}^{-}$
+\end_inset
+
+ директно от непрекъснатостта на 
+\begin_inset Formula $z$
+\end_inset
+
+ в 
+\begin_inset Formula $K_{a}^{+}$
+\end_inset
+
+.
+ Остава да проверим непрекъснатост в 
+\begin_inset Formula $\bar{y}\in K_{a}^{0},$
+\end_inset
+
+ когато 
+\begin_inset Formula $y$
+\end_inset
+
+ клони към 
+\begin_inset Formula $\bar{y}$
+\end_inset
+
+ откъм 
+\begin_inset Formula $K_{a}^{-}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\lim_{K_{a}^{-}\ni y\to\bar{y}}Z(y) & =\lim_{K_{a}^{-}\ni y\to\bar{y}}\sum_{i=1}^{m}A_{i}z\left(p_{i}(y)\right)\\
+ & =\sum_{i=1}^{m}A_{i}\lim_{y\to\bar{y}}z\left(p_{i}(y)\right)\\
+ & =\sum_{i=1}^{m}A_{i}z\left(p_{i}(\bar{y})\right)=\sum_{i=1}^{m}A_{i}z\left(\bar{y}\right)=z\left(\bar{y}\right)\sum_{i=1}^{m}A_{i}
+\end{align*}
+
+\end_inset
+
+За да бъде 
+\begin_inset Formula $Z$
+\end_inset
+
+ непрекъсната в 
+\begin_inset Formula $\bar{y}$
+\end_inset
+
+ е достатъчно горната граница да е равна на 
+\begin_inset Formula $z(\bar{y})$
+\end_inset
+
+, което се случва точно когато 
+\begin_inset Formula 
+\[
+\sum_{i=1}^{m}A_{i}=1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Гладкост на продължението
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Нека 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ е мултииндекс с 
+\begin_inset Formula $\left|\alpha\right|\le k$
+\end_inset
+
+.
+ Ще проверим, че съществува производната 
+\begin_inset Formula $\partial^{\alpha}Z(y)$
+\end_inset
+
+ във всяко 
+\begin_inset Formula $y\in K_{a}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+В 
+\begin_inset Formula $K_{a}^{+}$
+\end_inset
+
+ това e просто 
+\begin_inset Formula $\partial^{\alpha}z$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $Z$
+\end_inset
+
+ очевидно има 
+\begin_inset Formula $\alpha$
+\end_inset
+
+-производна и в 
+\begin_inset Formula $y\in K_{a}^{-}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align}
+\partial^{\alpha}Z(y) & =\sum_{i=1}^{m}A_{i}\partial^{\alpha}\left(z\left(p_{i}(y)\right)\right)\nonumber \\
+ & =\sum_{i=1}^{m}A_{i}\partial^{\alpha}p_{i}(y)\partial^{\alpha}z\left(p_{i}(y)\right).\label{eq:Zderiv-}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Остава да видим, че 
+\begin_inset Formula $Z$
+\end_inset
+
+ има 
+\begin_inset Formula $\alpha$
+\end_inset
+
+-производна и в 
+\begin_inset Formula $y\in K_{a}^{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Ще го направим с индукция по дължината на 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Нека 
+\begin_inset Formula $\left|\alpha\right|=1$
+\end_inset
+
+, тоест 
+\begin_inset Formula $\partial^{\alpha}=\frac{d}{dx_{j}}$
+\end_inset
+
+ за някое 
+\begin_inset Formula $j\in\left\{ 1,\ldots,n\right\} $
+\end_inset
+
+.
+ Да намерим при какви условия производната 
+\begin_inset Formula $\frac{\partial Z}{\partial x_{j}}$
+\end_inset
+
+ съществува в 
+\begin_inset Formula $y_{0}\in K_{a}^{0}$
+\end_inset
+
+.
+ Необходимо е производната, идваща 
+\begin_inset Quotes gld
+\end_inset
+
+отгоре
+\begin_inset Quotes grd
+\end_inset
+
+ 
+\begin_inset Formula $\lim_{K_{a}^{+}\ni y\to y_{0}}\partial^{\alpha}z(y)$
+\end_inset
+
+, да е равна на производната, идваща 
+\begin_inset Quotes gld
+\end_inset
+
+отдолу
+\begin_inset Quotes grd
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\lim_{K_{a}^{-}\ni y\to y_{0}}\partial^{\alpha}Z & \overset{\eqref{eq:Zderiv-}}{=}\lim_{K_{a}^{-}\ni y\to y_{0}}\sum_{i=1}^{m}A_{i}\partial^{\alpha}p_{i}(y)\partial^{\alpha}z\left(p_{i}(y)\right)\\
+ & =\sum_{i=1}^{m}A_{i}\partial^{\alpha}p_{i}(y_{0})\partial^{\alpha}z\left(p_{i}(y_{0})\right)\\
+ & =\sum_{i=1}^{m}A_{i}\partial^{\alpha}p_{i}(y_{0})\partial^{\alpha}z\left(y_{0}\right)\\
+ & =\partial^{\alpha}z\left(y_{0}\right)\sum_{i=1}^{m}A_{i}\partial^{\alpha}p_{i}(y_{0}).
+\end{align*}
+
+\end_inset
+
+Производните ще съвпаднат очевидно, когато десният множител не участва:
+\begin_inset Formula 
+\[
+\sum_{i=1}^{m}\partial^{\alpha}p_{i}(y_{0})A_{i}=1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Аналогично, за 
+\begin_inset Formula $1<\left|\alpha\right|\le k$
+\end_inset
+
+, пресмятайки както горе производната, получаваме същото условие 
+\begin_inset Formula 
+\[
+\sum_{i=1}^{m}\partial^{\alpha}p_{i}(y_{0})A_{i}=1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+В частност, ако вземем 
+\begin_inset Formula $p_{i}(y)=\left(y_{1},\ldots,y_{n-1},-\frac{1}{i}y_{n}\right),$
+\end_inset
+
+ получаваме системата 
+\begin_inset Formula 
+\[
+\sum_{i=1}^{m}\left(-\frac{1}{i}\right)^{l}A_{i}=1,\quad\forall i=0,\ldots k,
+\]
+
+\end_inset
+
+която, бидейки система на Вандермонд, има единствено решение, когато 
+\begin_inset Formula $m=k+1$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Оценка на 
+\begin_inset Formula $\left\Vert Z\right\Vert _{H^{k}(K_{a})}$
+\end_inset
+
+ чрез 
+\begin_inset Formula $\left\Vert z\right\Vert _{H^{k}(K_{a}^{+})}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+С неравенство на Минковски по-горе: 
+\begin_inset Formula 
+\begin{align*}
+\left|\partial^{\alpha}Z(y)\right|^{2} & =\left|\sum_{i=1}^{m}A_{i}\left(-\frac{1}{i}\right)^{\alpha_{n}}\partial^{\alpha}z\left(p_{i}(y)\right)\right|^{2}\\
+ & =\left(\sum_{i=1}^{m}\left(A_{i}\left(-\frac{1}{i}\right)^{\alpha_{n}}\right)\left(\partial^{\alpha}z\left(p_{i}(y)\right)\right)\right)^{2}\\
+ & \le\left(\sum_{i=1}^{m}A_{i}^{2}\left(-\frac{1}{i}\right)^{2\alpha_{n}}\right)\left(\sum_{i=1}^{m}\left(\partial^{\alpha}z\left(p_{i}(y)\right)\right)^{2}\right)\\
+ & =C_{\alpha}\sum_{i=1}^{m}\left(\partial^{\alpha}z\left(p_{i}(y)\right)\right)^{2}
+\end{align*}
+
+\end_inset
+
+ и след интегриране по 
+\begin_inset Formula $K_{a}^{-}$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{align*}
+\int_{K_{a}^{-}}\left|\partial^{\alpha}Z(y)\right|^{2} & \le C_{\alpha}\sum_{i=1}^{k+1}\int_{K_{a}^{-}}\left(\partial^{\alpha}z\left(p_{i}(y)\right)\right)^{2}\\
+ & =C_{\alpha}\sum_{i=1}^{k+1}i\int\limits _{K_{a}^{\le a/i}}\left(\partial^{\alpha}z\left(y)\right)\right)^{2}\quad(\text{смяна \ensuremath{x=p_{i}(y)})}\\
+ & \le C_{\alpha}\sum_{i=1}^{k+1}(k+1)\int\limits _{K_{a}^{\le a/i}}\left(\partial^{\alpha}z\left(y)\right)\right)^{2}\\
+ & =\underbrace{C_{\alpha}(k+1)^{2}}_{C_{\alpha}^{\prime}}\int\limits _{K_{a}^{\le a/i}}\left(\partial^{\alpha}z\left(y)\right)\right)^{2},
+\end{align*}
+
+\end_inset
+
+където 
+\begin_inset Formula $K_{a}^{\le a/i}\coloneqq K_{a}^{+}\cap\left\{ y_{n}<\frac{a}{i}\right\} .$
+\end_inset
+
+ Тогава в цялото 
+\begin_inset Formula $K_{a}$
+\end_inset
+
+ имаме 
+\begin_inset Formula 
+\begin{align*}
+\int_{K_{a}}\left|\partial^{\alpha}Z(y)\right|^{2} & =\int_{K_{a}^{+}}\left|\partial^{\alpha}z(y)\right|^{2}+\int_{K_{a}^{-}}\left|\partial^{\alpha}Z(y)\right|^{2}\\
+ & \le\int_{K_{a}^{+}}\left|\partial^{\alpha}z(y)\right|^{2}+C_{\alpha}^{\prime}\int_{K_{a}^{+}}\left|\partial^{\alpha}z(y)\right|^{2}\\
+ & \le C_{\alpha}^{\prime\prime}\int_{K_{a}^{+}}\left|\partial^{\alpha}z(y)\right|^{2},
+\end{align*}
+
+\end_inset
+
+и след сумиране по 
+\begin_inset Formula $\left|\alpha\right|\le k$
+\end_inset
+
+ получаваме оценката
+\begin_inset Formula 
+\begin{equation}
+\left\Vert Z\right\Vert _{H^{k}(K_{a})}\le C\left\Vert z\right\Vert _{H^{k}\left(K_{a}^{+}\right)},\label{eq:extension_factor}
+\end{equation}
+
+\end_inset
+
+където 
+\begin_inset Formula $C$
+\end_inset
+
+ е константа, зависеща само от 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+На функции от 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Нека 
+\begin_inset Formula $z\in H^{k}(K_{a}^{+})$
+\end_inset
+
+.
+ Ще намерим продължение 
+\begin_inset Formula $Z\in H^{k}(K_{a})$
+\end_inset
+
+, основавайки се на конструкцията по-горе за функции от 
+\begin_inset Formula $C^{k}$
+\end_inset
+
+.
+ След малко ще докажем следната лема:
+\end_layout
+
+\begin_layout Lemma*
+Подпространството 
+\begin_inset Formula $C^{\infty}\left(\overline{K_{a}}\right)$
+\end_inset
+
+ е гъсто в 
+\begin_inset Formula $H^{k}\left(K_{a}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Съгласно нея, към 
+\begin_inset Formula $z$
+\end_inset
+
+ клони някоя редица 
+\begin_inset Formula ${\left\{ z_{s}\right\} _{s}\subset C^{k}(\overline{K_{a}^{+}})}$
+\end_inset
+
+ в нормата на 
+\begin_inset Formula $H^{k}(K_{a}^{+})$
+\end_inset
+
+.
+ Продължаваме елементите ѝ като в предишната секция до 
+\begin_inset Formula $\overline{K_{a}}$
+\end_inset
+
+ и получаваме редица 
+\begin_inset Formula $\left\{ Z_{s}\right\} _{s}\subset C^{k}\left(\overline{K_{a}}\right).$
+\end_inset
+
+ Остава да видим, че новополучената редица има граница 
+\begin_inset Formula $Z\text{ в }H^{k}\left(K_{a}\right).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Тъй като 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+ е пълно, е достатъчно да покажем, че 
+\begin_inset Formula $\left\{ Z_{s}\right\} $
+\end_inset
+
+ е фундаментална.
+ Да забележим, че разликата 
+\begin_inset Formula $Z_{s}-Z_{p}$
+\end_inset
+
+ се явява продължение по горната конструкция на разликата 
+\begin_inset Formula $z_{s}-z_{p}$
+\end_inset
+
+.
+ Тогава оценката 
+\begin_inset Formula $\left\Vert Z\right\Vert _{H^{k}(K_{a})}\le C\left\Vert z\right\Vert _{H^{k}\left(K_{a}^{+}\right)}$
+\end_inset
+
+ е в сила и тук, тоест
+\begin_inset Formula 
+\[
+\left\Vert Z_{s}-Z_{p}\right\Vert _{H^{k}(K_{a})}\le C\left\Vert z_{s}-z_{p}\right\Vert _{H^{k}\left(K_{a}^{+}\right)},
+\]
+
+\end_inset
+
+ откъдето фундаменталността на 
+\begin_inset Formula $\left\{ Z_{s}\right\} _{s}$
+\end_inset
+
+ следва от фундаменталността на 
+\begin_inset Formula $\left\{ z_{s}\right\} _{s}$
+\end_inset
+
+ и значи границата 
+\begin_inset Formula $Z\in H^{k}\left(K_{a}\right)$
+\end_inset
+
+ съществува и се явява продължение на 
+\begin_inset Formula $z\in H^{k}(K_{a}^{+})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Накрая, с граничен преход при 
+\begin_inset Formula $p\to\infty$
+\end_inset
+
+ в 
+\begin_inset Formula 
+\[
+\left\Vert Z_{p}\right\Vert _{H^{k}(K_{a})}\le C\left\Vert z_{p}\right\Vert _{H^{k}\left(K_{a}^{+}\right)}
+\]
+
+\end_inset
+
+ виждаме, че оценката 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:extension_factor"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ е в сила и за продължения в 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+.
+ Така доказахме следното 
+\end_layout
+
+\begin_layout Proposition*
+Всяко 
+\begin_inset Formula $z\in H^{k}(K_{a}^{+})$
+\end_inset
+
+ притежава продължение 
+\begin_inset Formula $Z\in H^{k}(K_{a})$
+\end_inset
+
+, подчинено на оценката 
+\begin_inset Formula 
+\[
+\left\Vert Z\right\Vert _{H^{k}(K_{a})}\le C\left\Vert z\right\Vert _{H^{k}\left(K_{a}^{+}\right)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Време е да се върнем на доказателството на лемата.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Доказателство (
+\begin_inset Formula $C^{\infty}(K_{a})$
+\end_inset
+
+ е гъсто в 
+\begin_inset Formula $H^{k}(K_{a})$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+Нека 
+\begin_inset Formula $f\in H^{k}\left(K_{a}\right)$
+\end_inset
+
+ и 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+.
+ Трябва да намерим 
+\begin_inset Formula $F\in C^{\infty}\left(\overline{K_{a}}\right),$
+\end_inset
+
+ за което 
+\begin_inset Formula $\left\Vert f-F\right\Vert <\varepsilon.$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Paragraph
+Идея
+\end_layout
+
+\begin_layout Standard
+Основната (всъщност единствената, която сме виждали досега) техника за получаван
+е на 
+\begin_inset Formula $C^{\infty}$
+\end_inset
+
+ функции от 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ функции идва от оператора за усредняване: знаем, че ако 
+\begin_inset Formula $f\in L_{2}(\mathbb{R}^{n})$
+\end_inset
+
+, то усреднението 
+\begin_inset Formula $f_{h}$
+\end_inset
+
+ е безкрайно гладко за всяко 
+\begin_inset Formula $h>0$
+\end_inset
+
+.
+ Ще усредним функцията 
+\begin_inset Formula $f\in H^{k}(K_{a})$
+\end_inset
+
+ в леееко стеснена област с достатъчно малък радиус на усредняване, така
+ че 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+-нормата на усреднението да не се отдалечи много от тази на 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ По този начин ще получим достатъчно близка (в 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+) до 
+\begin_inset Formula $f$
+\end_inset
+
+ безкрайно гладка функция.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+Преди да почнем да построяваме усреднението, ще си вземем апроксимации на
+ производните, тъй като за близост (в 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+) на усреднението до 
+\begin_inset Formula $f$
+\end_inset
+
+ e нужно производните също да са близки (в 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+).
+ Като елементи на 
+\begin_inset Formula $L_{2}\left(K_{a}\right),$
+\end_inset
+
+ производните 
+\begin_inset Formula $\partial^{\alpha}f$
+\end_inset
+
+ са в 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+-околност спрямо 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+-нормата на някакви функции 
+\begin_inset Formula $\varphi_{\alpha}\in C\left(\overline{K_{a}}\right)$
+\end_inset
+
+, тоест
+\begin_inset Formula 
+\[
+\forall\varepsilon>0\;\forall\alpha:\left|\alpha\right|\le k\;\exists\varphi_{\alpha}\in C\left(K_{a}\right):\left\Vert \partial^{\alpha}f-\varphi_{\alpha}\right\Vert _{L_{2}}<\varepsilon.
+\]
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "70col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Вместо да стесняваме 
+\begin_inset Formula $K_{a}$
+\end_inset
+
+ и да усредняваме в стеснената област, еквивалентно (но по-удобно за пресмятания
+та) ще 
+\emph on
+разпънем
+\emph default
+ 
+\begin_inset Formula $K_{a}$
+\end_inset
+
+ с коефициент 
+\begin_inset Formula $\sigma>1$
+\end_inset
+
+ до 
+\begin_inset Formula 
+\[
+K_{\sigma a}\coloneqq\left\{ x\in\mathbb{R}^{n}:\left|x_{i}\right|<\sigma a\right\} ,
+\]
+
+\end_inset
+
+разпъвайки едновременно с това и функцията 
+\begin_inset Formula $f$
+\end_inset
+
+ до 
+\begin_inset Formula $F_{\sigma}\in H^{k}(K_{\sigma a}),$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "25col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+hspace*{1em}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[draw=black, thick, solid, fill=lightgray] (1.00,1.0) circle(0.50);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+fill (1,1) circle[radius=2pt];
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[draw=black, thick, solid, fill=lightgray] (0.75,-1.00) circle(0.50);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+fill (0.75,-1) circle[radius=2pt];
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[draw=black, thick, solid, fill=lightgray] (-0.75,0.00) circle(0.50);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+fill (-0.75,0.00) circle[radius=2pt];
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[draw=black, thick, solid] (-1.50,1.50) rectangle (1.5,-1.5);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[draw=black, thick, solid] (-1.0,1.0) rectangle (1.00,-1.00);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+F_{\sigma}(x)=f\left(\frac{x}{\sigma}\right),
+\]
+
+\end_inset
+
+ а после ще усредним разпънатата функция в по-тясната област 
+\begin_inset Formula $K_{a}\subset K_{\sigma a}$
+\end_inset
+
+.
+\begin_inset FormulaMacro
+\newcommand{\red}[1]{{\color{red}#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\blue}[1]{{\color{blue}#1}}
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Paragraph
+Oценка на разтягането 
+\begin_inset Formula $\left\Vert f-F_{\sigma}\right\Vert _{H^{k}(K_{a})}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+За да оценим 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+-нормата, първо оценяваме 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+-нормите на всяка от производните поотделно.
+ Имаме
+\begin_inset Formula 
+\begin{align*}
+\left\Vert \da F_{\sigma}(x)-\varphi_{\alpha}(x)\right\Vert _{L_{2}(K_{a})} & =\left\Vert \da F_{\sigma}(x)\blue{-\varphi_{a}\left(\frac{x}{\sigma}\right)+\varphi_{a}\left(\frac{x}{\sigma}\right)}-\varphi_{\alpha}(x)\right\Vert _{L_{2}(K_{a})}\\
+ & \overset{\text{н-во на }\Delta}{\le}\left\Vert \da F_{\sigma}(x)-\varphi_{a}\left(\frac{x}{\sigma}\right)\right\Vert _{L_{2}(K_{a})}+\left\Vert \varphi_{a}\left(\frac{x}{\sigma}\right)-\varphi_{\alpha}(x)\right\Vert _{L_{2}(K_{a})}\\
+ & \le\left\Vert \da F_{\sigma}(x)-\varphi_{a}\left(\frac{x}{\sigma}\right)\right\Vert _{L_{2}{\color{red}(K_{\sigma a})}}+\left\Vert \varphi_{a}\left(\frac{x}{\sigma}\right)-\varphi_{\alpha}(x)\right\Vert _{L_{2}(K_{a})}.
+\end{align*}
+
+\end_inset
+
+За лявото събираемо имаме 
+\begin_inset Formula 
+\begin{align*}
+\left\Vert \da F_{\sigma}(x)-\varphi_{a}\left(\frac{x}{\sigma}\right)\right\Vert _{L_{2}(K_{\sigma a})} & \overset{\text{деф. на }F_{\sigma}}{=}\left\Vert {\color{red}\frac{1}{\sigma^{\left|\alpha\right|}}\da f\left(\frac{x}{\sigma}\right)}-\varphi_{a}\left(\frac{x}{\sigma}\right)\right\Vert _{L_{2}(K_{\sigma a})}\\
+ & \overset{\text{н-во на }\Delta}{\le}\left\Vert \left(\frac{1}{\sigma^{\left|\alpha\right|}}{\color{red}-1}\right)\da f\left(\frac{x}{\sigma}\right)\right\Vert _{L_{2}(K_{\sigma a})}+\left\Vert {\color{red}+1}\da f\left(\frac{x}{\sigma}\right)-\varphi_{a}\left(\frac{x}{\sigma}\right)\right\Vert _{L_{2}(K_{\sigma a})}\\
+ & =\red{\sigma^{n/2}}\left(1\red -\frac{1}{\sigma^{\left|\alpha\right|}}\right)\left\Vert \da f\left(\red x\right)\right\Vert _{L_{2}(\red{K_{a}})}+\red{\sigma^{n/2}}\left\Vert \da f\left(\red x\right)-\varphi_{a}\left(\red x\right)\right\Vert _{L_{2}(\red{K_{a}})}\\
+ & \le\sigma^{n/2}\left(1-\frac{1}{\sigma^{\left|\alpha\right|}}\right)\left\Vert \da f\right\Vert _{L_{2}(K_{a})}+\sigma^{n/2}\red{\varepsilon}
+\end{align*}
+
+\end_inset
+
+ и замествайки горе, получаваме 
+\begin_inset Formula 
+\begin{align*}
+\left\Vert \da F_{\sigma}(x)-\varphi_{\alpha}(x)\right\Vert _{L_{2}(K_{a})}\le\sigma^{n/2} & \left(1-\frac{1}{\sigma^{\left|\alpha\right|}}\right)\left\Vert \da f\right\Vert _{L_{2}(K_{a})}+\sigma^{n/2}\varepsilon\\
+ & +\left\Vert \varphi_{a}\left(\frac{x}{\sigma}\right)-\varphi_{\alpha}(x)\right\Vert _{L_{2}(K_{a})}.
+\end{align*}
+
+\end_inset
+
+Сега 
+\begin_inset Formula 
+\begin{align*}
+\left\Vert \da f-\da F_{\sigma}\right\Vert _{L_{2}(K_{a})} & \le\underbrace{\left\Vert \da f-\varphi_{\alpha}\right\Vert _{L_{2}(K_{a})}}_{\le\varepsilon}+\left\Vert \da F_{\sigma}-\varphi_{\alpha}\right\Vert _{L_{2}(K_{a})}\\
+ & \le\left(\red{1+}\sigma^{n/2}\right)\varepsilon+\sigma^{n/2}\left(1-\frac{1}{\sigma^{\left|\alpha\right|}}\right)\left\Vert \da f\right\Vert _{L_{2}(K_{a})}+\left\Vert \varphi_{a}\left(\frac{x}{\sigma}\right)-\varphi_{\alpha}(x)\right\Vert _{L_{2}(K_{a})}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Остава да оценим второто и третото събираемо.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+За второто събираемо имаме 
+\begin_inset Formula 
+\[
+\sigma^{n/2}\left(1-\frac{1}{\sigma^{\left|\alpha\right|}}\right)\xrightarrow[\sigma\to1^{+}]{}0,
+\]
+
+\end_inset
+
+следователно за някое 
+\begin_inset Formula $\sigma>1$
+\end_inset
+
+, второто събираемо е по-малко от 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Тъй като 
+\begin_inset Formula $\varphi_{a}$
+\end_inset
+
+ е равномерно непрекъсната, то 
+\begin_inset Formula $\varphi_{\alpha}\left(\frac{x}{\sigma}\right)\xrightarrow[\sigma\to1]{}\varphi_{\alpha}(x)$
+\end_inset
+
+, и значи за някое 
+\begin_inset Formula $\sigma>1$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+\left\Vert \varphi_{a}\left(\frac{x}{\sigma}\right)-\varphi_{\alpha}(x)\right\Vert _{L_{2}(K_{a})}\le\varepsilon.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+От двете оценки следва, че за някое 
+\begin_inset Formula $\sigma_{0}>1$
+\end_inset
+
+ (б.о.о.
+ 
+\begin_inset Formula $\sigma_{0}<2$
+\end_inset
+
+)
+\begin_inset Formula 
+\begin{align*}
+\left\Vert \da f-\da F_{\sigma_{0}}\right\Vert _{L_{2}(K_{a})} & \le\left(1+\sigma_{0}^{n/2}\right)\varepsilon+\varepsilon+\varepsilon\\
+ & \le4\varepsilon.
+\end{align*}
+
+\end_inset
+
+Сумирайки по всички 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ с 
+\begin_inset Formula $\left|\alpha\right|\le k$
+\end_inset
+
+ получаваме и аналогична оценка в 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+-нормата:
+\begin_inset Formula 
+\[
+\left\Vert f-F_{\sigma_{0}}\right\Vert _{H^{k}(K_{a})}\le4n^{k}\varepsilon.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+УсредняванеТО
+\end_layout
+
+\begin_layout Standard
+За достатъчно малко 
+\begin_inset Formula $h>0$
+\end_inset
+
+ (
+\begin_inset Formula $h<a(\sigma-1)$
+\end_inset
+
+) разглеждаме усреднението 
+\begin_inset Formula $\left(F_{\sigma_{0}}\right)_{h}\in C^{\infty}(K_{a})$
+\end_inset
+
+ на 
+\begin_inset Formula $F_{\sigma_{0}}$
+\end_inset
+
+.
+ В по-тясната област 
+\begin_inset Formula $K_{a}$
+\end_inset
+
+ имаме 
+\begin_inset Formula 
+\[
+\left\Vert \left(F_{\sigma_{0}}\right)_{h}-F_{\sigma_{0}}\right\Vert _{H^{k}(K_{a})}\xrightarrow[h\to0]{}0,
+\]
+
+\end_inset
+
+следователно за достатъчно малко 
+\begin_inset Formula $h=h_{0}$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+\left\Vert \left(F_{\sigma_{0}}\right)_{h_{0}}-F_{\sigma_{0}}\right\Vert \le\varepsilon.
+\]
+
+\end_inset
+
+Остава да забележим, че 
+\begin_inset Formula 
+\begin{align*}
+\left\Vert \left(F_{\sigma_{0}}\right)_{h_{0}}-f\right\Vert _{H^{k}(K_{a})} & \le\underbrace{\left\Vert \left(F_{\sigma_{0}}\right)_{h_{0}}-F_{\sigma_{0}}\right\Vert _{H^{k}(K_{a})}}_{\le\varepsilon}+\underbrace{\left\Vert f-F_{\sigma_{0}}\right\Vert }_{\le4n^{k}\varepsilon}\\
+ & \le\left(1+4n^{k}\right)\varepsilon,
+\end{align*}
+
+\end_inset
+
+което означава, че построеното усреднение можем да направим достатъчно близо
+ до 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Смяна на променливите в 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma*
+Нека 
+\begin_inset Formula $\bar{Q}'\subset Q$
+\end_inset
+
+, 
+\begin_inset Formula $f\in H^{k}(Q)$
+\end_inset
+
+ и 
+\begin_inset Formula $\left|\alpha\right|\le k$
+\end_inset
+
+.
+ Тогава за 
+\begin_inset Formula $h\le\text{dist}\left(Q',\partial Q\right)$
+\end_inset
+
+, производната на усреднението 
+\begin_inset Formula $f_{h}\in C^{\infty}$
+\end_inset
+
+ e усреднението на производната, тоест 
+\begin_inset Formula 
+\[
+\partial^{\alpha}f_{h}=\left(\partial^{\alpha}f\right)_{h}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Ще го проверим за 
+\begin_inset Formula $k=1$
+\end_inset
+
+.
+ Нека 
+\begin_inset Formula $1\le i\le n$
+\end_inset
+
+.
+ Трябва да докажем, че 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial x_{i}}\int\limits _{Q}\omega_{x,h}(y)\cdot f(y)\dy=\int\limits _{Q}\omega_{x,h}(y)\cdot\frac{\partial f}{\partial y_{i}}(y)\dy.
+\]
+
+\end_inset
+
+Разписваме дефиницията за обобщена производна 
+\begin_inset Formula $\partial^{\alpha}f$
+\end_inset
+
+ в дясната страна с тестова функция 
+\begin_inset Formula $\omega_{x,\varepsilon}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\int\limits _{Q}\omega_{x,h}(y)\cdot\frac{\partial f}{\partial y_{i}}(y)\dy=-\int\limits _{Q}\frac{\partial\omega_{x,h}}{\partial y_{i}}(y)\cdot f(y)\dy.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Следователно остава да се убедим в
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial x_{i}}\int\limits _{Q}\omega_{x,h}(y)\cdot f(y)\dy=-\int\limits _{Q}\frac{\partial\omega_{x,h}}{\partial y_{i}}(y)\cdot f(y)\dy.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Разписваме производната 
+\begin_inset Formula 
+\[
+\frac{\partial\omega_{x,h}(y)}{\partial y_{i}}=\frac{\partial\omega\left(\frac{x-y}{\varepsilon}\right)}{\partial y_{i}}=\frac{1}{\varepsilon}\omega'\left(\frac{x-y}{\varepsilon}\right)=\omega\left(\frac{x-y}{\varepsilon}\right)\frac{1}{\left(1-\left|x\right|^{2}\right)^{2}}\left(2\left|x\right|\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition*
+Нека 
+\begin_inset Formula $y:\bar{Q}\to\bar{\Omega}$
+\end_inset
+
+ и 
+\begin_inset Formula $x:\bar{\Omega}\to\bar{Q}$
+\end_inset
+
+ са обратни една на друга функции от 
+\begin_inset Formula $C^{k}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proposition*
+Тогава, 
+\begin_inset Formula $f\in H^{k}(\Omega)$
+\end_inset
+
+ точно когато 
+\begin_inset Formula $F=f\circ y\in H^{k}(Q)$
+\end_inset
+
+, и в този случай производните на 
+\begin_inset Formula $F$
+\end_inset
+
+ се смятат по обичайното правило за производна на съставна функция.
+\end_layout
+
+\begin_layout Proposition*
+Също, за тези 
+\begin_inset Formula $x\text{ и }y$
+\end_inset
+
+ съществуват константи 
+\begin_inset Formula $C_{1},C_{2},$
+\end_inset
+
+ с които 
+\begin_inset Formula 
+\[
+C_{1}\left\Vert f\right\Vert _{H^{k}(\Omega)}\le\left\Vert F\right\Vert _{H^{k}(Q)}\le C_{2}\left\Vert f\right\Vert _{H^{k}(\Omega)}\quad\forall f\in H^{k}(\Omega).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Нека 
+\begin_inset Formula $f\in H^{k}$
+\end_inset
+
+.
+ Най-напред е ясно, че 
+\begin_inset Formula $F\in L_{2}$
+\end_inset
+
+, защото 
+\begin_inset Formula $F=f\circ y$
+\end_inset
+
+ има сумируем квадрат от формулата за смяна на променливите в лебегов интеграл
+ 
+\begin_inset Formula $\int_{Q}f(y(x))\text{dx}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Paragraph
+Съществуване на първите производни.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+Както в предната лема, ще апроксимираме почти навсякъде дефинираното 
+\begin_inset Formula $f\in H^{k}$
+\end_inset
+
+ с усредняване в 
+\begin_inset Formula $C^{\infty}$
+\end_inset
+
+, а после ще видим, че производните на усреднението апроксимират производните
+ на 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+За да правим изобщо усредняване, ни е нужно то да е дефинирано 
+\begin_inset Quotes gld
+\end_inset
+
+и малко навън
+\begin_inset Quotes grd
+\end_inset
+
+, така че стесняваме разглежданата област до 
+\begin_inset Formula $\bar{\Omega}'\subset\Omega$
+\end_inset
+
+.
+ Полагаме 
+\begin_inset Formula $Q'=x(\Omega)$
+\end_inset
+
+, а 
+\begin_inset Formula $f_{h}\in C^{\infty}\left(\Omega'\right)$
+\end_inset
+
+ — усреднението на 
+\begin_inset Formula $f$
+\end_inset
+
+ в 
+\begin_inset Formula $\Omega'$
+\end_inset
+
+ при достатъчно малък радиус 
+\begin_inset Formula $h\le\text{dist}\left(\Omega',\partial\Omega\right)$
+\end_inset
+
+.
+ Тогава от свойството
+\begin_inset Formula 
+\[
+\left\Vert f_{h}-f\right\Vert _{L_{2}(Q)}\xrightarrow[h\to0]{}0
+\]
+
+\end_inset
+
+ получаваме (отново със смяна на променливите в лебегов интеграл)
+\begin_inset Formula 
+\[
+\left\Vert F_{h}-F\right\Vert _{L_{2}(Q')}=\left\Vert f_{h}\circ y-f\circ y\right\Vert =\left\Vert \left(f_{h}-f\right)\circ y\right\Vert \xrightarrow[h\to0]{}0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Аналогичнa оценка искаме и за производната на 
+\begin_inset Formula $F$
+\end_inset
+
+.
+ Oт 
+\begin_inset Formula 
+\[
+\left\Vert \frac{\partial f_{h}}{\partial y_{i}}-\frac{\partial f}{\partial y_{i}}\right\Vert _{L_{2}(\Omega')}\xrightarrow[h\to0]{}0
+\]
+
+\end_inset
+
+следва
+\begin_inset Formula 
+\begin{align*}
+\left\Vert \frac{\partial}{\partial x_{i}}(f_{h}\circ y)-\frac{\partial}{\partial x_{i}}(f\circ y)\right\Vert _{L_{2}(\Omega')} & =\left\Vert \frac{\partial}{\partial x_{i}}\left((f_{h}-f)\circ y)\right)\right\Vert _{L_{2}(\Omega')}\\
+ & \le\left\Vert \frac{\partial}{\partial x_{i}}\left(f_{h}-f\right)\right\Vert \left\Vert \frac{\partial}{\partial x_{i}}y\right\Vert \\
+ & =\tilde{C}\left\Vert \frac{\partial f_{h}}{\partial x_{i}}-\frac{\partial f}{\partial x_{i}}\right\Vert \\
+ & =\tilde{C}\left\Vert \left(\frac{\partial f}{\partial x_{i}}\right)_{h}-\frac{\partial f}{\partial x_{i}}\right\Vert \quad(\text{сменяме }\frac{\partial}{\partial x_{i}}\text{ и }\left(\cdot\right)_{h})\\
+ & \xrightarrow[h\to0]{}0.
+\end{align*}
+
+\end_inset
+
+От тези оценки следва, че функционалните редици 
+\begin_inset Formula $\left\{ F_{h=1/n}\right\} _{n=1}^{\infty}$
+\end_inset
+
+ и 
+\begin_inset Formula $\left\{ \partial^{x_{i}}F_{h=1/n}\right\} _{n=1}^{\infty}$
+\end_inset
+
+ са ограничени съответно от 
+\begin_inset Formula $F+L$
+\end_inset
+
+ и 
+\begin_inset Formula $\partial^{x_{i}}F+L$
+\end_inset
+
+, където 
+\begin_inset Formula $L$
+\end_inset
+
+ е константа.
+ Тогава в дефиницията за обобщена производна на 
+\begin_inset Formula $F_{h}=f_{h}\circ y$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\int\limits _{Q'}F_{h}\frac{\partial g}{\partial x_{i}}\text{dx}=-\int\limits _{Q'}\frac{\partial F_{h}}{\partial x_{i}}g\text{dx}\quad\forall g\in C^{1}(\bar{Q})
+\]
+
+\end_inset
+
+можем да извършим от двете страни ограничен граничен преход при 
+\begin_inset Formula $h\to0$
+\end_inset
+
+ и да получим 
+\begin_inset Formula 
+\[
+\int\limits _{Q}\underbrace{\left(\lim_{h\to0}F_{h}\right)}_{F}\frac{\partial g}{\partial x_{i}}\text{dx}=-\int\limits _{Q}\left(\lim_{h\to0}\frac{\partial F_{h}}{\partial x_{i}}\right)g\text{dx}\quad\forall g\in C^{1}(\bar{Q}),
+\]
+
+\end_inset
+
+с което имаме първите обобщени производни на 
+\begin_inset Formula $F$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\frac{\partial F}{\partial x_{i}}=\lim_{h\to0}\frac{\partial F_{h}}{\partial x_{i}}.
+\]
+
+\end_inset
+
+За да имаме 
+\begin_inset Formula $F$
+\end_inset
+
+ от 
+\begin_inset Formula $H^{1}$
+\end_inset
+
+, остава само да се уверим, че производните имат сумируеми квадрати.
+ След диференциране по правилото за диференциране на съставна функция
+\begin_inset Formula 
+\[
+\frac{\partial F}{\partial x_{i}}(x)=\sum_{j}\frac{\partial f}{\partial y_{j}}(y(x))\frac{\partial y_{j}}{\partial x_{i}}(x),
+\]
+
+\end_inset
+
+веднага излиза оценката 
+\begin_inset Formula 
+\begin{align*}
+\left\Vert \frac{\partial F}{\partial x_{i}}\right\Vert  & \le\sum_{j}\left\Vert \frac{\partial f}{\partial y_{j}}\right\Vert _{L_{2}(\Omega)}\left\Vert \frac{\partial y_{j}}{\partial x_{i}}\right\Vert _{L_{2}(Q)}\\
+ & \le C\left\Vert f\right\Vert _{H^{1}},
+\end{align*}
+
+\end_inset
+
+където константата 
+\begin_inset Formula $C$
+\end_inset
+
+ зависи само от 
+\begin_inset Formula $y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Производните от ред 
+\begin_inset Formula $\ge2$
+\end_inset
+
+ получаваме след повторено диференциране във формулата за производна на
+ съставна функция.
+\end_layout
+
+\begin_layout Section
+Продължение извън 
+\begin_inset Formula $Q$
+\end_inset
+
+ при 
+\begin_inset Formula $\partial Q\in C^{k}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Локално
+\end_layout
+
+\begin_layout Standard
+Да означим с 
+\begin_inset Formula $B_{r}(\xi)$
+\end_inset
+
+ кълбото 
+\begin_inset Formula $\left\{ x\in\mathbb{R}^{n}:\left\Vert x-\xi\right\Vert <r\right\} .$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename pics/untitled.png
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+В следващата лема ще се уверим, че ако имаме продължение на 
+\begin_inset Formula $f$
+\end_inset
+
+ в околност на всяка точка (
+\begin_inset Quotes gld
+\end_inset
+
+поотделно
+\begin_inset Quotes grd
+\end_inset
+
+) от границата, то можем да построим продължение на 
+\begin_inset Formula $f$
+\end_inset
+
+ в произволно разширение на разглежданата област.
+\end_layout
+
+\begin_layout Lemma*
+Нека 
+\begin_inset Formula $Q\subset\mathbb{R}^{n}$
+\end_inset
+
+ е ограничена област, 
+\begin_inset Formula $f\in H^{k}(Q)$
+\end_inset
+
+ и във всяка точка от границата на 
+\begin_inset Formula $Q$
+\end_inset
+
+ е дадено продължение на 
+\begin_inset Formula $f$
+\end_inset
+
+ в някакво кълбо около тази точка, с 
+\begin_inset Quotes gld
+\end_inset
+
+равномерно по-малка
+\begin_inset Quotes grd
+\end_inset
+
+ 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+ норма от 
+\begin_inset Formula $f$
+\end_inset
+
+, тоест 
+\begin_inset Formula 
+\begin{align*}
+\forall\xi\in\partial Q\quad\exists r_{\xi}>0\quad\exists & F_{\xi}\in H^{k}\left(B_{r}(\xi)\right):\\
+ & F_{\xi}\big|_{Q}\equiv f\text{ и }\left\Vert F_{\xi}\right\Vert _{H^{k}(B_{r}(\xi))}\le C\left\Vert f\right\Vert _{H^{k}(Q)},
+\end{align*}
+
+\end_inset
+
+ където 
+\begin_inset Formula $C$
+\end_inset
+
+ е константа.
+\end_layout
+
+\begin_layout Lemma*
+Тогава във всяко разширение 
+\begin_inset Formula $Q_{\rho}\coloneqq\left\{ x:\text{dist}(x,Q)<\rho\right\} $
+\end_inset
+
+ на 
+\begin_inset Formula $Q$
+\end_inset
+
+ съществува продължение 
+\begin_inset Formula $F\in H^{k}(Q_{\rho})$
+\end_inset
+
+ на 
+\begin_inset Formula $f$
+\end_inset
+
+, нулиращо се извън 
+\begin_inset Formula $Q_{\rho/2}$
+\end_inset
+
+ с 
+\begin_inset Quotes gld
+\end_inset
+
+равномерно по-малка
+\begin_inset Quotes grd
+\end_inset
+
+ норма от 
+\begin_inset Formula $f,$
+\end_inset
+
+ тоест 
+\begin_inset Formula 
+\begin{align*}
+\forall\rho>0\quad\exists F\in H^{k}(Q_{\rho}) & :F\big|_{Q}\equiv f,\\
+ & \text{ и }F\big|_{Q_{\rho}\setminus Q_{\rho/2}}\equiv0\\
+ & \text{ и }\left\Vert F\right\Vert _{H^{k}(Q_{\rho})}\le C'\left\Vert f\right\Vert _{H^{k}(Q)}
+\end{align*}
+
+\end_inset
+
+където константата 
+\begin_inset Formula $C$
+\end_inset
+
+ не зависи от 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+С дадените по условие 
+\begin_inset Formula $F_{\xi}$
+\end_inset
+
+ ще образуваме краен брой продължения 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+ на 
+\begin_inset Formula $f$
+\end_inset
+
+ в отворени разширения 
+\begin_inset Formula $Q_{i}\supset Q$
+\end_inset
+
+, за които 
+\begin_inset Formula $\bigcup_{i}Q_{i}\supset\bar{Q}$
+\end_inset
+
+.
+ След това ще ги загладим до 0 извън 
+\begin_inset Formula $Q_{\rho/2}$
+\end_inset
+
+ и с подходящо претегляне ще положим сумата им за търсеното продължение.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "b"
+use_parbox 0
+use_makebox 0
+width "50col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/dQ_Fi_ext.jpg
+	display false
+	scale 10
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "50col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+В оцветените области използваме продължението по условие или оригиналните
+ стойности на 
+\begin_inset Formula $f$
+\end_inset
+
+, а в тъмносивата област (
+\begin_inset Formula $\frac{\rho}{2}$
+\end_inset
+
+) ще загладим скока, който се получава в общия случай между светлосивата
+ и бялата област.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Paragraph
+1.
+ Покритие и груби продължения
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+Нека 
+\begin_inset Formula $\rho>0$
+\end_inset
+
+ е фиксирано.
+ Можем да считаме, че радиусите 
+\begin_inset Formula $r_{\xi}$
+\end_inset
+
+ по условие са избрани с 
+\begin_inset Formula $r_{\xi}<\rho\;\forall\xi$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+Първо ще додефинираме 
+\begin_inset Formula $r_{\xi}$
+\end_inset
+
+ не само за 
+\begin_inset Formula $\xi\in\partial Q,$
+\end_inset
+
+ ами в цялото 
+\begin_inset Formula $\bar{Q}$
+\end_inset
+
+.
+ По условието на лемата около всяка точка 
+\begin_inset Formula $\xi\in\bar{Q}$
+\end_inset
+
+ има кълбо 
+\begin_inset Formula $B_{r}(\xi),r=r(\xi)$
+\end_inset
+
+, в което е дефинирана или 
+\begin_inset Formula $f$
+\end_inset
+
+, или нейно гладко продължение.
+\end_layout
+
+\begin_layout Proof
+Ясно е, че 
+\begin_inset Formula 
+\[
+Q\subset\bigcup_{\xi\in\bar{Q}}B_{r_{\xi}/3}(\xi).
+\]
+
+\end_inset
+
+Ползваме само половин радиус 
+\begin_inset Formula $\frac{1}{2}r_{\xi}$
+\end_inset
+
+ с цел да имаме в последствие място, където да се случи срязването.
+ Щом 
+\begin_inset Formula $Q$
+\end_inset
+
+ е ограничена, то 
+\begin_inset Formula $\bar{Q}$
+\end_inset
+
+ е компакт и значи от покритието 
+\begin_inset Formula $\bigcup_{\xi\in\bar{Q}}B_{r_{\xi}/2}(\xi)$
+\end_inset
+
+ можем да изберем крайно подпокритие 
+\begin_inset Formula $B_{r_{1}/2}(\xi_{1}),\ldots,B_{r_{N}/2}(\xi_{N}).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Сега определяме функциите 
+\begin_inset Formula $f_{i}\in L_{2}(\mathbb{R}^{n}),i=1,\ldots,N$
+\end_inset
+
+ по гореилюстрирания начин – (негладки) продължения на 
+\begin_inset Formula $f$
+\end_inset
+
+ в цялото 
+\begin_inset Formula $\mathbb{R}^{n}$
+\end_inset
+
+ с носител в 
+\begin_inset Formula $Q\cup B_{r_{i}}(x_{i})$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+f_{i}(x)\coloneqq\begin{cases}
+F_{x_{i}}(x) & \text{, ако }x\in B_{r_{i}}(x_{i})\\
+f(x) & \text{, ако }x\in Q\\
+0 & \text{, иначе}
+\end{cases}
+\]
+
+\end_inset
+
+Да направим оценка на нормата им
+\begin_inset Formula 
+\begin{align*}
+\left\Vert f_{i}\right\Vert _{H^{k}(Q\cup B_{r_{i}}(x_{i}))} & \le\left\Vert F_{\xi_{i}}\right\Vert +\left\Vert f\right\Vert \\
+ & \le C\left\Vert f\right\Vert +\left\Vert f\right\Vert =\tilde{C}\left\Vert f\right\Vert .
+\end{align*}
+
+\end_inset
+
+Остава да ги залепим с подходящи функции 
+\begin_inset Formula $\gamma_{i}$
+\end_inset
+
+, за да дефинираме (вече гладко) продължение 
+\begin_inset Formula 
+\[
+F=\sum_{i}\gamma_{i}f_{i}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Paragraph
+2.
+ Залепване с разлагане на единицата
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+За да бъде 
+\begin_inset Formula $F$
+\end_inset
+
+ изобщо продължение на 
+\begin_inset Formula $f$
+\end_inset
+
+, трябва 
+\begin_inset Formula $F\big|_{Q}\equiv f$
+\end_inset
+
+.
+ При 
+\begin_inset Formula $x\in Q$
+\end_inset
+
+ сме дефинирали 
+\begin_inset Formula $f_{i}(x)=f(x),$
+\end_inset
+
+ следователно 
+\begin_inset Formula 
+\[
+F\big|_{Q}=\sum_{i}\gamma_{i}f_{i}=\sum_{i}\gamma_{i}f=f\sum_{i}\gamma_{i}.
+\]
+
+\end_inset
+
+Щом искаме 
+\begin_inset Formula $F\big|_{Q}\equiv f$
+\end_inset
+
+, трябва да поискаме 
+\begin_inset Formula $\sum_{i}\gamma_{i}\big|_{Q}\equiv1.$
+\end_inset
+
+ Това ни подсеща да използваме разлагане на единицата.
+ 
+\end_layout
+
+\begin_layout Proof
+Нека 
+\begin_inset Formula $\left\{ \gamma_{i}\right\} _{i=1}^{N}$
+\end_inset
+
+ е разлагане на единицата, подчинено на покритието 
+\begin_inset Formula $\left\{ B_{r_{i}/2}\right\} _{i=1}^{N}$
+\end_inset
+
+ и съставено от финитни в 
+\begin_inset Formula $Q_{\rho/2}$
+\end_inset
+
+ функции, a 
+\begin_inset Formula $F=\sum_{i}\gamma_{i}f_{i}$
+\end_inset
+
+.
+ Съгласно току-що направената сметка и свойството 
+\begin_inset Formula $\sum_{i}\gamma_{i}\big|_{Q}=1$
+\end_inset
+
+, 
+\begin_inset Formula $F$
+\end_inset
+
+ действително е 
+\emph on
+продължение
+\emph default
+ на 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ Остава да проверим, че то отговаря на исканите свойства:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "65col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $F\in H^{k}(Q_{\rho})$
+\end_inset
+
+, защото всякo 
+\begin_inset Formula $\gamma_{i}$
+\end_inset
+
+ изглажда ръбчето на съответното 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+, тъй като всяко 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+ единствено може да не гладко по границата на светлосивата област 
+\begin_inset Formula $Q\cup B_{r_{i}}(x_{i}),$
+\end_inset
+
+ околност на която се съдържа 
+\begin_inset Formula $Q_{\rho/2}\setminus B_{r_{i}/2}$
+\end_inset
+
+ – допълнението на тъмната област, където 
+\begin_inset Formula $\gamma_{i}$
+\end_inset
+
+ е нулева.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "b"
+use_parbox 0
+use_makebox 0
+width "30col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/smoothness_of_extension.png
+	lyxscale 10
+	scale 10
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $F\big|_{Q_{\rho}\setminus Q_{\rho/2}}\equiv0,$
+\end_inset
+
+ тъй като поискахме 
+\begin_inset Formula $\gamma_{i}$
+\end_inset
+
+ да са финитни в съответното множество.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\Vert F\right\Vert _{H^{k}(Q_{\rho})}\le C'\left\Vert f\right\Vert _{H^{k}(Q)}$
+\end_inset
+
+, тъй като 
+\begin_inset Formula 
+\begin{align*}
+\left\Vert F\right\Vert _{H^{k}(Q_{\rho})} & =\left\Vert \sum_{i}\gamma_{i}f_{i}\right\Vert _{H^{k}(Q_{\rho})}\\
+ & \le\sum_{i}\left\Vert \gamma_{i}\right\Vert \left\Vert f_{i}\right\Vert \\
+ & \le\sum_{i}\left\Vert \gamma_{i}\right\Vert \tilde{C}\left\Vert f\right\Vert \\
+ & \le C'\left\Vert f\right\Vert ,
+\end{align*}
+
+\end_inset
+
+като в последното неравенство използваме, че 
+\begin_inset Formula $\gamma_{i}$
+\end_inset
+
+ не зависят от 
+\begin_inset Formula $f$
+\end_inset
+
+, a само от областта — тоест в нашия контекст, нормата им се явява константа.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Глобално
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+за продължението
+\end_layout
+
+\end_inset
+
+ Нека 
+\begin_inset Formula $Q$
+\end_inset
+
+ и 
+\begin_inset Formula $Q'$
+\end_inset
+
+ са ограничени области в 
+\begin_inset Formula $\mathbb{R}^{n}$
+\end_inset
+
+, като 
+\begin_inset Formula $\bar{Q}\subset Q'$
+\end_inset
+
+ и 
+\begin_inset Formula $\partial Q\in C^{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem*
+Тогава всяко 
+\begin_inset Formula $f\in H^{k}(Q)$
+\end_inset
+
+ има финитно (нулиращо се в околност на 
+\begin_inset Formula $\partial Q'$
+\end_inset
+
+) продължение 
+\begin_inset Formula $F\in H^{k}(Q')$
+\end_inset
+
+, за което е в сила оценката 
+\begin_inset Formula 
+\[
+\left\Vert F\right\Vert _{H^{k}(Q')}\le C\left\Vert f\right\Vert _{H^{k}(Q)}
+\]
+
+\end_inset
+
+с константа 
+\begin_inset Formula $C$
+\end_inset
+
+, независеща от 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+В оценката на 
+\begin_inset Formula $F$
+\end_inset
+
+ в теоремата можем също да вземем вместо 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+-нормата, коя да е норма 
+\begin_inset Formula $H^{s}$
+\end_inset
+
+ с 
+\begin_inset Formula $s\le k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Ще построим продължение на 
+\begin_inset Formula $f$
+\end_inset
+
+ в околност на произволна точка от границата на областта, след което ще
+ приложим предишната лема.
+\end_layout
+
+\begin_layout Proof
+Нека 
+\begin_inset Formula $\xi\in\partial Q$
+\end_inset
+
+.
+ Продължение в околност 
+\begin_inset Formula $U_{\xi}$
+\end_inset
+
+ на 
+\begin_inset Formula $\xi$
+\end_inset
+
+ ще направим на 3 етапа:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Ще изправим (биективно) границата около 
+\begin_inset Formula $\xi$
+\end_inset
+
+ до хиперравнината 
+\begin_inset Formula $\left\{ y_{n}=0\right\} $
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+Ще приложим лемата от предната секция за продължение от 
+\begin_inset Formula $\overline{K_{a}^{+}}$
+\end_inset
+
+ до 
+\begin_inset Formula $\overline{K_{a}}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+Ще изпратим продължението от 
+\begin_inset Formula $K_{a}^{-}$
+\end_inset
+
+ обратно зад 
+\begin_inset Quotes gld
+\end_inset
+
+кривата
+\begin_inset Quotes grd
+\end_inset
+
+ граница.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+\begin_inset Graphics
+	filename pics/contour3steps.png
+	lyxscale 10
+	scale 10
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Щом 
+\begin_inset Formula $\partial Q\in C^{k},$
+\end_inset
+
+ то в някоя околност 
+\begin_inset Formula $U_{\xi}$
+\end_inset
+
+ на 
+\begin_inset Formula $\xi$
+\end_inset
+
+ можем с точност до преномериране на променливите да представим уравнението
+ на 
+\begin_inset Formula $\partial Q$
+\end_inset
+
+ във вида 
+\begin_inset Formula 
+\[
+x_{n}=\varphi(x_{1},\ldots,x_{n-1}),
+\]
+
+\end_inset
+
+където 
+\begin_inset Formula $\varphi\in C^{k}(D)$
+\end_inset
+
+ в област 
+\begin_inset Formula $D\subset\mathbb{R}^{n-1}.$
+\end_inset
+
+ Още ще поискаме в 
+\begin_inset Formula $U_{\xi}$
+\end_inset
+
+ областта 
+\begin_inset Formula $Q$
+\end_inset
+
+ да се намира 
+\begin_inset Quotes gld
+\end_inset
+
+отгоре
+\begin_inset Quotes grd
+\end_inset
+
+, тоест 
+\begin_inset Formula 
+\[
+x_{n}>\varphi(x_{1},\ldots,x_{n-1})\quad\forall x\in U_{\xi}\cap Q.
+\]
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename pics/contour.png
+	lyxscale 50
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Сменяме променливите така, че 
+\begin_inset Formula $\xi$
+\end_inset
+
+ да застане в началото на координатната система 
+\begin_inset Formula $y_{1},\ldots,y_{n}$
+\end_inset
+
+, а повърхнината 
+\begin_inset Formula $\left\{ y_{n}=0\right\} $
+\end_inset
+
+ да съвпадне с 
+\begin_inset Formula $\partial Q\cap U_{\xi}$
+\end_inset
+
+, тоест 
+\begin_inset Formula 
+\begin{align*}
+y' & \coloneqq x'-\xi'\\
+y_{n} & \coloneqq x_{n}-\varphi(x').
+\end{align*}
+
+\end_inset
+
+ Тогава 
+\begin_inset Formula $U_{\xi}$
+\end_inset
+
+ се изобразява биективно в околност 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ на 
+\begin_inset Formula $0$
+\end_inset
+
+, а функцията 
+\begin_inset Formula $f\big|_{Q\cap U_{\xi}}$
+\end_inset
+
+ – във функцията 
+\begin_inset Formula 
+\[
+z(y)=f\left(y'+\xi',y_{n}+\varphi(y'+\xi')\right),
+\]
+
+\end_inset
+
+която, съгласно твърдение по-горе, отново е от 
+\begin_inset Formula $H^{k}.$
+\end_inset
+
+ Време е да приложим лемата от първата секция.
+\end_layout
+
+\begin_layout Proof
+Нека 
+\begin_inset Formula $K_{a}$
+\end_inset
+
+ е куб с достатъчно малък радиус, че 
+\begin_inset Formula $K_{a}\subset\Omega.$
+\end_inset
+
+ Тогава 
+\begin_inset Formula $z$
+\end_inset
+
+, като функция от 
+\begin_inset Formula $H^{k}(\overline{K_{a}^{+}})$
+\end_inset
+
+, има продължение 
+\begin_inset Formula $Z\in H^{k}\left(\overline{K_{a}}\right),$
+\end_inset
+
+ което след обратната смяна на променливите ни дава продължение 
+\begin_inset Formula $F_{\xi}$
+\end_inset
+
+ на 
+\begin_inset Formula $f$
+\end_inset
+
+ в 
+\begin_inset Formula $y^{-1}(K_{a})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $y^{-1}(K_{a})$
+\end_inset
+
+ е отворено и съдържа 
+\begin_inset Formula $\xi$
+\end_inset
+
+, и значи имаме продължение на 
+\begin_inset Formula $f$
+\end_inset
+
+ в някое кълбо 
+\begin_inset Formula $B_{r}\left(\xi\right)$
+\end_inset
+
+.
+ За да приложим предходната лема, обаче, ни е нужно още едно условие.
+\end_layout
+
+\begin_layout Proof
+От свойството за смяна на променливите за функцията 
+\begin_inset Formula $F_{\xi}$
+\end_inset
+
+ имаме 
+\begin_inset Formula 
+\begin{align*}
+\left\Vert F_{\xi}\right\Vert _{H^{k}(B_{r}(\xi))} & \le\left\Vert F_{\xi}\right\Vert _{H^{k}(y^{-1}(\Omega))}\le C_{3}\left\Vert Z\right\Vert _{H^{k}(K_{a})},
+\end{align*}
+
+\end_inset
+
+а за функцията 
+\begin_inset Formula $f$
+\end_inset
+
+ – 
+\begin_inset Formula 
+\[
+\left\Vert z\right\Vert _{H^{k}(K_{a}^{+})}\le C_{4}\left\Vert f\right\Vert _{H^{k}(Q\cap y^{-1}(\Omega))}\le C_{4}\left\Vert f\right\Vert _{H^{k}(Q)},
+\]
+
+\end_inset
+
+където константите 
+\begin_inset Formula $C_{3},C_{4}$
+\end_inset
+
+ зависят само от смяната 
+\begin_inset Formula $y=y(x)$
+\end_inset
+
+, тоест – в нашия случай – зависят от 
+\begin_inset Formula $\partial Q$
+\end_inset
+
+ и са универсални за всички функции, които искаме да продължим.
+ С това вече имаме право да приложим последната лема с 
+\begin_inset Formula $\rho<\text{dist}\left(Q,Q'\right)$
+\end_inset
+
+ и да получим продължение на 
+\begin_inset Formula $f$
+\end_inset
+
+ около цялото 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Продължение навътре в 
+\begin_inset Formula $Q$
+\end_inset
+
+ при 
+\begin_inset Formula $\partial Q\in C^{k}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+Нека 
+\begin_inset Formula $Q$
+\end_inset
+
+ има гладка граница 
+\begin_inset Formula $\partial Q\in C^{k}$
+\end_inset
+
+ за някое 
+\begin_inset Formula $k\ge1$
+\end_inset
+
+.
+ Тогава всяка функция 
+\begin_inset Formula $f\in C^{k}(\partial Q)$
+\end_inset
+
+ има продължение 
+\begin_inset Formula $F\in C^{k}(\bar{Q}),$
+\end_inset
+
+ удовлетворяващо оценката 
+\begin_inset Formula 
+\[
+\left\Vert F\right\Vert _{C^{k}(\bar{Q})}\le C\left\Vert f\right\Vert _{C^{k}(\partial Q)},
+\]
+
+\end_inset
+
+в която константата 
+\begin_inset Formula $C$
+\end_inset
+
+ зависи само от 
+\begin_inset Formula $\partial Q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Без доказателство.
+\end_layout
+
+\end_body
+\end_document

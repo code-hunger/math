@@ -1,0 +1,3013 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+%\usepackage{pstricks}
+%\usepackage{pst-plot}
+%\usepackage{pst-eps}
+%\usepackage{pst-grad}
+\usepackage{tikz}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-starred
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Extensions of functions on 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Author
+Alexander Gudev
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\da}{\partial^{\alpha}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\dy}{\operatorname{dy}}
+{\text{dy}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+Let 
+\begin_inset Formula $\Omega\subseteq\Omega'$
+\end_inset
+
+ and 
+\begin_inset Formula $f\in L_{2}(\Omega)$
+\end_inset
+
+.
+ An 
+\emph on
+extension
+\emph default
+ of 
+\begin_inset Formula $f$
+\end_inset
+
+ in 
+\begin_inset Formula $\Omega'$
+\end_inset
+
+ is called any function 
+\begin_inset Formula $f'\in L_{2}(\Omega')$
+\end_inset
+
+, s.t.
+ 
+\begin_inset Formula $f'\big|_{\Omega}=f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example*
+Every 
+\begin_inset Formula $f\in L_{2}(\Omega)$
+\end_inset
+
+ can be extended to 
+\begin_inset Formula $\Omega'$
+\end_inset
+
+ by setting 
+\begin_inset Formula $f=0$
+\end_inset
+
+ outside 
+\begin_inset Formula $\Omega$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+f'\coloneqq\begin{cases}
+f & \text{in }\Omega\\
+0 & \text{in }\Omega'\setminus\Omega
+\end{cases}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+Our goal is to extend the function 
+\begin_inset Formula $f\in H^{k}(\Omega)$
+\end_inset
+
+ on 
+\begin_inset Formula $\Omega'$
+\end_inset
+
+ so that the extension is from 
+\begin_inset Formula $H^{k}(\Omega')$
+\end_inset
+
+.
+ In the above definition this is not required — as the example makes clear,
+ extensions can even be discontinuous.
+\end_layout
+
+\begin_layout Section
+Extension from a half-cube to a cube
+\end_layout
+
+\begin_layout Standard
+Below, with 
+\begin_inset Formula $\left\{ y_{n}>0\right\} $
+\end_inset
+
+ we denote the subset of 
+\begin_inset Formula $\mathbb{R}^{n}$
+\end_inset
+
+ consisting of vectors 
+\begin_inset Formula $\left(y_{1},\ldots,y_{n}\right)$
+\end_inset
+
+ that satisfy the condition in the brackets.
+\end_layout
+
+\begin_layout Standard
+We introduce the following notations for the hypercube centered around the
+ origin with radius 
+\begin_inset Formula $a$
+\end_inset
+
+, as well as its "upper" and "lower" halves:
+\begin_inset Formula 
+\begin{align*}
+K_{a} & \coloneqq\left\{ \left(y_{1},\ldots,y_{n}\right)\in\mathbb{R}^{n}:\left|y_{i}\right|<a\text{ for all }i\right\} \\
+K_{a}^{+} & \coloneqq K_{a}\cap\left\{ y_{n}>0\right\} \\
+K_{a}^{0} & \coloneqq K_{a}\cap\left\{ y_{n}=0\right\} \\
+K_{a}^{-} & \coloneqq K_{a}\cap\left\{ y_{n}<0\right\} .
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Moreover, we denote by 
+\begin_inset Formula $y'$
+\end_inset
+
+ for any vector 
+\begin_inset Formula $y=\left(y_{1},\ldots,y_{n}\right)\in\mathbb{R}^{n}$
+\end_inset
+
+ the vector 
+\begin_inset Formula $y'\coloneqq\left(y_{1},\ldots,y_{n-1}\right)$
+\end_inset
+
+.
+ For short, for a 
+\begin_inset Formula $y\in\mathbb{R}^{n}$
+\end_inset
+
+ we'll denote by 
+\begin_inset Formula $\left(y',c\right)$
+\end_inset
+
+ the vector 
+\begin_inset Formula $(y_{1},\ldots,y_{n-1},c)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[scale=1.5]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[thick] (1,1) rectangle (-1,-1);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw (0,1.2) to (0,-1.2);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw (-1.2,0) to (1.2,0);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[densely dotted] (0.4,1.2) to (0.4,-1.2);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+fill (0.4, 0.7) circle(1pt);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+fill (0.4, 0.4) circle(1pt);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+fill (0.4, 0.2) circle(1pt);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+fill (0.4, 0.1) circle(1pt);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+fill (0.4, -0.7) circle(1.5pt);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node at(0.6, -0.7) {$y$};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The value of 
+\begin_inset Formula $Z$
+\end_inset
+
+ at a point 
+\begin_inset Formula $y$
+\end_inset
+
+ is constructed based on points 
+\begin_inset Formula $\left(y',-\frac{y_{n}}{i}\right).$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Of 
+\begin_inset Formula $C^{k}$
+\end_inset
+
+ functions
+\end_layout
+
+\begin_layout Enumerate
+Construction
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Let 
+\begin_inset Formula $z(y)\in C^{k}(\overline{K_{a}^{+}})$
+\end_inset
+
+.
+ We'll extend it to 
+\begin_inset Formula $K_{a}$
+\end_inset
+
+.
+ On points 
+\begin_inset Formula $y\in\overline{K_{a}^{-}}$
+\end_inset
+
+ we define the extension by means of of 
+\begin_inset Formula $K_{a}^{+}$
+\end_inset
+
+ points (see figure) of the form 
+\begin_inset Formula $\left(y',-\frac{y_{n}}{i}\right).$
+\end_inset
+
+ Let 
+\begin_inset Formula 
+\begin{align*}
+Z(y) & \coloneqq\begin{cases}
+z(y) & y\in\overline{K_{a}^{+}}\\
+\sum_{i=1}^{m}A_{i}z\left(p_{i}(y)\right) & y\in\overline{K_{a}^{-}}\backslash K_{a}^{0}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $p:\overline{K_{a}^{-}}\to\overline{K_{a}^{+}}$
+\end_inset
+
+ is the function 
+\begin_inset Formula 
+\[
+p_{i}(y)\coloneqq\left(y',-\frac{y_{n}}{i}\right),
+\]
+
+\end_inset
+
+while the number 
+\begin_inset Formula $m$
+\end_inset
+
+ and the coefficients
+\begin_inset Formula $A_{1},\ldots,A_{m}$
+\end_inset
+
+ will be determined later so that the resulting extension 
+\begin_inset Formula $Z:\overline{K_{a}}\to\mathbb{R}$
+\end_inset
+
+ of 
+\begin_inset Formula $z:\overline{K_{a}^{+}}\to\mathbb{R}$
+\end_inset
+
+ is of class 
+\begin_inset Formula $C^{k}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Continuity of the extension
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $Z$
+\end_inset
+
+ is continuous in 
+\begin_inset Formula $K_{a}^{+}$
+\end_inset
+
+ by definition.
+ We can easily see 
+\begin_inset Formula $Z$
+\end_inset
+
+ is continuous in 
+\begin_inset Formula $K_{a}^{-}$
+\end_inset
+
+ as well, directly from continuity of 
+\begin_inset Formula $z$
+\end_inset
+
+ in 
+\begin_inset Formula $K_{a}^{+}$
+\end_inset
+
+.
+ It remains to check continuity on the boundary 
+\begin_inset Formula $\bar{y}\in K_{a}^{0},$
+\end_inset
+
+ when 
+\begin_inset Formula $y$
+\end_inset
+
+ tends to
+\begin_inset Formula $\bar{y}$
+\end_inset
+
+ from 
+\begin_inset Formula $K_{a}^{-}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\lim_{K_{a}^{-}\ni y\to\bar{y}}Z(y) & =\lim_{K_{a}^{-}\ni y\to\bar{y}}\sum_{i=1}^{m}A_{i}z\left(p_{i}(y)\right)\\
+ & =\sum_{i=1}^{m}A_{i}\lim_{y\to\bar{y}}z\left(p_{i}(y)\right)\\
+ & =\sum_{i=1}^{m}A_{i}z\left(p_{i}(\bar{y})\right)=\sum_{i=1}^{m}A_{i}z\left(\bar{y}\right)=z\left(\bar{y}\right)\sum_{i=1}^{m}A_{i}
+\end{align*}
+
+\end_inset
+
+To make 
+\begin_inset Formula $Z$
+\end_inset
+
+ continuous in 
+\begin_inset Formula $\bar{y}$
+\end_inset
+
+ it is enough that this limit equals equals 
+\begin_inset Formula $z(\bar{y})$
+\end_inset
+
+, which is the case exactly when 
+\begin_inset Formula 
+\[
+\sum_{i=1}^{m}A_{i}=1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Smoothness of the extension
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Let 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ be a multiindex with 
+\begin_inset Formula $\left|\alpha\right|\le k$
+\end_inset
+
+.
+ We will check that the derivative 
+\begin_inset Formula $\partial^{\alpha}Z(y)$
+\end_inset
+
+ exists at each 
+\begin_inset Formula $y\in K_{a}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+In 
+\begin_inset Formula $K_{a}^{+}$
+\end_inset
+
+ this is just 
+\begin_inset Formula $\partial^{\alpha}z$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $Z$
+\end_inset
+
+ obviously has 
+\begin_inset Formula $\alpha$
+\end_inset
+
+-derivative in 
+\begin_inset Formula $y\in K_{a}^{-}$
+\end_inset
+
+ as well:
+\begin_inset Formula 
+\begin{align}
+\partial^{\alpha}Z(y) & =\sum_{i=1}^{m}A_{i}\partial^{\alpha}\left(z\left(p_{i}(y)\right)\right)\nonumber \\
+ & =\sum_{i=1}^{m}A_{i}\partial^{\alpha}p_{i}(y)\partial^{\alpha}z\left(p_{i}(y)\right).\label{eq:Zderiv-}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+It remains to see that 
+\begin_inset Formula $Z$
+\end_inset
+
+ has 
+\begin_inset Formula $\alpha$
+\end_inset
+
+-derivative in any 
+\begin_inset Formula $y\in K_{a}^{0}$
+\end_inset
+
+, too.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+We'll do it by induction on 
+\begin_inset Formula $\left|\alpha\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Assume
+\begin_inset Formula $\left|\alpha\right|=1$
+\end_inset
+
+, that is 
+\begin_inset Formula $\partial^{\alpha}=\frac{d}{dx_{j}}$
+\end_inset
+
+ for some 
+\begin_inset Formula $j\in\left\{ 1,\ldots,n\right\} $
+\end_inset
+
+.
+ Let's find under what conditions the derivative 
+\begin_inset Formula $\frac{\partial Z}{\partial x_{j}}$
+\end_inset
+
+ exists in 
+\begin_inset Formula $y_{0}\in K_{a}^{0}$
+\end_inset
+
+.
+ We need the derivative coming 
+\begin_inset Quotes eld
+\end_inset
+
+from above
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Formula $\lim_{K_{a}^{+}\ni y\to y_{0}}\partial^{\alpha}z(y)$
+\end_inset
+
+, equal to the derivative coming 
+\begin_inset Quotes eld
+\end_inset
+
+from below
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\lim_{K_{a}^{-}\ni y\to y_{0}}\partial^{\alpha}Z & \overset{\eqref{eq:Zderiv-}}{=}\lim_{K_{a}^{-}\ni y\to y_{0}}\sum_{i=1}^{m}A_{i}\partial^{\alpha}p_{i}(y)\partial^{\alpha}z\left(p_{i}(y)\right)\\
+ & =\sum_{i=1}^{m}A_{i}\partial^{\alpha}p_{i}(y_{0})\partial^{\alpha}z\left(p_{i}(y_{0})\right)\\
+ & =\sum_{i=1}^{m}A_{i}\partial^{\alpha}p_{i}(y_{0})\partial^{\alpha}z\left(y_{0}\right)\\
+ & =\partial^{\alpha}z\left(y_{0}\right)\sum_{i=1}^{m}A_{i}\partial^{\alpha}p_{i}(y_{0}).
+\end{align*}
+
+\end_inset
+
+The derivatives agree when the right multiple does not play:
+\begin_inset Formula 
+\[
+\sum_{i=1}^{m}\partial^{\alpha}p_{i}(y_{0})A_{i}=1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Analoguously, for 
+\begin_inset Formula $1<\left|\alpha\right|\le k$
+\end_inset
+
+, calculating the derivative as above we get the same condition
+\begin_inset Formula 
+\[
+\sum_{i=1}^{m}\partial^{\alpha}p_{i}(y_{0})A_{i}=1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+In particular, if we take 
+\begin_inset Formula $p_{i}(y)=\left(y_{1},\ldots,y_{n-1},-\frac{1}{i}y_{n}\right),$
+\end_inset
+
+ we get the system
+\begin_inset Formula 
+\[
+\sum_{i=1}^{m}\left(-\frac{1}{i}\right)^{l}A_{i}=1,\quad\text{for all }i=0,\ldots k,
+\]
+
+\end_inset
+
+that, being a Vandermonde system, has a unique solution when 
+\begin_inset Formula $m=k+1$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Bound of 
+\begin_inset Formula $\left\Vert Z\right\Vert _{H^{k}(K_{a})}$
+\end_inset
+
+ via 
+\begin_inset Formula $\left\Vert z\right\Vert _{H^{k}(K_{a}^{+})}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+By Minkowski inequality: 
+\begin_inset Formula 
+\begin{align*}
+\left|\partial^{\alpha}Z(y)\right|^{2} & =\left|\sum_{i=1}^{m}A_{i}\left(-\frac{1}{i}\right)^{\alpha_{n}}\partial^{\alpha}z\left(p_{i}(y)\right)\right|^{2}\\
+ & =\left(\sum_{i=1}^{m}\left(A_{i}\left(-\frac{1}{i}\right)^{\alpha_{n}}\right)\left(\partial^{\alpha}z\left(p_{i}(y)\right)\right)\right)^{2}\\
+ & \le\left(\sum_{i=1}^{m}A_{i}^{2}\left(-\frac{1}{i}\right)^{2\alpha_{n}}\right)\left(\sum_{i=1}^{m}\left(\partial^{\alpha}z\left(p_{i}(y)\right)\right)^{2}\right)\\
+ & =C_{\alpha}\sum_{i=1}^{m}\left(\partial^{\alpha}z\left(p_{i}(y)\right)\right)^{2}
+\end{align*}
+
+\end_inset
+
+and after integrating over 
+\begin_inset Formula $K_{a}^{-}$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{align*}
+\int_{K_{a}^{-}}\left|\partial^{\alpha}Z(y)\right|^{2} & \le C_{\alpha}\sum_{i=1}^{k+1}\int_{K_{a}^{-}}\left(\partial^{\alpha}z\left(p_{i}(y)\right)\right)^{2}\\
+ & =C_{\alpha}\sum_{i=1}^{k+1}i\int\limits _{K_{a}^{\le a/i}}\left(\partial^{\alpha}z\left(y)\right)\right)^{2}\quad(\text{put }x=p_{i}(y))\\
+ & \le C_{\alpha}\sum_{i=1}^{k+1}(k+1)\int\limits _{K_{a}^{\le a/i}}\left(\partial^{\alpha}z\left(y)\right)\right)^{2}\\
+ & =\underbrace{C_{\alpha}(k+1)^{2}}_{C_{\alpha}^{\prime}}\int\limits _{K_{a}^{\le a/i}}\left(\partial^{\alpha}z\left(y)\right)\right)^{2},
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $K_{a}^{\le a/i}\coloneqq K_{a}^{+}\cap\left\{ y_{n}<\frac{a}{i}\right\} .$
+\end_inset
+
+ Then, over the entire 
+\begin_inset Formula $K_{a}$
+\end_inset
+
+ we have 
+\begin_inset Formula 
+\begin{align*}
+\int_{K_{a}}\left|\partial^{\alpha}Z(y)\right|^{2} & =\int_{K_{a}^{+}}\left|\partial^{\alpha}z(y)\right|^{2}+\int_{K_{a}^{-}}\left|\partial^{\alpha}Z(y)\right|^{2}\\
+ & \le\int_{K_{a}^{+}}\left|\partial^{\alpha}z(y)\right|^{2}+C_{\alpha}^{\prime}\int_{K_{a}^{+}}\left|\partial^{\alpha}z(y)\right|^{2}\\
+ & \le C_{\alpha}^{\prime\prime}\int_{K_{a}^{+}}\left|\partial^{\alpha}z(y)\right|^{2},
+\end{align*}
+
+\end_inset
+
+and after summing over 
+\begin_inset Formula $\left|\alpha\right|\le k$
+\end_inset
+
+ we get the bound
+\begin_inset Formula 
+\begin{equation}
+\left\Vert Z\right\Vert _{H^{k}(K_{a})}\le C\left\Vert z\right\Vert _{H^{k}\left(K_{a}^{+}\right)},\label{eq:extension_factor}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $C$
+\end_inset
+
+ is a constant, depending solely on 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Of functions in 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $z\in H^{k}(K_{a}^{+})$
+\end_inset
+
+.
+ We'll find an extension 
+\begin_inset Formula $Z\in H^{k}(K_{a})$
+\end_inset
+
+, based on the construction above for 
+\begin_inset Formula $C^{k}$
+\end_inset
+
+ functions.
+ We'll prove the following lemma in a bit:
+\end_layout
+
+\begin_layout Lemma*
+The set 
+\begin_inset Formula $C^{\infty}\left(\overline{K_{a}}\right)$
+\end_inset
+
+ is dense in 
+\begin_inset Formula $H^{k}\left(K_{a}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+According to it, there is some sequence 
+\begin_inset Formula ${\left\{ z_{s}\right\} _{s}\subset C^{k}(\overline{K_{a}^{+}})}$
+\end_inset
+
+ tending to 
+\begin_inset Formula $z$
+\end_inset
+
+ in the 
+\begin_inset Formula $H^{k}(K_{a}^{+})$
+\end_inset
+
+ norm.
+ We extend its elements as in the previous section to 
+\begin_inset Formula $\overline{K_{a}}$
+\end_inset
+
+ and get a sequence 
+\begin_inset Formula $\left\{ Z_{s}\right\} _{s}\subset C^{k}\left(\overline{K_{a}}\right).$
+\end_inset
+
+ It remains to check the the newly constructed sequence has a limit 
+\begin_inset Formula $Z$
+\end_inset
+
+ in 
+\begin_inset Formula $H^{k}\left(K_{a}\right).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+ is complete, it is enough to show 
+\begin_inset Formula $\left\{ Z_{s}\right\} $
+\end_inset
+
+ is Cauchy.
+ Observe that the difference 
+\begin_inset Formula $Z_{s}-Z_{p}$
+\end_inset
+
+ is an extension (by above construction) of the difference 
+\begin_inset Formula $z_{s}-z_{p}$
+\end_inset
+
+.
+ Then the bound 
+\begin_inset Formula $\left\Vert Z\right\Vert _{H^{k}(K_{a})}\le C\left\Vert z\right\Vert _{H^{k}\left(K_{a}^{+}\right)}$
+\end_inset
+
+ holds here as well, that is
+\begin_inset Formula 
+\[
+\left\Vert Z_{s}-Z_{p}\right\Vert _{H^{k}(K_{a})}\le C\left\Vert z_{s}-z_{p}\right\Vert _{H^{k}\left(K_{a}^{+}\right)}.
+\]
+
+\end_inset
+
+Now, since 
+\begin_inset Formula $\left\{ z_{s}\right\} _{s}$
+\end_inset
+
+ is Cauchy, 
+\begin_inset Formula $\left\{ Z_{s}\right\} _{s}$
+\end_inset
+
+ is Cauchy, too, and the limit 
+\begin_inset Formula $Z\in H^{k}\left(K_{a}\right)$
+\end_inset
+
+ exists and is an extension of 
+\begin_inset Formula $z\in H^{k}(K_{a}^{+})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Finally, in the limit 
+\begin_inset Formula $p\to\infty$
+\end_inset
+
+ in 
+\begin_inset Formula 
+\[
+\left\Vert Z_{p}\right\Vert _{H^{k}(K_{a})}\le C\left\Vert z_{p}\right\Vert _{H^{k}\left(K_{a}^{+}\right)}
+\]
+
+\end_inset
+
+we see that the bound 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:extension_factor"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ holds for extensions in 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+ too.
+ Thus we proved
+\end_layout
+
+\begin_layout Proposition*
+Every 
+\begin_inset Formula $z\in H^{k}(K_{a}^{+})$
+\end_inset
+
+ has an extension 
+\begin_inset Formula $Z\in H^{k}(K_{a})$
+\end_inset
+
+, satisfying 
+\begin_inset Formula 
+\[
+\left\Vert Z\right\Vert _{H^{k}(K_{a})}\le C\left\Vert z\right\Vert _{H^{k}\left(K_{a}^{+}\right)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It's time to get back to the proof of the lemma.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Proof (
+\begin_inset Formula $C^{\infty}(K_{a})$
+\end_inset
+
+ is dense in 
+\begin_inset Formula $H^{k}(K_{a})$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $f\in H^{k}\left(K_{a}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+.
+ We need to find 
+\begin_inset Formula $F\in C^{\infty}\left(\overline{K_{a}}\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $\left\Vert f-F\right\Vert <\varepsilon.$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Paragraph
+Idea
+\end_layout
+
+\begin_layout Standard
+The main (actually the only one we have seen so far) technique for obtaining
+ 
+\begin_inset Formula $C^{\infty}$
+\end_inset
+
+ functions from 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ functions comes from the averaging operator: we know that if 
+\begin_inset Formula $f\in L_{2}(\mathbb{R}^{n})$
+\end_inset
+
+, then the average 
+\begin_inset Formula $f_{h}$
+\end_inset
+
+ is infinitely smooth for every 
+\begin_inset Formula $h>0$
+\end_inset
+
+.
+ We will average the function 
+\begin_inset Formula $f\in H^{k}(K_{a})$
+\end_inset
+
+ in a slightly narrower region with a sufficiently small averaging radius
+ so that the 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+-norm of the average does not deviate significantly from that of 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ In this way, we will obtain an infinitely smooth function that is sufficiently
+ close (in 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+) to 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+Before we start constructing the average, we will take approximations of
+ the derivatives, since for the average to be close to 
+\begin_inset Formula $f$
+\end_inset
+
+ (in 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+), the derivatives also need to be close (in 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+).
+ As elements of 
+\begin_inset Formula $L_{2}\left(K_{a}\right)$
+\end_inset
+
+, the derivatives 
+\begin_inset Formula $\partial^{\alpha}f$
+\end_inset
+
+ are within an 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+-neighborhood in the 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+-norm of some functions 
+\begin_inset Formula $\varphi_{\alpha}\in C\left(\overline{K_{a}}\right)$
+\end_inset
+
+, that is
+\begin_inset Formula 
+\[
+\forall\varepsilon>0\;\forall\alpha:\left|\alpha\right|\le k\;\exists\varphi_{\alpha}\in C\left(K_{a}\right):\left\Vert \partial^{\alpha}f-\varphi_{\alpha}\right\Vert _{L_{2}}<\varepsilon.
+\]
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "70col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status collapsed
+
+\begin_layout Plain Layout
+Instead of narrowing 
+\begin_inset Formula $K_{a}$
+\end_inset
+
+ and averaging in the narrowed region, equivalently (but more conveniently
+ for calculations), we will expand 
+\begin_inset Formula $K_{a}$
+\end_inset
+
+ by a factor 
+\begin_inset Formula $\sigma>1$
+\end_inset
+
+ to 
+\begin_inset Formula 
+\[
+K_{\sigma a}\coloneqq\left\{ x\in\mathbb{R}^{n}:\left|x_{i}\right|<\sigma a\right\} ,
+\]
+
+\end_inset
+
+expanding simultaneously the function 
+\begin_inset Formula $f$
+\end_inset
+
+ to 
+\begin_inset Formula ${F_{\sigma}\in H^{k}(K_{\sigma a}),}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+hspace*{1em}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[draw=black, thick, solid, fill=lightgray] (1.00,1.0) circle(0.50);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+fill (1,1) circle[radius=2pt];
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[draw=black, thick, solid, fill=lightgray] (0.75,-1.00) circle(0.50);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+fill (0.75,-1) circle[radius=2pt];
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[draw=black, thick, solid, fill=lightgray] (-0.75,0.00) circle(0.50);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+fill (-0.75,0.00) circle[radius=2pt];
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[draw=black, thick, solid] (-1.50,1.50) rectangle (1.5,-1.5);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[draw=black, thick, solid] (-1.0,1.0) rectangle (1.00,-1.00);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+F_{\sigma}(x)=f\left(\frac{x}{\sigma}\right),
+\]
+
+\end_inset
+
+ and after that we'll average the expanded function in the narrower domain
+ 
+\begin_inset Formula $K_{a}\subset K_{\sigma a}$
+\end_inset
+
+.
+\begin_inset FormulaMacro
+\newcommand{\red}[1]{{\color{red}#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\blue}[1]{{\color{blue}#1}}
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Paragraph
+Bound on the expansion 
+\begin_inset Formula $\left\Vert f-F_{\sigma}\right\Vert _{H^{k}(K_{a})}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+To evaluate the 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+-norm, we first evaluate the 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+-norms of each derivative separately.
+ We have
+\begin_inset Formula 
+\begin{align*}
+\left\Vert \da F_{\sigma}(x)-\varphi_{\alpha}(x)\right\Vert _{L_{2}(K_{a})} & =\left\Vert \da F_{\sigma}(x)\blue{-\varphi_{a}\left(\frac{x}{\sigma}\right)+\varphi_{a}\left(\frac{x}{\sigma}\right)}-\varphi_{\alpha}(x)\right\Vert _{L_{2}(K_{a})}\\
+ & \overset{\triangle\text{-inequality}}{\le}\left\Vert \da F_{\sigma}(x)-\varphi_{a}\left(\frac{x}{\sigma}\right)\right\Vert _{L_{2}(K_{a})}+\left\Vert \varphi_{a}\left(\frac{x}{\sigma}\right)-\varphi_{\alpha}(x)\right\Vert _{L_{2}(K_{a})}\\
+ & \le\left\Vert \da F_{\sigma}(x)-\varphi_{a}\left(\frac{x}{\sigma}\right)\right\Vert _{L_{2}{\color{red}(K_{\sigma a})}}+\left\Vert \varphi_{a}\left(\frac{x}{\sigma}\right)-\varphi_{\alpha}(x)\right\Vert _{L_{2}(K_{a})}.
+\end{align*}
+
+\end_inset
+
+For the right summand we have 
+\begin_inset Formula 
+\begin{align*}
+\left\Vert \da F_{\sigma}(x)-\varphi_{a}\left(\frac{x}{\sigma}\right)\right\Vert _{L_{2}(K_{\sigma a})} & \overset{\text{def. of }F_{\sigma}}{=}\left\Vert {\color{red}\frac{1}{\sigma^{\left|\alpha\right|}}\da f\left(\frac{x}{\sigma}\right)}-\varphi_{a}\left(\frac{x}{\sigma}\right)\right\Vert _{L_{2}(K_{\sigma a})}\\
+ & \overset{\triangle\text{-inequality}}{\le}\left\Vert \left(\frac{1}{\sigma^{\left|\alpha\right|}}{\color{red}-1}\right)\da f\left(\frac{x}{\sigma}\right)\right\Vert _{L_{2}(K_{\sigma a})}+\left\Vert {\color{red}+1}\da f\left(\frac{x}{\sigma}\right)-\varphi_{a}\left(\frac{x}{\sigma}\right)\right\Vert _{L_{2}(K_{\sigma a})}\\
+ & =\red{\sigma^{n/2}}\left(1\red -\frac{1}{\sigma^{\left|\alpha\right|}}\right)\left\Vert \da f\left(\red x\right)\right\Vert _{L_{2}(\red{K_{a}})}+\red{\sigma^{n/2}}\left\Vert \da f\left(\red x\right)-\varphi_{a}\left(\red x\right)\right\Vert _{L_{2}(\red{K_{a}})}\\
+ & \le\sigma^{n/2}\left(1-\frac{1}{\sigma^{\left|\alpha\right|}}\right)\left\Vert \da f\right\Vert _{L_{2}(K_{a})}+\sigma^{n/2}\red{\varepsilon}
+\end{align*}
+
+\end_inset
+
+and substituting above, we get 
+\begin_inset Formula 
+\begin{align*}
+\left\Vert \da F_{\sigma}(x)-\varphi_{\alpha}(x)\right\Vert _{L_{2}(K_{a})}\le\sigma^{n/2} & \left(1-\frac{1}{\sigma^{\left|\alpha\right|}}\right)\left\Vert \da f\right\Vert _{L_{2}(K_{a})}+\sigma^{n/2}\varepsilon\\
+ & +\left\Vert \varphi_{a}\left(\frac{x}{\sigma}\right)-\varphi_{\alpha}(x)\right\Vert _{L_{2}(K_{a})}.
+\end{align*}
+
+\end_inset
+
+Now 
+\begin_inset Formula 
+\begin{align*}
+\left\Vert \da f-\da F_{\sigma}\right\Vert _{L_{2}(K_{a})} & \le\underbrace{\left\Vert \da f-\varphi_{\alpha}\right\Vert _{L_{2}(K_{a})}}_{\le\varepsilon}+\left\Vert \da F_{\sigma}-\varphi_{\alpha}\right\Vert _{L_{2}(K_{a})}\\
+ & \le\left(\red{1+}\sigma^{n/2}\right)\varepsilon+\sigma^{n/2}\left(1-\frac{1}{\sigma^{\left|\alpha\right|}}\right)\left\Vert \da f\right\Vert _{L_{2}(K_{a})}+\left\Vert \varphi_{a}\left(\frac{x}{\sigma}\right)-\varphi_{\alpha}(x)\right\Vert _{L_{2}(K_{a})}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+It remains to evaluate the second and the third summand
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For the second summand we have
+\begin_inset Formula 
+\[
+\sigma^{n/2}\left(1-\frac{1}{\sigma^{\left|\alpha\right|}}\right)\xrightarrow[\sigma\to1^{+}]{}0,
+\]
+
+\end_inset
+
+therefore for some 
+\begin_inset Formula $\sigma>1$
+\end_inset
+
+, the second summand is smaller than 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Since 
+\begin_inset Formula $\varphi_{a}$
+\end_inset
+
+ is uniformly continuous, it follows 
+\begin_inset Formula $\varphi_{\alpha}\left(\frac{x}{\sigma}\right)\xrightarrow[\sigma\to1]{}\varphi_{\alpha}(x)$
+\end_inset
+
+, hence for some 
+\begin_inset Formula $\sigma>1$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+\left\Vert \varphi_{a}\left(\frac{x}{\sigma}\right)-\varphi_{\alpha}(x)\right\Vert _{L_{2}(K_{a})}\le\varepsilon.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From the two bounds it follows that for some 
+\begin_inset Formula $\sigma_{0}>1$
+\end_inset
+
+ (WLOG 
+\begin_inset Formula $\sigma_{0}<2$
+\end_inset
+
+ (?? TODO check typo??) )
+\begin_inset Formula 
+\begin{align*}
+\left\Vert \da f-\da F_{\sigma_{0}}\right\Vert _{L_{2}(K_{a})} & \le\left(1+\sigma_{0}^{n/2}\right)\varepsilon+\varepsilon+\varepsilon\\
+ & \le4\varepsilon.
+\end{align*}
+
+\end_inset
+
+Summing over all 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ with 
+\begin_inset Formula $\left|\alpha\right|\le k$
+\end_inset
+
+ we get an analoguous bound of for the 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+-norm:
+\begin_inset Formula 
+\[
+\left\Vert f-F_{\sigma_{0}}\right\Vert _{H^{k}(K_{a})}\le4n^{k}\varepsilon.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+The Averaging
+\end_layout
+
+\begin_layout Standard
+For sufficiently small 
+\begin_inset Formula $h>0$
+\end_inset
+
+ (
+\begin_inset Formula $h<a(\sigma-1)$
+\end_inset
+
+) we look at the averaging 
+\begin_inset Formula $\left(F_{\sigma_{0}}\right)_{h}\in C^{\infty}(K_{a})$
+\end_inset
+
+ of 
+\begin_inset Formula $F_{\sigma_{0}}$
+\end_inset
+
+.
+ In the narrower domain 
+\begin_inset Formula $K_{a}$
+\end_inset
+
+ we have 
+\begin_inset Formula 
+\[
+\left\Vert \left(F_{\sigma_{0}}\right)_{h}-F_{\sigma_{0}}\right\Vert _{H^{k}(K_{a})}\xrightarrow[h\to0]{}0,
+\]
+
+\end_inset
+
+therefore for sufficiently small 
+\begin_inset Formula $h=h_{0}$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+\left\Vert \left(F_{\sigma_{0}}\right)_{h_{0}}-F_{\sigma_{0}}\right\Vert \le\varepsilon.
+\]
+
+\end_inset
+
+It remains to observe that 
+\begin_inset Formula 
+\begin{align*}
+\left\Vert \left(F_{\sigma_{0}}\right)_{h_{0}}-f\right\Vert _{H^{k}(K_{a})} & \le\underbrace{\left\Vert \left(F_{\sigma_{0}}\right)_{h_{0}}-F_{\sigma_{0}}\right\Vert _{H^{k}(K_{a})}}_{\le\varepsilon}+\underbrace{\left\Vert f-F_{\sigma_{0}}\right\Vert }_{\le4n^{k}\varepsilon}\\
+ & \le\left(1+4n^{k}\right)\varepsilon,
+\end{align*}
+
+\end_inset
+
+which means we can make the averaging close enough to 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Change of variables in 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma*
+Let 
+\begin_inset Formula $\bar{Q}'\subset Q$
+\end_inset
+
+, 
+\begin_inset Formula $f\in H^{k}(Q)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left|\alpha\right|\le k$
+\end_inset
+
+.
+ Then for 
+\begin_inset Formula $h\le\text{dist}\left(Q',\partial Q\right)$
+\end_inset
+
+, the derivative of the averaging 
+\begin_inset Formula $f_{h}\in C^{\infty}$
+\end_inset
+
+ is the averaging of the derivative, that is 
+\begin_inset Formula 
+\[
+\partial^{\alpha}f_{h}=\left(\partial^{\alpha}f\right)_{h}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+We'll check it for 
+\begin_inset Formula $k=1$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $1\le i\le n$
+\end_inset
+
+.
+ We have to prove 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial x_{i}}\int\limits _{Q}\omega_{x,h}(y)\cdot f(y)\dy=\int\limits _{Q}\omega_{x,h}(y)\cdot\frac{\partial f}{\partial y_{i}}(y)\dy.
+\]
+
+\end_inset
+
+We write out the definition of the generalized derivative 
+\begin_inset Formula $\partial^{\alpha}f$
+\end_inset
+
+ in the RHS with a test function 
+\begin_inset Formula $\omega_{x,\varepsilon}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\int\limits _{Q}\omega_{x,h}(y)\cdot\frac{\partial f}{\partial y_{i}}(y)\dy=-\int\limits _{Q}\frac{\partial\omega_{x,h}}{\partial y_{i}}(y)\cdot f(y)\dy.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Therefore it remains to convince us that
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial x_{i}}\int\limits _{Q}\omega_{x,h}(y)\cdot f(y)\dy=-\int\limits _{Q}\frac{\partial\omega_{x,h}}{\partial y_{i}}(y)\cdot f(y)\dy.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+We write out the derivative 
+\begin_inset Formula 
+\[
+\frac{\partial\omega_{x,h}(y)}{\partial y_{i}}=\frac{\partial\omega\left(\frac{x-y}{\varepsilon}\right)}{\partial y_{i}}=\frac{1}{\varepsilon}\omega'\left(\frac{x-y}{\varepsilon}\right)=\omega\left(\frac{x-y}{\varepsilon}\right)\frac{1}{\left(1-\left|x\right|^{2}\right)^{2}}\left(2\left|x\right|\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition*
+Let 
+\begin_inset Formula $y:\bar{Q}\to\bar{\Omega}$
+\end_inset
+
+ and 
+\begin_inset Formula $x:\bar{\Omega}\to\bar{Q}$
+\end_inset
+
+ be inverse to each other functions in 
+\begin_inset Formula $C^{k}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proposition*
+Then, 
+\begin_inset Formula $f\in H^{k}(\Omega)$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $F=f\circ y\in H^{k}(Q)$
+\end_inset
+
+, and in that case the derivatives of 
+\begin_inset Formula $F$
+\end_inset
+
+ are calculated by the usual chain rule.
+\end_layout
+
+\begin_layout Proposition*
+Moreover, for these 
+\begin_inset Formula $x\text{ and }y$
+\end_inset
+
+ there exist such constants 
+\begin_inset Formula $C_{1},C_{2}$
+\end_inset
+
+ that 
+\begin_inset Formula 
+\[
+C_{1}\left\Vert f\right\Vert _{H^{k}(\Omega)}\le\left\Vert F\right\Vert _{H^{k}(Q)}\le C_{2}\left\Vert f\right\Vert _{H^{k}(\Omega)}\quad\text{for all }f\in H^{k}(\Omega).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $f\in H^{k}$
+\end_inset
+
+.
+ First, it is clear that 
+\begin_inset Formula $F\in L_{2}$
+\end_inset
+
+, because 
+\begin_inset Formula $F=f\circ y$
+\end_inset
+
+ has an integrable square by the change of variables formula in the Lebesgue
+ integral 
+\begin_inset Formula $\int_{Q}f(y(x))\text{dx}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Paragraph
+Existence of the first derivatives
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+As in the previous lemma, we will approximate (the almost everywhere defined)
+ 
+\begin_inset Formula $f\in H^{k}$
+\end_inset
+
+ with an averaging in 
+\begin_inset Formula $C^{\infty}$
+\end_inset
+
+, and then we will see that the derivatives of the average approximate the
+ derivatives of 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+To perform averaging at all, we need it to be defined "a little outside,"
+ so we narrow the considered region to 
+\begin_inset Formula $\bar{\Omega}'\subset\Omega$
+\end_inset
+
+.
+ We set 
+\begin_inset Formula $Q'=x(\Omega)$
+\end_inset
+
+, and let 
+\begin_inset Formula $f_{h}\in C^{\infty}\left(\Omega'\right)$
+\end_inset
+
+ be the average of 
+\begin_inset Formula $f$
+\end_inset
+
+ in 
+\begin_inset Formula $\Omega'$
+\end_inset
+
+ with a sufficiently small radius 
+\begin_inset Formula $h\le\text{dist}\left(\Omega',\partial\Omega\right)$
+\end_inset
+
+.
+ Then, from the property 
+\begin_inset Formula 
+\[
+\left\Vert f_{h}-f\right\Vert _{L_{2}(Q)}\xrightarrow[h\to0]{}0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+we get (again by change of variables in the integral)
+\begin_inset Formula 
+\[
+\left\Vert F_{h}-F\right\Vert _{L_{2}(Q')}=\left\Vert f_{h}\circ y-f\circ y\right\Vert =\left\Vert \left(f_{h}-f\right)\circ y\right\Vert \xrightarrow[h\to0]{}0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+We need an analoguous bound for the derivative of 
+\begin_inset Formula $F$
+\end_inset
+
+, too.
+ From 
+\begin_inset Formula 
+\[
+\left\Vert \frac{\partial f_{h}}{\partial y_{i}}-\frac{\partial f}{\partial y_{i}}\right\Vert _{L_{2}(\Omega')}\xrightarrow[h\to0]{}0
+\]
+
+\end_inset
+
+it follows
+\begin_inset Formula 
+\begin{align*}
+\left\Vert \frac{\partial}{\partial x_{i}}(f_{h}\circ y)-\frac{\partial}{\partial x_{i}}(f\circ y)\right\Vert _{L_{2}(\Omega')} & =\left\Vert \frac{\partial}{\partial x_{i}}\left((f_{h}-f)\circ y)\right)\right\Vert _{L_{2}(\Omega')}\\
+ & \le\left\Vert \frac{\partial}{\partial x_{i}}\left(f_{h}-f\right)\right\Vert \left\Vert \frac{\partial}{\partial x_{i}}y\right\Vert \\
+ & =\tilde{C}\left\Vert \frac{\partial f_{h}}{\partial x_{i}}-\frac{\partial f}{\partial x_{i}}\right\Vert \\
+ & =\tilde{C}\left\Vert \left(\frac{\partial f}{\partial x_{i}}\right)_{h}-\frac{\partial f}{\partial x_{i}}\right\Vert \quad(\text{сменяме }\frac{\partial}{\partial x_{i}}\text{ и }\left(\cdot\right)_{h})\\
+ & \xrightarrow[h\to0]{}0.
+\end{align*}
+
+\end_inset
+
+From these estimations it follows that the function sequences
+\begin_inset Formula $\left\{ F_{h=1/n}\right\} _{n=1}^{\infty}$
+\end_inset
+
+ and 
+\begin_inset Formula $\left\{ \partial^{x_{i}}F_{h=1/n}\right\} _{n=1}^{\infty}$
+\end_inset
+
+ are bounded by 
+\begin_inset Formula $F+L$
+\end_inset
+
+ and 
+\begin_inset Formula $\partial^{x_{i}}F+L$
+\end_inset
+
+, respectively, where 
+\begin_inset Formula $L$
+\end_inset
+
+ is a constant.
+ Then in the definition for a generalized derivative of 
+\begin_inset Formula $F_{h}=f_{h}\circ y$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\int\limits _{Q'}F_{h}\frac{\partial g}{\partial x_{i}}\text{dx}=-\int\limits _{Q'}\frac{\partial F_{h}}{\partial x_{i}}g\text{dx}\quad\text{for all }g\in C^{1}(\bar{Q})
+\]
+
+\end_inset
+
+we can perform on both sides dominated convergence witj 
+\begin_inset Formula $h\to0$
+\end_inset
+
+ and get 
+\begin_inset Formula 
+\[
+\int\limits _{Q}\underbrace{\left(\lim_{h\to0}F_{h}\right)}_{F}\frac{\partial g}{\partial x_{i}}\text{dx}=-\int\limits _{Q}\left(\lim_{h\to0}\frac{\partial F_{h}}{\partial x_{i}}\right)g\text{dx}\quad\text{for all }g\in C^{1}(\bar{Q}),
+\]
+
+\end_inset
+
+and now we have the first generalized derivatives of 
+\begin_inset Formula $F$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\frac{\partial F}{\partial x_{i}}=\lim_{h\to0}\frac{\partial F_{h}}{\partial x_{i}}.
+\]
+
+\end_inset
+
+To ensure 
+\begin_inset Formula $F\in H^{1}$
+\end_inset
+
+, it remains only to verify that the derivatives are square-integrable.
+ By the chain rule
+\begin_inset Formula 
+\[
+\frac{\partial F}{\partial x_{i}}(x)=\sum_{j}\frac{\partial f}{\partial y_{j}}(y(x))\frac{\partial y_{j}}{\partial x_{i}}(x),
+\]
+
+\end_inset
+
+we immediately get the bound 
+\begin_inset Formula 
+\begin{align*}
+\left\Vert \frac{\partial F}{\partial x_{i}}\right\Vert  & \le\sum_{j}\left\Vert \frac{\partial f}{\partial y_{j}}\right\Vert _{L_{2}(\Omega)}\left\Vert \frac{\partial y_{j}}{\partial x_{i}}\right\Vert _{L_{2}(Q)}\\
+ & \le C\left\Vert f\right\Vert _{H^{1}},
+\end{align*}
+
+\end_inset
+
+where the constant 
+\begin_inset Formula $C$
+\end_inset
+
+ depends only on 
+\begin_inset Formula $y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+The derivatives of order 
+\begin_inset Formula $\ge2$
+\end_inset
+
+ we get after repeated differentiation in the chain rule.
+\end_layout
+
+\begin_layout Section
+Extension outside 
+\begin_inset Formula $Q$
+\end_inset
+
+ with smooth boundary
+\end_layout
+
+\begin_layout Subsection
+Locally
+\end_layout
+
+\begin_layout Standard
+Denote by 
+\begin_inset Formula $B_{r}(\xi)$
+\end_inset
+
+ the ball 
+\begin_inset Formula $\left\{ x\in\mathbb{R}^{n}:\left\Vert x-\xi\right\Vert <r\right\} .$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename pics/untitled.png
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the next lemma, we will ensure that if we have an extension of 
+\begin_inset Formula $f$
+\end_inset
+
+ in a neighborhood of each point ("individually") of the boundary, then
+ we can construct an extension of 
+\begin_inset Formula $f$
+\end_inset
+
+ in any arbitrary extension of the considered region.
+ 
+\end_layout
+
+\begin_layout Lemma*
+Let 
+\begin_inset Formula $Q\subset\mathbb{R}^{n}$
+\end_inset
+
+ be a bounded domain, 
+\begin_inset Formula $f\in H^{k}(Q)$
+\end_inset
+
+ and in each point on the boundary of 
+\begin_inset Formula $Q$
+\end_inset
+
+ there is an extension of 
+\begin_inset Formula $f$
+\end_inset
+
+ in some ball around that point , with 
+\begin_inset Quotes gld
+\end_inset
+
+uniformly smaller
+\begin_inset Quotes grd
+\end_inset
+
+ 
+\begin_inset Formula $H^{k}$
+\end_inset
+
+-norm than 
+\begin_inset Formula $f$
+\end_inset
+
+, that is 
+\begin_inset Formula 
+\begin{align*}
+\forall\xi\in\partial Q\quad\exists r_{\xi}>0\quad\exists & F_{\xi}\in H^{k}\left(B_{r}(\xi)\right):\\
+ & F_{\xi}\big|_{Q}\equiv f\text{ and }\left\Vert F_{\xi}\right\Vert _{H^{k}(B_{r}(\xi))}\le C\left\Vert f\right\Vert _{H^{k}(Q)},
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $C$
+\end_inset
+
+ is a constant.
+\end_layout
+
+\begin_layout Lemma*
+Then in every superset 
+\begin_inset Formula $Q_{\rho}\coloneqq\left\{ x:\text{dist}(x,Q)<\rho\right\} $
+\end_inset
+
+ of 
+\begin_inset Formula $Q$
+\end_inset
+
+ there exists an extension 
+\begin_inset Formula $F\in H^{k}(Q_{\rho})$
+\end_inset
+
+ of 
+\begin_inset Formula $f$
+\end_inset
+
+, vanishing outside 
+\begin_inset Formula $Q_{\rho/2}$
+\end_inset
+
+ with 
+\begin_inset Quotes gld
+\end_inset
+
+uniformly smaller
+\begin_inset Quotes grd
+\end_inset
+
+ norm than 
+\begin_inset Formula $f,$
+\end_inset
+
+ that is 
+\begin_inset Formula 
+\begin{align*}
+\forall\rho>0\quad\exists F\in H^{k}(Q_{\rho}) & :F\big|_{Q}\equiv f,\\
+ & \text{ and }F\big|_{Q_{\rho}\setminus Q_{\rho/2}}\equiv0\\
+ & \text{ and }\left\Vert F\right\Vert _{H^{k}(Q_{\rho})}\le C'\left\Vert f\right\Vert _{H^{k}(Q)}
+\end{align*}
+
+\end_inset
+
+where the constant 
+\begin_inset Formula $C$
+\end_inset
+
+ does not depend on 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+With the given 
+\begin_inset Formula $F_{\xi}$
+\end_inset
+
+ we'll build extensions 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+ of 
+\begin_inset Formula $f$
+\end_inset
+
+ in open supersets 
+\begin_inset Formula $Q_{i}\supset Q$
+\end_inset
+
+, for which 
+\begin_inset Formula $\bigcup_{i}Q_{i}\supset\bar{Q}$
+\end_inset
+
+.
+ Then we'll smooth them out to zero outside of 
+\begin_inset Formula $Q_{\rho/2}$
+\end_inset
+
+ and with suitable weights we'll set their sum to be the extension wanted.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "b"
+use_parbox 0
+use_makebox 0
+width "50col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/dQ_Fi_ext.jpg
+	display false
+	scale 10
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "50col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+In the colored regions, we use the extension by assumption or the original
+ values of 
+\begin_inset Formula $f$
+\end_inset
+
+, while in the dark gray region 
+\begin_inset Formula $\left(\frac{\rho}{2}\right)$
+\end_inset
+
+, we will smooth the jump that otherwise occurs between the light gray and
+ the white regions.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Paragraph
+1.
+ A cover and rought extensions
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+Fix 
+\begin_inset Formula $\rho>0$
+\end_inset
+
+.
+ We can assume the radii 
+\begin_inset Formula $r_{\xi}$
+\end_inset
+
+ smaller than 
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+First we'll extend the 
+\begin_inset Formula $r_{\xi}$
+\end_inset
+
+ to be defined not only for 
+\begin_inset Formula $\xi\in\partial Q,$
+\end_inset
+
+ but over the whole 
+\begin_inset Formula $\bar{Q}$
+\end_inset
+
+.
+ By lemma assumption, around each point 
+\begin_inset Formula $\xi\in\bar{Q}$
+\end_inset
+
+ there is a ball
+\begin_inset Formula $B_{r}(\xi),r=r(\xi)$
+\end_inset
+
+, where either 
+\begin_inset Formula $f$
+\end_inset
+
+ is defined, or a smooth extension of 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+It is clear that
+\begin_inset Formula 
+\[
+Q\subset\bigcup_{\xi\in\bar{Q}}B_{r_{\xi}/3}(\xi).
+\]
+
+\end_inset
+
+We use only half a radius 
+\begin_inset Formula $\frac{1}{2}r_{\xi}$
+\end_inset
+
+ in order to have space for the cut later.
+ Since 
+\begin_inset Formula $Q$
+\end_inset
+
+ is bounded, 
+\begin_inset Formula $\bar{Q}$
+\end_inset
+
+ is a compact, hence we can choose from the cover 
+\begin_inset Formula $\bigcup_{\xi\in\bar{Q}}B_{r_{\xi}/2}(\xi)$
+\end_inset
+
+ a finite subcover 
+\begin_inset Formula $B_{r_{1}/2}(\xi_{1}),\ldots,B_{r_{N}/2}(\xi_{N}).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Now we define the functions 
+\begin_inset Formula $f_{i}\in L_{2}(\mathbb{R}^{n}),i=1,\ldots,N$
+\end_inset
+
+ in the way described above – (rough) extensions of 
+\begin_inset Formula $f$
+\end_inset
+
+ over the entire
+\begin_inset Formula $\mathbb{R}^{n}$
+\end_inset
+
+, supported in 
+\begin_inset Formula $Q\cup B_{r_{i}}(x_{i})$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+f_{i}(x)\coloneqq\begin{cases}
+F_{x_{i}}(x) & \text{, if }x\in B_{r_{i}}(x_{i})\\
+f(x) & \text{, if }x\in Q\\
+0 & \text{, else}
+\end{cases}
+\]
+
+\end_inset
+
+Let's bound their norm
+\begin_inset Formula 
+\begin{align*}
+\left\Vert f_{i}\right\Vert _{H^{k}(Q\cup B_{r_{i}}(x_{i}))} & \le\left\Vert F_{\xi_{i}}\right\Vert +\left\Vert f\right\Vert \\
+ & \le C\left\Vert f\right\Vert +\left\Vert f\right\Vert =\tilde{C}\left\Vert f\right\Vert .
+\end{align*}
+
+\end_inset
+
+It remains to glue them with suitable 
+\begin_inset Formula $\gamma_{i}$
+\end_inset
+
+, to define a now smooth extension 
+\begin_inset Formula 
+\[
+F=\sum_{i}\gamma_{i}f_{i}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Paragraph
+2.
+ Glueing by partition of unity
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+For 
+\begin_inset Formula $F$
+\end_inset
+
+ to be an extension of 
+\begin_inset Formula $f$
+\end_inset
+
+ at all, we need 
+\begin_inset Formula $F\big|_{Q}\equiv f$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $x\in Q$
+\end_inset
+
+ we have defined 
+\begin_inset Formula $f_{i}(x)=f(x),$
+\end_inset
+
+ therefore 
+\begin_inset Formula 
+\[
+F\big|_{Q}=\sum_{i}\gamma_{i}f_{i}=\sum_{i}\gamma_{i}f=f\sum_{i}\gamma_{i}.
+\]
+
+\end_inset
+
+Since we want 
+\begin_inset Formula $F\big|_{Q}\equiv f$
+\end_inset
+
+, we need to have 
+\begin_inset Formula $\sum_{i}\gamma_{i}\big|_{Q}\equiv1.$
+\end_inset
+
+ This reminds us to use partition of unity.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $\left\{ \gamma_{i}\right\} _{i=1}^{N}$
+\end_inset
+
+ be a partition of unity subordinate to the cover 
+\begin_inset Formula $\left\{ B_{r_{i}/2}\right\} _{i=1}^{N}$
+\end_inset
+
+ and consisting of compactly supported in 
+\begin_inset Formula $Q_{\rho/2}$
+\end_inset
+
+ functions, and 
+\begin_inset Formula $F=\sum_{i}\gamma_{i}f_{i}$
+\end_inset
+
+.
+ According to what we just calculated and the property 
+\begin_inset Formula $\sum_{i}\gamma_{i}\big|_{Q}=1$
+\end_inset
+
+, 
+\begin_inset Formula $F$
+\end_inset
+
+ is truly an 
+\emph on
+extension
+\emph default
+ of 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ It remains to check it satisfies the needed properties:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "65col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $F\in H^{k}(Q_{\rho})$
+\end_inset
+
+, because every 
+\begin_inset Formula $\gamma_{i}$
+\end_inset
+
+ smooths the edge of the respective 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+, since every 
+\begin_inset Formula $f_{i}$
+\end_inset
+
+ can be non-smooth only on the boundary of the light-gray area 
+\begin_inset Formula $Q\cup B_{r_{i}}(x_{i}),$
+\end_inset
+
+ a neighbourhood of which is contained in 
+\begin_inset Formula $Q_{\rho/2}\setminus B_{r_{i}/2}$
+\end_inset
+
+ – the complement of the dark area, where 
+\begin_inset Formula $\gamma_{i}$
+\end_inset
+
+ vanishes.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "b"
+use_parbox 0
+use_makebox 0
+width "30col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/smoothness_of_extension.png
+	lyxscale 10
+	scale 10
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $F\big|_{Q_{\rho}\setminus Q_{\rho/2}}\equiv0,$
+\end_inset
+
+ since we required 
+\begin_inset Formula $\gamma_{i}$
+\end_inset
+
+ to be compactly supported in the respective set.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left\Vert F\right\Vert _{H^{k}(Q_{\rho})}\le C'\left\Vert f\right\Vert _{H^{k}(Q)}$
+\end_inset
+
+, since 
+\begin_inset Formula 
+\begin{align*}
+\left\Vert F\right\Vert _{H^{k}(Q_{\rho})} & =\left\Vert \sum_{i}\gamma_{i}f_{i}\right\Vert _{H^{k}(Q_{\rho})}\\
+ & \le\sum_{i}\left\Vert \gamma_{i}\right\Vert \left\Vert f_{i}\right\Vert \\
+ & \le\sum_{i}\left\Vert \gamma_{i}\right\Vert \tilde{C}\left\Vert f\right\Vert \\
+ & \le C'\left\Vert f\right\Vert ,
+\end{align*}
+
+\end_inset
+
+where in the last inequality we used that 
+\begin_inset Formula $\gamma_{i}$
+\end_inset
+
+ depend not on 
+\begin_inset Formula $f$
+\end_inset
+
+, but only on the domain — so in our context, their norm turns out to be
+ a constant.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Globally
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+for the extension
+\end_layout
+
+\end_inset
+
+ Let 
+\begin_inset Formula $Q$
+\end_inset
+
+ and 
+\begin_inset Formula $Q'$
+\end_inset
+
+ be bounded domains in 
+\begin_inset Formula $\mathbb{R}^{n}$
+\end_inset
+
+, s.t.
+ 
+\begin_inset Formula $\bar{Q}\subset Q'$
+\end_inset
+
+ and 
+\begin_inset Formula $\partial Q\in C^{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem*
+Then every 
+\begin_inset Formula $f\in H^{k}(Q)$
+\end_inset
+
+ has a compactly supported (vanishing in a neighbourhood of 
+\begin_inset Formula $\partial Q'$
+\end_inset
+
+) extension 
+\begin_inset Formula $F\in H^{k}(Q')$
+\end_inset
+
+, for which the bound holds 
+\begin_inset Formula 
+\[
+\left\Vert F\right\Vert _{H^{k}(Q')}\le C\left\Vert f\right\Vert _{H^{k}(Q)}
+\]
+
+\end_inset
+
+with a constant 
+\begin_inset Formula $C$
+\end_inset
+
+, independent of 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In the bound of 
+\begin_inset Formula $F$
+\end_inset
+
+ in the theorem we can also instead of the
+\begin_inset Formula $H^{k}$
+\end_inset
+
+-norm take any norm
+\begin_inset Formula $H^{s}$
+\end_inset
+
+ with 
+\begin_inset Formula $s\le k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+We'll build an extension of 
+\begin_inset Formula $f$
+\end_inset
+
+ in a neighbourhood of a given point on the boundary of the domain, after
+ which we'll apply the previous lemma.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $\xi\in\partial Q$
+\end_inset
+
+.
+ We will construct an extension in a neighbourhood 
+\begin_inset Formula $U_{\xi}$
+\end_inset
+
+ of 
+\begin_inset Formula $\xi$
+\end_inset
+
+ in 3 steps:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+We will flatten (bijectively) the boundary around 
+\begin_inset Formula $\xi$
+\end_inset
+
+ to the hypersurface
+\begin_inset Formula $\left\{ y_{n}=0\right\} $
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+We will apply the lemma for extension from 
+\begin_inset Formula $\overline{K_{a}^{+}}$
+\end_inset
+
+ to 
+\begin_inset Formula $\overline{K_{a}}$
+\end_inset
+
+ from the previous section;
+\end_layout
+
+\begin_layout Enumerate
+We will send the extension from 
+\begin_inset Formula $K_{a}^{-}$
+\end_inset
+
+ back behind the non-flat boundary (?? TODO rephrase ??).
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+\begin_inset Graphics
+	filename pics/contour3steps.png
+	lyxscale 10
+	scale 10
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Since 
+\begin_inset Formula $\partial Q\in C^{k},$
+\end_inset
+
+ in a neighbourhood 
+\begin_inset Formula $U_{\xi}$
+\end_inset
+
+ of 
+\begin_inset Formula $\xi$
+\end_inset
+
+ we can, up to reordering variables, represent the equations of 
+\begin_inset Formula $\partial Q$
+\end_inset
+
+ in the form 
+\begin_inset Formula 
+\[
+x_{n}=\varphi(x_{1},\ldots,x_{n-1}),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\varphi\in C^{k}(D)$
+\end_inset
+
+ in a domain 
+\begin_inset Formula $D\subset\mathbb{R}^{n-1}.$
+\end_inset
+
+ Moreover we'll require the domain 
+\begin_inset Formula $Q$
+\end_inset
+
+ in 
+\begin_inset Formula $U_{\xi}$
+\end_inset
+
+ to lie 
+\begin_inset Quotes gld
+\end_inset
+
+above
+\begin_inset Quotes grd
+\end_inset
+
+, that is 
+\begin_inset Formula 
+\[
+x_{n}>\varphi(x_{1},\ldots,x_{n-1})\quad\text{for all }x\in U_{\xi}\cap Q.
+\]
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename pics/contour.png
+	lyxscale 50
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+We change the variables so that 
+\begin_inset Formula $\xi$
+\end_inset
+
+ is in the origin of of the coordinate system 
+\begin_inset Formula $y_{1},\ldots,y_{n}$
+\end_inset
+
+, and the hypersurface
+\begin_inset Formula $\left\{ y_{n}=0\right\} $
+\end_inset
+
+ fits 
+\begin_inset Formula $\partial Q\cap U_{\xi}$
+\end_inset
+
+, that is 
+\begin_inset Formula 
+\begin{align*}
+y' & \coloneqq x'-\xi'\\
+y_{n} & \coloneqq x_{n}-\varphi(x').
+\end{align*}
+
+\end_inset
+
+ Then 
+\begin_inset Formula $U_{\xi}$
+\end_inset
+
+ is mapped bijectively to a neighbourhood 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ of 
+\begin_inset Formula $0$
+\end_inset
+
+, and the function 
+\begin_inset Formula $f\big|_{Q\cap U_{\xi}}$
+\end_inset
+
+ – to the function 
+\begin_inset Formula 
+\[
+z(y)=f\left(y'+\xi',y_{n}+\varphi(y'+\xi')\right),
+\]
+
+\end_inset
+
+which, according to an earlier proposition is again in 
+\begin_inset Formula $H^{k}.$
+\end_inset
+
+ It is time to apply the lemma from the first section.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $K_{a}$
+\end_inset
+
+ be cube with a sufficiently small side to fit 
+\begin_inset Formula $K_{a}\subset\Omega.$
+\end_inset
+
+ Then 
+\begin_inset Formula $z$
+\end_inset
+
+, as a function from 
+\begin_inset Formula $H^{k}(\overline{K_{a}^{+}})$
+\end_inset
+
+, has an extension 
+\begin_inset Formula $Z\in H^{k}\left(\overline{K_{a}}\right),$
+\end_inset
+
+ which after an inverse change of variables gives us an extension 
+\begin_inset Formula $F_{\xi}$
+\end_inset
+
+ of 
+\begin_inset Formula $f$
+\end_inset
+
+ in the set 
+\begin_inset Formula $y^{-1}(K_{a})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $y^{-1}(K_{a})$
+\end_inset
+
+ is open and contains 
+\begin_inset Formula $\xi$
+\end_inset
+
+, hence we have an extension of 
+\begin_inset Formula $f$
+\end_inset
+
+ in some ball
+\begin_inset Formula $B_{r}\left(\xi\right)$
+\end_inset
+
+.
+ To apply the previous lemma, though, we need one more condition.
+\end_layout
+
+\begin_layout Proof
+From the property for change of variables (?? TODO revisit wording ??) for
+ the function 
+\begin_inset Formula $F_{\xi}$
+\end_inset
+
+ we have 
+\begin_inset Formula 
+\begin{align*}
+\left\Vert F_{\xi}\right\Vert _{H^{k}(B_{r}(\xi))} & \le\left\Vert F_{\xi}\right\Vert _{H^{k}(y^{-1}(\Omega))}\le C_{3}\left\Vert Z\right\Vert _{H^{k}(K_{a})},
+\end{align*}
+
+\end_inset
+
+and for the function 
+\begin_inset Formula $f$
+\end_inset
+
+ – 
+\begin_inset Formula 
+\[
+\left\Vert z\right\Vert _{H^{k}(K_{a}^{+})}\le C_{4}\left\Vert f\right\Vert _{H^{k}(Q\cap y^{-1}(\Omega))}\le C_{4}\left\Vert f\right\Vert _{H^{k}(Q)},
+\]
+
+\end_inset
+
+where the constants 
+\begin_inset Formula $C_{3},C_{4}$
+\end_inset
+
+ depend only on the change 
+\begin_inset Formula $y=y(x)$
+\end_inset
+
+, that is – in our case – depend on 
+\begin_inset Formula $\partial Q$
+\end_inset
+
+ and are universal for all functions we may want to extend.
+ With this we are allowed to apply the last lemma with 
+\begin_inset Formula $\rho<\text{dist}\left(Q,Q'\right)$
+\end_inset
+
+ and get an extension of 
+\begin_inset Formula $f$
+\end_inset
+
+ over the entire 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Extension 
+\begin_inset Quotes eld
+\end_inset
+
+inward
+\begin_inset Quotes erd
+\end_inset
+
+ in 
+\begin_inset Formula $Q$
+\end_inset
+
+ for 
+\begin_inset Formula $\partial Q\in C^{k}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+Let 
+\begin_inset Formula $Q$
+\end_inset
+
+ have a smooth boundary 
+\begin_inset Formula $\partial Q\in C^{k}$
+\end_inset
+
+ for some 
+\begin_inset Formula $k\ge1$
+\end_inset
+
+.
+ Then every function 
+\begin_inset Formula $f\in C^{k}(\partial Q)$
+\end_inset
+
+ has an extension 
+\begin_inset Formula $F\in C^{k}(\bar{Q}),$
+\end_inset
+
+ satisfying the bound
+\begin_inset Formula 
+\[
+\left\Vert F\right\Vert _{C^{k}(\bar{Q})}\le C\left\Vert f\right\Vert _{C^{k}(\partial Q)},
+\]
+
+\end_inset
+
+where the constant 
+\begin_inset Formula $C$
+\end_inset
+
+ depends only on 
+\begin_inset Formula $\partial Q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Without proof.
+\end_layout
+
+\end_body
+\end_document
