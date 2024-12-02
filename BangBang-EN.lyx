@@ -1,0 +1,2242 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\abovedisplayskip=5pt plus 1pt minus 9pt
+\abovedisplayshortskip=0pt plus 1pt
+\belowdisplayskip=5pt plus 1pt minus 9pt
+\belowdisplayshortskip=1pt plus 1pt minus 1pt
+
+\setlength\abovedisplayskip{2pt plus 3pt minus 2pt}
+\setlength\belowdisplayskip{2pt plus 3pt minus 2pt}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams-bytype
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 1cm
+\rightmargin 1cm
+\bottommargin 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\emph on
+Bang-Bang
+\emph default
+ principle for controls in a simplex
+\end_layout
+
+\begin_layout Author
+Alexander Gudev
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\dt}{\operatorname{dt}}
+{\text{dt}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ds}{\operatorname{ds}}
+{\text{ds}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ws}{w^{\star}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset FormulaMacro
+\newcommand{\Ext}{\operatorname{Ext}}
+{\text{Ext }}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\dist}[2]{\operatorname{dist}\left(#1,#2\right)}
+{\text{dist}\left(#1,#2\right)}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\d}[2]{\operatorname{d}\left(#1,#2\right)}
+{\text{d}\left(#1,#2\right)}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+Let 
+\begin_inset Formula $I\subset\mathbb{R}$
+\end_inset
+
+ be an interval, 
+\begin_inset Formula $A\in L_{1}(I,M_{n\times n})$
+\end_inset
+
+.
+ 
+\emph on
+Fundamental
+\emph default
+ 
+\emph on
+matrix
+\emph default
+ of the linear system 
+\begin_inset Formula 
+\begin{equation}
+\dot{x}(t)=A(t)x(t)\label{eq:simple_system}
+\end{equation}
+
+\end_inset
+
+is any matrix function 
+\begin_inset Formula $\Phi:I\to M_{n}$
+\end_inset
+
+, whose columns are linearly independent solutions to the system.
+\end_layout
+
+\begin_layout Remark
+All solutions are expressible in terms of 
+\begin_inset Formula $\Phi$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+x(t)=\sum\nolimits _{i}\alpha_{i}\Phi_{i}(t)=\Phi(t)\alpha,\quad\alpha\in\mathbb{R}^{n}.
+\]
+
+\end_inset
+
+Provided 
+\begin_inset Formula ${\det\Phi(t)\neq0\text{ for all }t\in I,}$
+\end_inset
+
+ each column of 
+\begin_inset Formula $\Phi(t)$
+\end_inset
+
+ separately is a solution to 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:simple_system"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ iff 
+\begin_inset Formula $\dot{\Phi}(t)=A(t)\Phi(t)$
+\end_inset
+
+.
+ That is, the fundamental matrices of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:simple_system"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ are determined by 
+\begin_inset Formula 
+\[
+\dot{\Phi}(t)=A(t)\Phi(t).
+\]
+
+\end_inset
+
+Everywhere below we assume 
+\begin_inset Formula $\Phi(t_{0})=E$
+\end_inset
+
+; then the vector 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ above is actually the initial condition 
+\begin_inset Formula $\alpha=x(t_{0})$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+setlength
+\backslash
+abovedisplayskip{12pt plus 3pt minus 9pt}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+In this sense the matrix 
+\begin_inset Formula $\Phi(t)$
+\end_inset
+
+ 
+\begin_inset Quotes gld
+\end_inset
+
+walks
+\begin_inset Quotes grd
+\end_inset
+
+ the solution 
+\emph on
+forward
+\emph default
+ as time passes from 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ to 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+It is natural to expect 
+\begin_inset Formula $\Phi^{-1}(t)$
+\end_inset
+
+ to walk the solution 
+\emph on
+backward,
+\emph default
+ i.e.
+ to solve the system with 
+\begin_inset Formula $(-A)$
+\end_inset
+
+ (oppositve velocity 
+\begin_inset Formula $\dot{x}$
+\end_inset
+
+).
+ Indeed, differentiating 
+\begin_inset Formula $\Phi^{-1}\Phi=E$
+\end_inset
+
+ we get 
+\begin_inset Formula $\frac{d\Phi^{-1}}{dt}\Phi+\Phi^{-1}\dot{\Phi}=0,$
+\end_inset
+
+ from where 
+\begin_inset Formula $\frac{d\Phi^{-1}}{dt}\Phi=-\Phi^{-1}A\Phi$
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength
+\backslash
+abovedisplayskip{0pt plus 3pt}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\frac{d\Phi^{-1}}{dt}=-\Phi^{-1}A.\label{eq:inverse_transition_matrix}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+Below at each point in time 
+\begin_inset Formula $t\in I$
+\end_inset
+
+ the state of the system is a vector 
+\begin_inset Formula $x(t)\in\mathbb{R}^{\boldsymbol{n}}$
+\end_inset
+
+, and the control is a vector 
+\begin_inset Formula $u(t)\in\mathbb{R}^{\boldsymbol{m}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Problem*
+Let 
+\begin_inset Formula $A\in L_{1}(I,M_{n\times n})$
+\end_inset
+
+ and 
+\begin_inset Formula $B\in L_{1}(I,M_{n\times m})$
+\end_inset
+
+.
+ Solve the system 
+\begin_inset Formula 
+\[
+\dot{x}(t)=A(t)x(t)+B(t)u(t)
+\]
+
+\end_inset
+
+ in terms of the fundamental matrix 
+\begin_inset Formula $\Phi(t)$
+\end_inset
+
+ of 
+\begin_inset Formula ${\dot{x}(t)=A(t)x(t)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+wiki books: Control Systems/Linear System Solutions
+\end_layout
+
+\end_inset
+
+Rewrite 
+\begin_inset Formula $\dot{x}-Ax=Bu$
+\end_inset
+
+, multiply by 
+\begin_inset Formula $\Phi^{-1}(t),$
+\end_inset
+
+ and integrate:
+\begin_inset Formula 
+\begin{align*}
+\Phi^{-1}\dot{x}+\Phi^{-1}\left(-A\right)x & =\Phi^{-1}Bu\\
+\frac{d}{dt}\left(\Phi^{-1}x\right) & =\Phi^{-1}Bu\quad\text{(by \eqref{eq:inverse_transition_matrix})}\\
+\Phi^{-1}x & =x(t_{0})+\int_{t_{0}}^{t}\Phi^{-1}(s)B(s)u(s)\ds,
+\end{align*}
+
+\end_inset
+
+ from where 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength
+\backslash
+abovedisplayskip{0pt plus 3pt}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+x(t)=\Phi(t)x(t_{0})+\Phi(t)\int_{t_{0}}^{t}\Phi^{-1}(s)B(s)u(s)\ds.
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+setlength
+\backslash
+abovedisplayskip{12pt plus 3pt minus 9pt}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+Below for convenience we will assume 
+\begin_inset Formula $x(t_{0})=0$
+\end_inset
+
+, in which case 
+\begin_inset Formula $x(t)=\int_{t_{0}}^{t}\Phi^{-1}(s)B(s)u(s)\ds.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Принципът 
+\emph on
+Бум-тряс
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $C\subset\mathbb{R}^{m}$
+\end_inset
+
+ be a convex compact (allowed control values).
+ For the system 
+\begin_inset Formula 
+\begin{align*}
+\dot{x} & =A(t)x(t)+B(t)u(t)\\
+x(0) & =\vec{0}
+\end{align*}
+
+\end_inset
+
+ every point accessible with 
+\bar under
+some
+\bar default
+ control 
+\begin_inset Formula $u:I\to C$
+\end_inset
+
+ in time 
+\begin_inset Formula $t$
+\end_inset
+
+ is accessible with an 
+\bar under
+extremal
+\bar default
+ control 
+\begin_inset Formula ${u^{0}:I\to\Ext C}$
+\end_inset
+
+ as well.
+\end_layout
+
+\begin_layout Standard
+We won't prove it in full generality, but only in the special case when
+ the allowed control values form the unit ball (Holmes) or a 
+\emph on
+simplex
+\emph default
+ (Hermes).
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\im}{\operatorname{Im}}
+{\text{Im}\ }
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Holmes
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $Y\in L_{1}^{loc}(I,M_{n\times m})$
+\end_inset
+
+ have columns 
+\begin_inset Formula $Y_{i}$
+\end_inset
+
+.
+ For each control 
+\begin_inset Formula $u\in\Psi$
+\end_inset
+
+ where 
+\begin_inset Formula 
+\[
+\Psi\coloneqq L^{\infty}\left(I,\left\{ \left\Vert x\right\Vert _{\infty}\le1\right\} \right)=\left(\Psi'\right)^{m}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Psi'\coloneqq L^{\infty}\left(I,\left[-1,1\right]\right),
+\]
+
+\end_inset
+
+ there exists 
+\begin_inset Formula $v\in\Psi$
+\end_inset
+
+ with 
+\begin_inset Formula $\im v\subseteq\left\{ -1,1\right\} ^{m}$
+\end_inset
+
+ s.t.
+ 
+\begin_inset Formula ${\int_{I}Y\cdot u=\int_{I}Y\cdot v}$
+\end_inset
+
+ (here 
+\begin_inset Formula $Y\cdot u$
+\end_inset
+
+ denotes matrix-vector multiplication).
+\end_layout
+
+\begin_layout Proof
+We want 
+\begin_inset Formula $\int_{I}Y\cdot u=\int_{I}Y\cdot v$
+\end_inset
+
+, but with
+\begin_inset Formula ${\left|v_{j}(t)\right|\overset{\text{a.e.}}{=}1}$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $j=1,\ldots,m$
+\end_inset
+
+ we are looking for a partition 
+\begin_inset Formula $I=B_{j}\cup\overline{B}_{j}$
+\end_inset
+
+ with 
+\begin_inset Formula $\begin{array}{c}
+v_{j}\big|_{B_{j}}\equiv+1\\
+v_{j}\big|_{\overline{B}_{j}}\equiv-1
+\end{array}.$
+\end_inset
+
+ Equivalently,
+\begin_inset Formula 
+\begin{align*}
+\int_{I}u_{j}Y_{j}=\int_{I}v_{j}Y_{j} & =\int_{B_{j}}Y_{j}-\int_{\overline{B}_{j}}Y_{j}\\
+ & =\int_{B_{j}}Y_{j}-\left(\int_{I}Y_{j}-\int_{B_{j}}Y_{j}\right)\\
+ & =2\int_{B_{j}}Y_{j}-\int_{I}Y_{j},
+\end{align*}
+
+\end_inset
+
+that is,
+\begin_inset Formula 
+\begin{equation}
+\int_{B_{j}}Y_{j}=\frac{1}{2}\int_{I}\left(u_{j}+1\right)Y_{j}.\label{eq:holmes}
+\end{equation}
+
+\end_inset
+
+We want to prove that to each 
+\begin_inset Formula $u_{j}\in\Psi'$
+\end_inset
+
+ there corresponds a measurable
+\begin_inset Formula $B_{j}\subseteq I$
+\end_inset
+
+, satisfying the last equality.
+ To express more clearly the relationship between the given 
+\begin_inset Formula $u_{j}$
+\end_inset
+
+ and the 
+\begin_inset Formula $B_{j}$
+\end_inset
+
+ looked for, we introduce the mappings, defining their part in the respective
+ sides in the equality.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For 
+\begin_inset Formula $B_{j}$
+\end_inset
+
+ this is the vector measure 
+\begin_inset Formula 
+\[
+\vec{\mu}_{j}(E)\coloneqq\int_{E}Y_{j},\quad E\in\mathcal{L}_{I},
+\]
+
+\end_inset
+
+where
+\begin_inset Formula $\mathcal{L}_{I}=\left\{ E\subset I:E\;\text{is measurable}\right\} .$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Formula $u_{j}$
+\end_inset
+
+ this is the affine operator 
+\begin_inset Formula $T_{j}:\Psi'\to\mathbb{R}^{n},$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+T_{j}(y)\coloneqq\frac{1}{2}\int_{I}\left(y(t)+1\right)\text{d}\vec{\mu}_{j},\quad y\in\Psi'.
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula $T_{j}$
+\end_inset
+
+ is 
+\begin_inset Formula $\ws$
+\end_inset
+
+-continuous, since for its linear part 
+\begin_inset Formula 
+\[
+L_{\infty}\ni y\mapsto\int_{I}yY_{j}\le\left\Vert y\right\Vert _{\infty}\vec{\mu}_{j}(I)\xrightarrow[\left\Vert y\right\Vert \to\infty]{}0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus the equality 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:holmes"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ can be expressed with the formula 
+\begin_inset Formula $\vec{\mu}_{j}(B_{j})=Tu_{j}$
+\end_inset
+
+, and the statement we want to prove becomes the inclusion
+\begin_inset Formula 
+\[
+T_{j}\Psi'\subset\vec{\mu}_{j}(\mathcal{L}_{I}).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By Lyapunov's theorem the RHS 
+\begin_inset Formula $\vec{\mu}_{j}(\mathcal{L}_{I})$
+\end_inset
+
+ is a convex compact, and since 
+\begin_inset Formula $\Psi'$
+\end_inset
+
+ is obviously convex and 
+\begin_inset Formula $T_{j}$
+\end_inset
+
+ is 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\ws$
+\end_inset
+
+continuous
+\end_layout
+
+\end_inset
+
+linear, 
+\begin_inset Formula $T_{j}\Psi'$
+\end_inset
+
+ is convex as well.
+ Then it suffices to show 
+\begin_inset Formula $T_{j}\left(\Ext\Psi'\right)\subset\vec{\mu}_{j}(\mathcal{L}_{I}).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $u\in\Ext\Psi'$
+\end_inset
+
+, then 
+\begin_inset Formula $u=\chi_{E}$
+\end_inset
+
+ for some 
+\begin_inset Formula $E\subset I$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\begin{align*}
+T_{j}u & =\frac{1}{2}\int_{I}\left(\chi_{E}+1\right)Y_{j}\\
+ & =\int_{E}Y_{j}+\frac{1}{2}\int_{\overline{E}}Y_{j}\\
+ & =\vec{\mu}_{j}(E)+\frac{1}{2}\vec{\mu}_{j}(\overline{E}).
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\overline{E}'\subset\overline{E}$
+\end_inset
+
+ have 
+\begin_inset Formula $\vec{\mu}_{j}(\overline{E}')=\frac{1}{2}\vec{\mu}_{j}(\overline{E})$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula 
+\[
+T_{j}u=\vec{\mu}_{j}(E\cup\overline{E}').
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+From here on we fix a closed bounded interval 
+\begin_inset Formula $I$
+\end_inset
+
+, the convex compact
+\begin_inset Formula 
+\[
+\mathcal{C}\coloneqq\left\{ x\in\mathbb{R}_{\ge0}^{m}:{\textstyle \sum_{i}}x_{i}=1\right\} ,
+\]
+
+\end_inset
+
+as well as a matrix-valued function 
+\begin_inset Formula $Y\in L_{1}(I,M_{n\times m})$
+\end_inset
+
+ (in the system above, 
+\begin_inset Formula $Y(s)\coloneqq\Phi^{-1}(s)B(s)$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+ is actually a 
+\series bold
+simplex
+\series default
+, since for 
+\begin_inset Formula $f_{j}\in\left(\mathbb{R}^{m}\right)^{\star},j=0,\ldots,m,$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+f_{0}(x_{1},\ldots,x_{m}) & ={\textstyle \sum}_{i}x_{i}\\
+f_{i}(x_{1},\ldots,x_{m}) & =x_{i},\quad i=1,\ldots,m
+\end{align*}
+
+\end_inset
+
+we can express 
+\begin_inset Formula $\mathcal{C}=\bigcap\nolimits _{i=1}^{m}f^{-1}\left[0,\infty\right)\cap f_{0}^{-1}(1),$
+\end_inset
+
+ that is, 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+ is an intersection of closed half-spaces.
+\end_layout
+
+\begin_layout Remark*
+Since 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+ is a simplex, 
+\begin_inset Formula $\Ext\mathcal{C}$
+\end_inset
+
+ consists of 
+\begin_inset Formula $m$
+\end_inset
+
+ 
+\series bold
+corners
+\series default
+ we denote by 
+\begin_inset Formula $r_{1},\ldots,r_{m}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+In the proof of the Bang-bang principle later we'll refer to the following
+ separability proposition:
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lemma:separation"
+
+\end_inset
+
+Let 
+\begin_inset Formula $E\subset\mathbb{R}$
+\end_inset
+
+ be a non-null set and 
+\begin_inset Formula $u(t)\in\mathbb{R}^{m}\setminus\mathcal{C}$
+\end_inset
+
+ a.e.
+ in 
+\begin_inset Formula $E$
+\end_inset
+
+.
+ Then there exists a vector 
+\begin_inset Formula $\eta\in\mathbb{R}^{m}$
+\end_inset
+
+, separating 
+\bar under
+strictly
+\bar default
+ 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+ from 
+\begin_inset Formula $u(t)$
+\end_inset
+
+ a.e.
+ in a non-null 
+\begin_inset Formula $E'\subset E$
+\end_inset
+
+, that is, 
+\begin_inset Formula 
+\[
+\exists\,\varepsilon,B>0,\eta\in\mathbb{R}^{m}:\begin{array}{c}
+\left\langle \eta,x\right\rangle \ge B\\
+\left\langle \eta,u(t)\right\rangle \le B-\varepsilon
+\end{array}\begin{array}{c}
+\forall x\in\mathcal{C}\\
+\forall t\in E'
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+According to the previous remark we can represent with a 
+\emph on
+countable
+\emph default
+ union
+\begin_inset Formula 
+\begin{align*}
+\mathbb{R}^{m}\setminus\mathcal{C} & =\bigcup_{i=1}^{m+2}g_{i}^{-1}\left(-\infty,a_{i}\right)\\
+ & =\bigcup_{i=1}^{m+2}\bigcup_{k\in\mathbb{N}}g_{i}^{-1}\left(-\infty,a_{i}-1/k\right],
+\end{align*}
+
+\end_inset
+
+where
+\begin_inset Formula ${g_{i}\in\left(\mathbb{R}^{m}\right)^{\star},}{a_{i}\in\mathbb{R}},i=1,\ldots,m+2$
+\end_inset
+
+.
+ Then the image under 
+\begin_inset Formula $u$
+\end_inset
+
+ of some non-null 
+\begin_inset Formula $E'$
+\end_inset
+
+ must lie in 
+\begin_inset Formula $g_{i}^{-1}\left(-\infty,a_{i}-\frac{1}{k}\right]$
+\end_inset
+
+ for some 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula ${\eta\in\mathbb{R}^{m}}$
+\end_inset
+
+ be the respective (by Riesz' theorem) vector to the functional 
+\begin_inset Formula $g_{i}$
+\end_inset
+
+ (for which 
+\begin_inset Formula $\left\langle \eta,\cdot\right\rangle =g_{i}(\cdot)$
+\end_inset
+
+).
+ Then 
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\forall x\in\mathcal{C}:\left\langle \eta,x\right\rangle =g_{i}(x)\ge a_{i}\\
+\forall t\in E':\left\langle \eta,u(t)\right\rangle =g_{i}(u(t))\le a_{i}-\tfrac{1}{k}.
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+We denote the sets of the 
+\emph on
+allowed
+\emph default
+ and the 
+\emph on
+extremal
+\emph default
+ controls, respectively: 
+\begin_inset Formula 
+\begin{align*}
+\Psi & \coloneqq L_{\infty}(I,\mathcal{C})\subset L_{\infty}(I,\mathbb{R}^{m})\\
+\Psi_{e} & \coloneqq L_{\infty}(I,\Ext\mathcal{C})\subseteq\Psi.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+From here on we'll talk about the space
+\begin_inset Formula $L_{\infty}\left(I,\mathbb{R}^{m}\right)$
+\end_inset
+
+, which, taken as the dual of 
+\begin_inset Formula $L_{1}\left(I,\mathbb{R}^{m}\right)$
+\end_inset
+
+ by the action 
+\begin_inset Formula 
+\[
+f(\varphi)\coloneqq\int\left\langle \varphi(t),f(t)\right\rangle \dt,\quad\text{for all }\varphi\in L_{1}\left(I,\mathbb{R}^{m}\right),f\in L_{\infty}\left(I,\mathbb{R}^{m}\right),
+\]
+
+\end_inset
+
+ is equipped with the 
+\begin_inset Formula $\ws$
+\end_inset
+
+ topology.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lemma:psi compact"
+
+\end_inset
+
+
+\begin_inset Formula $\Psi\coloneqq L_{\infty}(I,\mathcal{C})$
+\end_inset
+
+ is a convex 
+\begin_inset Formula $w^{\star}$
+\end_inset
+
+-compact.
+ It is essential that here 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+ is the simplex defined earlier.
+\end_layout
+
+\begin_layout Proof
+Obviously 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ is convex, since for 
+\begin_inset Formula ${u_{1},u_{2}\in\Psi}$
+\end_inset
+
+, 
+\begin_inset Formula $\lambda u_{1}+(1-\lambda)u_{2}$
+\end_inset
+
+ is again a 
+\begin_inset Formula $L_{\infty}$
+\end_inset
+
+ function, and by that again 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+-valued due to convexity of 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+.
+ Moreover, 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ is bounded (in norm) with 
+\begin_inset Formula 
+\[
+\left\Vert u\right\Vert _{\infty}=\sup_{t\in I}u(t)\le\max_{y\in\mathcal{C}}\left\Vert y\right\Vert \quad\text{for all }u\in\Psi.
+\]
+
+\end_inset
+
+For 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ to be a 
+\begin_inset Formula $\ws$
+\end_inset
+
+-compact it remains only to check it is 
+\begin_inset Formula $\ws$
+\end_inset
+
+-closed, i.e.
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+В учебника на Hermes допускат, че има 
+\begin_inset Formula $u^{0}\in\partial\Psi\setminus\Psi$
+\end_inset
+
+, и стигат до противоречие със същия аргумент нататък.
+ Този стил ми се вижда излишно утежняващ, затова подходих с отвореност на
+ допълнението.
+\end_layout
+
+\end_inset
+
+, any 
+\begin_inset Formula $u^{0}\in L_{\infty}(I,\mathbb{R}^{m})\setminus\Psi$
+\end_inset
+
+ is 
+\begin_inset Formula $\ws$
+\end_inset
+
+-separable from 
+\begin_inset Formula $\Psi$
+\end_inset
+
+.
+ In order to 
+\begin_inset Formula $\ws$
+\end_inset
+
+-separate 
+\begin_inset Formula $u^{0}$
+\end_inset
+
+ from 
+\begin_inset Formula $\Psi$
+\end_inset
+
+, we need a suitable functional 
+\begin_inset Formula $\varphi\in L_{1}\hookrightarrow\left(L_{\infty}\right)^{\star}$
+\end_inset
+
+, with which 
+\begin_inset Formula 
+\[
+\varphi\left(u^{0}\right)\le B-\varepsilon\quad\text{and}\quad\forall u\in\Psi:\varphi\left(u\right)\ge B.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Since 
+\begin_inset Formula $u^{0}\not\in\Psi$
+\end_inset
+
+, then in a non-null 
+\begin_inset Formula $E\subseteq I$
+\end_inset
+
+, 
+\begin_inset Formula $u^{0}(t)\not\in\mathcal{C}$
+\end_inset
+
+.
+ Then by lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lemma:separation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ there exist 
+\begin_inset Formula $\varepsilon>0,B>0,\eta\in\mathbb{R}^{m}$
+\end_inset
+
+ and a non-null 
+\begin_inset Formula $E'\subset E$
+\end_inset
+
+ with the property 
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\left\langle \eta,x\right\rangle \ge B\\
+\left\langle \eta,u^{0}(t)\right\rangle \le B-\varepsilon
+\end{array}\begin{array}{c}
+\text{for all }x\in\mathcal{C}\\
+\text{for all }t\in E'
+\end{array}.
+\]
+
+\end_inset
+
+We set 
+\begin_inset Formula $\varphi(t)=\begin{cases}
+\frac{1}{\mu(E')}\eta, & t\in E'\\
+0, & \text{else}
+\end{cases},$
+\end_inset
+
+ and then 
+\begin_inset Formula $\varphi\in L_{1}$
+\end_inset
+
+ and fulfills the required conditions:
+\begin_inset Formula 
+\begin{align*}
+\varphi\left(u^{0}\right)=\int_{I}\left\langle \varphi(t),u^{0}(t)\right\rangle \dt & =\frac{1}{\mu(E')}\int_{E'}\left\langle \eta,u^{0}(t)\right\rangle \dt\\
+ & \le\frac{1}{\mu(E')}\int_{E'}\left(B-\varepsilon\right)=B-\varepsilon
+\end{align*}
+
+\end_inset
+
+ and analogously 
+\begin_inset Formula ${\varphi(u)=\int_{I}\left\langle \varphi,u\right\rangle =\frac{1}{\mu(E')}\int_{E'}\left\langle \eta,u\right\rangle \ge B\quad\text{for all }u\in\Psi}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Since 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ is 
+\begin_inset Formula $\ws$
+\end_inset
+
+-separated by any 
+\begin_inset Formula $u^{0}\not\in\Psi$
+\end_inset
+
+, then 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ is 
+\begin_inset Formula $\ws$
+\end_inset
+
+-closed, and since it is 
+\begin_inset Formula $\left\Vert \cdot\right\Vert _{\infty}$
+\end_inset
+
+-bounded – it is a 
+\begin_inset Formula $\ws$
+\end_inset
+
+-compact.
+\end_layout
+
+\begin_layout Remark*
+For 
+\begin_inset Formula $u\in L_{\infty}(I,\mathbb{R}^{m})$
+\end_inset
+
+, the product 
+\begin_inset Formula $Y\cdot u$
+\end_inset
+
+ is a function from 
+\begin_inset Formula $L_{1}\left(I,\mathbb{R}^{m}\right),$
+\end_inset
+
+ because 
+\begin_inset Formula $Y_{ij}\in L_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+\left(Y\cdot u\right)_{i}=\sum_{j=1}^{m}Y_{ij}(s)u_{j}(s)\le\sum_{j=1}^{m}Y_{ij}(s)\left\Vert u\right\Vert _{\infty}.
+\]
+
+\end_inset
+
+ Then it makes sense to talk about the integral 
+\begin_inset Formula $\int_{I}Y\cdot u$
+\end_inset
+
+ that we will look at from here on.
+\end_layout
+
+\begin_layout Definition*
+We say that 
+\emph on
+the control 
+\begin_inset Formula $u\in\Psi$
+\end_inset
+
+ leads to the point 
+\begin_inset Formula $\xi=Tu$
+\end_inset
+
+
+\emph default
+, where 
+\begin_inset Formula ${T:L_{\infty}(I,\mathbb{R}^{m})\to\mathbb{R}^{n}}$
+\end_inset
+
+ is the linear operator 
+\begin_inset Formula 
+\[
+Tu\coloneqq\int_{I}Y(s)\cdot u(s)\ds\quad\text{for all }u\in L_{\infty}(I,\mathbb{R}^{m}).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+\begin_inset Formula $T$
+\end_inset
+
+ is continuous (in norm), since for 
+\begin_inset Formula ${\varepsilon>0}$
+\end_inset
+
+, with 
+\begin_inset Formula $\delta\coloneqq\frac{\varepsilon}{\mu(I)\int_{I}Y}$
+\end_inset
+
+ and 
+\begin_inset Formula $\left\Vert h\right\Vert _{\infty}<\delta$
+\end_inset
+
+ we have
+\begin_inset Formula 
+\[
+\left|T(u+h)-Tu\right|=\left|\int_{I}Y(s)\cdot h(s)\ds\right|\le\mu(I)\left\Vert h\right\Vert _{\infty}\left|\int_{I}Y\right|<\varepsilon.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+Moreover, it is 
+\begin_inset Formula $\ws$
+\end_inset
+
+-continuous, since its coordinate functionals 
+\begin_inset Formula ${T_{i}:L_{\infty}(I,\mathbb{R}^{m})\to\mathbb{R},}\;{i=1,\ldots n}$
+\end_inset
+
+ are defined by 
+\begin_inset Formula $T_{i}(u)=\sum_{j}\int_{I}Y_{ij}u_{j}$
+\end_inset
+
+ where 
+\begin_inset Formula $Y_{ij}$
+\end_inset
+
+ are 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+-functions.
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+Bang-bang
+\emph default
+ principle for controls in a simplex
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+T(\Psi)=T(\Psi_{e}).
+\]
+
+\end_inset
+
+Moreover, the two sets are convex compacts.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $T\Psi_{e}\subseteq T\Psi$
+\end_inset
+
+ is obvious, we need to prove the reverse inclusion.
+ The proof goes in the following steps:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+According to the last remark, 
+\begin_inset Formula $T$
+\end_inset
+
+ is 
+\begin_inset Formula $\ws$
+\end_inset
+
+-continuous, hence the image 
+\begin_inset Formula ${T\Psi\subset\mathbb{R}^{n}}$
+\end_inset
+
+ of the 
+\begin_inset Formula $w^{\star}$
+\end_inset
+
+-compact 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ is again a convex compact (the second statement in this theorem).
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $T$
+\end_inset
+
+ is a continuous map between compacts, then the possible controls 
+\begin_inset Formula ${T^{-1}(\xi)\cap\Psi}$
+\end_inset
+
+ leading to any point 
+\begin_inset Formula $\xi\in\mathbb{R}^{n}$
+\end_inset
+
+ form a convex 
+\begin_inset Formula $\ws$
+\end_inset
+
+-compact, necessarily having an extreme point 
+\begin_inset Formula $u\in T^{-1}(\xi)\subset\Psi$
+\end_inset
+
+ (Krein-Milman).
+\end_layout
+
+\begin_layout Enumerate
+It turns out that this extremum 
+\begin_inset Formula $u$
+\end_inset
+
+ is a 
+\emph on
+bang-bang
+\emph default
+ control.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+If we assume the opposite, then in some non-null set 
+\begin_inset Formula ${E\subset I}$
+\end_inset
+
+ the controls are far from 
+\begin_inset Formula $\Ext\mathcal{C}$
+\end_inset
+
+ and from the lema below 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "lemma induction"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ it follows 
+\begin_inset Formula $u$
+\end_inset
+
+ is a midpoint of a proper line segment of controls 
+\begin_inset Formula $\left[u-h,u+h\right]\subset\Psi$
+\end_inset
+
+, leading to the same 
+\begin_inset Formula $\xi$
+\end_inset
+
+, contradicting extremality of 
+\begin_inset Formula $u$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Proof
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Доказателство (Holmes)
+\end_layout
+
+\end_inset
+
+Нека 
+\begin_inset Formula $u:\left[0,T\right]\to C$
+\end_inset
+
+ е управление със съответна крайна точка 
+\begin_inset Formula $\bar{x}=\int_{0}^{T}\Psi\cdot u$
+\end_inset
+
+.
+ Ще намерим управление 
+\begin_inset Formula $v:\left[0,T\right]\to\Ext C$
+\end_inset
+
+ със същата крайна точка 
+\begin_inset Formula $\bar{x}=\int_{0}^{T}\Psi\cdot v.$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lemma induction"
+
+\end_inset
+
+Let 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+, 
+\begin_inset Formula $Y\in L_{1}(I,M_{n\times m})$
+\end_inset
+
+, 
+\begin_inset Formula $E\subset I$
+\end_inset
+
+ is non-null, and the control 
+\begin_inset Formula $u\in\Psi$
+\end_inset
+
+ leads to 
+\begin_inset Formula $\xi\coloneqq Tu$
+\end_inset
+
+ and satisfies 
+\begin_inset Formula $\dist{u(E)}{\Ext\mathcal{C}}>\varepsilon$
+\end_inset
+
+ for some 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+Then there exists a displacement 
+\begin_inset Formula $h\in L_{\infty}(I,\mathbb{R}^{m})$
+\end_inset
+
+ with the following properties:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $u(t)\pm h(t)\in\mathcal{C}\;\text{for all }t\in I$
+\end_inset
+
+, where 
+\begin_inset Formula $h(t)\neq0\;\text{for all }t\in E$
+\end_inset
+
+ (
+\begin_inset Formula $u$
+\end_inset
+
+ lies in a proper line segment);
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\int_{I}Y\cdot h=0$
+\end_inset
+
+ (that is, 
+\begin_inset Formula $u\pm h$
+\end_inset
+
+ leads again to 
+\begin_inset Formula $\xi$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+In other words, 
+\begin_inset Formula $u\in\left[u-h,u+h\right]\subset T^{-1}(\xi)\cap\Psi.$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+The proof goes in the following steps
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+For each 
+\begin_inset Formula $t\in E$
+\end_inset
+
+, according to the next lemma 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "lemma:segment in simplex"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, we can embed 
+\begin_inset Formula $u(t)$
+\end_inset
+
+ in a segment with endpoints 
+\begin_inset Formula ${u(t)\pm\tilde{h}(t)\in\mathcal{C}}$
+\end_inset
+
+ so that 
+\begin_inset Formula $\|\tilde{h}(t)\|_{\infty}>\varepsilon^{2}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\|\tilde{h}\|_{\infty}>\varepsilon^{2}$
+\end_inset
+
+ too.
+ Unfortunately, however, 
+\begin_inset Formula ${\int_{I}Y\cdot\tilde{h}\neq0}$
+\end_inset
+
+ in the general case.
+\end_layout
+
+\begin_layout Enumerate
+From the non-atomicity of the Lebesgue measure we can partition for any
+ 
+\begin_inset Formula $k\in\mathbb{N}^{+}$
+\end_inset
+
+ (the suitable 
+\begin_inset Formula $k$
+\end_inset
+
+ will be determined later) 
+\begin_inset Formula $E=\bigcup_{j=1}^{k}E_{k},$
+\end_inset
+
+ so that 
+\begin_inset Formula $E_{i}\cap E_{j}=\emptyset\;\text{for all }i\neq j$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu(E_{j})\gneqq0\;\text{for all }j$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Now in each 
+\begin_inset Formula $E_{j},j=1,\ldots,k$
+\end_inset
+
+ we will weight the restriction of 
+\begin_inset Formula $\tilde{h}$
+\end_inset
+
+ with a suitable 
+\begin_inset Formula $\alpha_{j}\in\mathbb{R}$
+\end_inset
+
+ so that 
+\begin_inset Formula $\int_{I}Y\cdot h=0$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+h(t)\coloneqq\begin{cases}
+\alpha_{j}\tilde{h}(t), & t\in E_{j}\\
+0, & \text{otherwise}
+\end{cases}.
+\]
+
+\end_inset
+
+The condition 
+\begin_inset Formula $\int_{I}Y\cdot h=0$
+\end_inset
+
+ is a homogenous linear system with 
+\begin_inset Formula $n$
+\end_inset
+
+ equations and 
+\begin_inset Formula $k$
+\end_inset
+
+ unknowns
+\begin_inset Formula 
+\[
+\int_{I}Y\cdot h=\sum_{j=1}^{k}\alpha_{j}\int_{E_{j}}Y\cdot\tilde{h}=0.
+\]
+
+\end_inset
+
+A non-trivial solution for the coefficients 
+\begin_inset Formula $\alpha_{j}$
+\end_inset
+
+ always exists whenever 
+\begin_inset Formula $k\ge n+1$
+\end_inset
+
+ – fix one with
+\begin_inset Formula $\left|\alpha_{j}\right|<1\;\text{for all }j$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Let us convince ourselves that 
+\begin_inset Formula $h$
+\end_inset
+
+ satisfies property 1 (from the lemma statement).
+ Obviously 
+\begin_inset Formula $h(t)\neq0\;\text{for all }t\in E$
+\end_inset
+
+, and 
+\begin_inset Formula $u(t)\pm h(t)$
+\end_inset
+
+ lies in 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+, since it lies (for all 
+\begin_inset Formula $t\in E$
+\end_inset
+
+) in the line segment with endpoints 
+\begin_inset Formula $u(t)\pm\tilde{h}(t)\in\mathcal{C}$
+\end_inset
+
+ (due to 
+\begin_inset Formula $\left|\alpha_{j}\right|<1$
+\end_inset
+
+), and 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+ is convex.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Therefore 
+\begin_inset Formula $u\pm h\in\Psi=L_{\infty}(I,\mathcal{C})$
+\end_inset
+
+ and 
+\begin_inset Formula $u\in\left[u-h,u+h\right]$
+\end_inset
+
+ from convexity of 
+\begin_inset Formula $\Psi$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lemma:segment in simplex"
+
+\end_inset
+
+Let 
+\begin_inset Formula $\xi\in\mathcal{C}$
+\end_inset
+
+ satisfy 
+\begin_inset Formula $\dist{\xi}{\Ext\mathcal{C}}>\varepsilon$
+\end_inset
+
+ for some 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\xi$
+\end_inset
+
+ can be put in a line segment 
+\begin_inset Formula $\left[\xi-h,\xi+h\right]\subset\mathcal{C}$
+\end_inset
+
+ with 
+\begin_inset Formula $\left\Vert h\right\Vert _{\infty}\ge\varepsilon^{2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Lemma
+Moreover, the mapping 
+\begin_inset Formula $\xi\mapsto h$
+\end_inset
+
+ is measurable.
+\end_layout
+
+\begin_layout Lemma
+(interestingly, we cannot state 
+\begin_inset Formula $\left\Vert h\right\Vert _{\infty}\ge\varepsilon$
+\end_inset
+
+, the largest lower bound is 
+\begin_inset Formula $\frac{\varepsilon^{2}}{1-\varepsilon}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Proof
+Geometrically it is natural to choose 
+\begin_inset Formula $h$
+\end_inset
+
+ 
+\emph on
+parallel to 
+\emph default
+
+\begin_inset Formula $r_{j}-\xi$
+\end_inset
+
+, where 
+\begin_inset Formula $r_{j}\in\Ext\mathcal{C}$
+\end_inset
+
+ is the closest to 
+\begin_inset Formula $\xi$
+\end_inset
+
+ corner with smallest index 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ We put 
+\begin_inset Formula $h\coloneqq\beta\left(r_{j}-\xi\right)$
+\end_inset
+
+.
+ Clearly 
+\begin_inset Formula $\xi\pm h\in\text{affine span}\ \mathcal{C}$
+\end_inset
+
+.
+ We will show that for sufficiently small 
+\begin_inset Formula $\beta>0$
+\end_inset
+
+ even 
+\begin_inset Formula $\xi\pm h\in\mathcal{C}$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\xi\pm h=\xi\pm\beta\left(r_{j}-\xi\right)=\left(1\mp\beta\right)\xi\pm\beta r_{j}.
+\]
+
+\end_inset
+
+ Since 
+\begin_inset Formula $\xi\in\mathcal{C},$
+\end_inset
+
+ then 
+\begin_inset Formula $\xi=\sum_{i}\beta_{i}r_{i}$
+\end_inset
+
+ with some 
+\begin_inset Formula $\beta_{i}\ge0$
+\end_inset
+
+ and 
+\begin_inset Formula $\sum_{i}\beta_{i}=1$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula 
+\begin{align*}
+\xi\pm h & =\left(1\mp\beta\right)\sum_{i}\beta_{i}r_{i}\pm\beta r_{j}\\
+ & =\underbrace{\left(\pm\beta+\left(1\mp\beta\right)\beta_{j}\right)}_{\beta_{j}'}r_{j}+\sum_{i\neq j}\underbrace{\left(1\mp\beta\right)\beta_{i}}_{\beta_{i}'}r_{i}
+\end{align*}
+
+\end_inset
+
+ and we have to check that the RHS is a convex combination of 
+\begin_inset Formula $\left\{ r_{i}\right\} _{i=1}^{m}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\sum_{i}\beta_{i}'=1$
+\end_inset
+
+ is equiavelent to 
+\begin_inset Formula $\xi\pm h\in\text{affine span}\ \mathcal{C}$
+\end_inset
+
+, so it remains to check 
+\begin_inset Formula ${0<\beta_{i}'\;\text{for all }i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+If 
+\begin_inset Formula $\left|\beta\right|\le1$
+\end_inset
+
+ then obviously 
+\begin_inset Formula $\beta_{i}'\ge0\;\text{for all }i\neq j$
+\end_inset
+
+, and 
+\begin_inset Formula 
+\[
+\beta_{j}'=\pm\left(1-\beta_{j}\right)\beta+\beta_{j}
+\]
+
+\end_inset
+
+ and hence 
+\begin_inset Formula $\beta_{j}'\ge0$
+\end_inset
+
+ holds always if 
+\begin_inset Formula $\beta\le\frac{\beta_{j}}{1-\beta_{j}}.$
+\end_inset
+
+ We choose namely the maximal 
+\begin_inset Formula $\beta=\beta_{j}/(1-\beta_{j})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Since 
+\begin_inset Formula $\dist{\xi}{\Ext\mathcal{C}}>\varepsilon$
+\end_inset
+
+ and 
+\begin_inset Formula $r_{j}$
+\end_inset
+
+ is a closest corner to 
+\begin_inset Formula $\xi$
+\end_inset
+
+, then 
+\begin_inset Formula $\beta_{j}>\varepsilon$
+\end_inset
+
+, 
+\begin_inset Formula $\beta>\frac{\varepsilon}{1-\varepsilon}$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+\left\Vert h\right\Vert _{\infty}=\beta\left\Vert r_{j}-\xi\right\Vert _{\infty}>\beta\varepsilon=\frac{\varepsilon^{2}}{1-\varepsilon}>\varepsilon^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+For measurability of the mapping 
+\begin_inset Formula $\xi\mapsto h$
+\end_inset
+
+ it suffices to observe that 
+\begin_inset Formula $\xi\mapsto j$
+\end_inset
+
+ is constant on sets 
+\begin_inset Formula 
+\[
+F_{j}=\left\{ \xi\in\mathcal{C}:\begin{array}{c}
+\d{\xi}{r_{j}}=\dist{\xi}{\Ext C}\\
+\text{и }\d{\xi}{r_{j}}>\d{\xi}{r_{i}}\forall i<j
+\end{array}\right\} ,\quad j=1,\ldots,m,
+\]
+
+\end_inset
+
+which partition 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+ and are measurable due to continuity of 
+\begin_inset Formula $\d{\cdot}{\cdot}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Sources:
+\end_layout
+
+\begin_layout Itemize
+Functional analysis and time optimal control, Volume 56 (Mathematics in
+ Science and Engineering) by Hermes (Editor) 
+\end_layout
+
+\begin_layout Itemize
+Geometric Functional Analysis and its Applications Richard B.
+ Holmes
+\end_layout
+
+\end_body
+\end_document
