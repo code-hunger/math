@@ -13,6 +13,8 @@
 
 \setlength\abovedisplayskip{2pt plus 3pt minus 2pt}
 \setlength\belowdisplayskip{2pt plus 3pt minus 2pt}
+
+\usepackage{tikz}
 \end_preamble
 \use_default_options true
 \begin_modules
@@ -290,21 +292,6 @@ Everywhere below we assume
 \end_inset
 
 .
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
- 
-\backslash
-setlength
-\backslash
-abovedisplayskip{12pt plus 3pt minus 9pt}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Remark
@@ -373,22 +360,7 @@ backward,
 \begin_inset Formula $\frac{d\Phi^{-1}}{dt}\Phi=-\Phi^{-1}A\Phi$
 \end_inset
 
- and 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-setlength
-\backslash
-abovedisplayskip{0pt plus 3pt}
-\end_layout
-
-\end_inset
-
-
+ and
 \begin_inset Formula 
 \begin{equation}
 \frac{d\Phi^{-1}}{dt}=-\Phi^{-1}A.\label{eq:inverse_transition_matrix}
@@ -480,40 +452,10 @@ Rewrite
 \end_inset
 
  from where 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-setlength
-\backslash
-abovedisplayskip{0pt plus 3pt}
-\end_layout
-
-\end_inset
-
-
 \begin_inset Formula 
 \[
 x(t)=\Phi(t)x(t_{0})+\Phi(t)\int_{t_{0}}^{t}\Phi^{-1}(s)B(s)u(s)\ds.
 \]
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
- 
-\backslash
-setlength
-\backslash
-abovedisplayskip{12pt plus 3pt minus 9pt}
-\end_layout
 
 \end_inset
 
@@ -532,14 +474,283 @@ Below for convenience we will assume
 
 \end_layout
 
-\begin_layout Theorem*
-\begin_inset Argument 1
-status collapsed
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
 
 \begin_layout Plain Layout
-Принципът 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+usetikzlibrary{math} %needed tikz library
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+tikzmath{
+\backslash
+t = 0; 
+\backslash
+x = 0.7; 
+\backslash
+u = -1; 
+\backslash
+uo = 
+\backslash
+u;}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+clip (-1,-1.6) rectangle (5.5,1.6);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+fill (0,
+\backslash
+t) circle[radius=1pt];
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[->] node[anchor=east] {time} (0,
+\backslash
+t) -- (5,
+\backslash
+t);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+fill (0,
+\backslash
+x) circle[radius=1pt];
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[->]
+\end_layout
+
+\begin_layout Plain Layout
+
+		(0,
+\backslash
+x) node[anchor=east] {$x(t)$} ..
+ controls (1.00, 
+\backslash
+x+0.50) and (1.00, 
+\backslash
+x-0.50) ..
+ (2.00,
+\backslash
+x+0.50)
+\end_layout
+
+\begin_layout Plain Layout
+
+		..
+ controls (3.00, 
+\backslash
+x+1.50) and (3.00, 
+\backslash
+x-0.50) ..
+ (5.00,
+\backslash
+x) node[anchor=west] {$
+\backslash
+xi$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[]
+\end_layout
+
+\begin_layout Plain Layout
+
+	  (0,
+\backslash
+u) node[anchor=north east] {$u(t)$} -- (1,
+\backslash
+u+0.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+	  plot[domain=1:3,samples=50] (
+\backslash
+x,{
+\backslash
+u+0.5*sin(pi*
+\backslash
+x r)})
+\end_layout
+
+\begin_layout Plain Layout
+
+	  (3,
+\backslash
+u-0.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+	  plot[domain=3:4,samples=50] 
+\end_layout
+
+\begin_layout Plain Layout
+
+(
+\backslash
+x,{
+\backslash
+u+0.5*cos(pi*
+\backslash
+x r)})
+\end_layout
+
+\begin_layout Plain Layout
+
+	  -- (5,
+\backslash
+u);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[thick, blue, dashed] (0, 
+\backslash
+uo) node[anchor=south east] {$u^0(t)$}
+\end_layout
+
+\begin_layout Plain Layout
+
+		(0, 
+\backslash
+uo + 0.5) -- (2, 
+\backslash
+uo + 0.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(2, 
+\backslash
+uo - 0.5) -- (4, 
+\backslash
+uo - 0.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(4, 
+\backslash
+uo + 0.5) -- (5, 
+\backslash
+uo + 0.5);;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An extremal control 
+\begin_inset Formula $u^{0}$
+\end_inset
+
+ leading to the same 
+\begin_inset Formula $\xi$
+\end_inset
+
+ as the 
+\begin_inset Formula $u$
+\end_inset
+
+ control.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
 \emph on
-Бум-тряс
+The 
+\emph default
+Bang-Bang
+\emph on
+ principle
 \end_layout
 
 \end_inset
@@ -548,7 +759,7 @@ Let
 \begin_inset Formula $C\subset\mathbb{R}^{m}$
 \end_inset
 
- be a convex compact (allowed control values).
+ be a convex compact (of allowed control values).
  For the system 
 \begin_inset Formula 
 \begin{align*}
@@ -705,7 +916,7 @@ We want to prove that to each
 \begin_inset Formula $u_{j}\in\Psi'$
 \end_inset
 
- there corresponds a measurable
+ there corresponds a measurable 
 \begin_inset Formula $B_{j}\subseteq I$
 \end_inset
 
@@ -736,7 +947,7 @@ For
 
 \end_inset
 
-where
+where 
 \begin_inset Formula $\mathcal{L}_{I}=\left\{ E\subset I:E\;\text{is measurable}\right\} .$
 \end_inset
 
@@ -826,7 +1037,7 @@ status open
 \begin_inset Formula $\ws$
 \end_inset
 
-continuous
+-continuous
 \end_layout
 
 \end_inset
@@ -978,6 +1189,32 @@ corners
 
 .
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+Just to clarify, I will use the term 
+\series bold
+non-null
+\series default
+\emph on
+ 
+\series bold
+\emph default
+set
+\series default
+\emph on
+ 
+\emph default
+in the sense of a 
+\emph on
+set of strictly positive measure.
 \end_layout
 
 \begin_layout Standard
@@ -1143,7 +1380,7 @@ extremal
 \end_layout
 
 \begin_layout Remark*
-From here on we'll talk about the space
+From here on we'll talk about the space 
 \begin_inset Formula $L_{\infty}\left(I,\mathbb{R}^{m}\right)$
 \end_inset
 
@@ -1239,19 +1476,18 @@ For
 \begin_inset Formula $\ws$
 \end_inset
 
--closed, i.e.
- 
+-closed, that is
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-В учебника на Hermes допускат, че има 
+In Hermes's book the existence of a 
 \begin_inset Formula $u^{0}\in\partial\Psi\setminus\Psi$
 \end_inset
 
-, и стигат до противоречие със същия аргумент нататък.
- Този стил ми се вижда излишно утежняващ, затова подходих с отвореност на
- допълнението.
+ is assumed, and a contradiction is derived later with the same argument.
+ I find this style unnecessarily complicated, so I just prove opennes of
+ the complement.
 \end_layout
 
 \end_inset
@@ -1494,7 +1730,11 @@ Moreover, it is
 \end_inset
 
 -continuous, since its coordinate functionals 
-\begin_inset Formula ${T_{i}:L_{\infty}(I,\mathbb{R}^{m})\to\mathbb{R},}\;{i=1,\ldots n}$
+\begin_inset Formula 
+\[
+{T_{i}:L_{\infty}(I,\mathbb{R}^{m})\to\mathbb{R},}\;{i=1,\ldots n}
+\]
+
 \end_inset
 
  are defined by 
@@ -1521,7 +1761,7 @@ status open
 \emph on
 Bang-bang
 \emph default
- principle for controls in a simplex
+ principle for controls in a simplex, Hermes
 \end_layout
 
 \end_inset
