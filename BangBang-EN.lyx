@@ -176,22 +176,6 @@ Alexander Gudev
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-thispagestyle{empty}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Definition*
 Let 
 \begin_inset Formula $I\subset\mathbb{R}$
@@ -520,7 +504,7 @@ begin{tikzpicture}
 
 	
 \backslash
-clip (-1,-1.6) rectangle (5.5,1.6);
+clip (-1,-1.6) rectangle (7,1.6);
 \end_layout
 
 \begin_layout Plain Layout
@@ -567,7 +551,12 @@ draw[->]
 
 		(0,
 \backslash
-x) node[anchor=east] {$x(t)$} ..
+x) 
+\end_layout
+
+\begin_layout Plain Layout
+
+		..
  controls (1.00, 
 \backslash
 x+0.50) and (1.00, 
@@ -588,9 +577,87 @@ x+1.50) and (3.00,
 x-0.50) ..
  (5.00,
 \backslash
-x) node[anchor=west] {$
+x) node[pos=0.7,label=above:{$x(t)$}] {}
+\end_layout
+
+\begin_layout Plain Layout
+
+		node[anchor=west] {$
 \backslash
-xi$};
+xi = 
+\backslash
+int_I Y
+\backslash
+cdot u$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[->, blue, densely dashed] (0,
+\backslash
+x)
+\end_layout
+
+\begin_layout Plain Layout
+
+		..
+ controls (.5, 
+\backslash
+x+.3) and ( .5, 
+\backslash
+x+.8) ..
+ (2,
+\backslash
+x+.8)
+\end_layout
+
+\begin_layout Plain Layout
+
+		..
+ controls (2.5, 
+\backslash
+x+.8) and (2.5, 
+\backslash
+x-.5) ..
+ (4,
+\backslash
+x-.5) node[pos=0.5,label=below:{$
+\backslash
+bar x(t)$}] {}
+\end_layout
+
+\begin_layout Plain Layout
+
+		..
+ controls (4.5, 
+\backslash
+x-.5) and (4.5, 
+\backslash
+x)   ..
+ (5,
+\backslash
+x);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+draw[thick,densely dotted,gray] (0, 
+\backslash
+u+.8) -- (0, 
+\backslash
+u-.8);
 \end_layout
 
 \begin_layout Plain Layout
@@ -633,12 +700,7 @@ u-0.5)
 
 \begin_layout Plain Layout
 
-	  plot[domain=3:4,samples=50] 
-\end_layout
-
-\begin_layout Plain Layout
-
-(
+	  plot[domain=3:4,samples=50] (
 \backslash
 x,{
 \backslash
@@ -662,7 +724,7 @@ u);
 
 	
 \backslash
-draw[thick, blue, dashed] (0, 
+draw[blue, densely dashed] (0, 
 \backslash
 uo) node[anchor=south east] {$u^0(t)$}
 \end_layout
@@ -1267,12 +1329,9 @@ strictly
 , that is, 
 \begin_inset Formula 
 \[
-\exists\,\varepsilon,B>0,\eta\in\mathbb{R}^{m}:\begin{array}{c}
-\left\langle \eta,x\right\rangle \ge B\\
-\left\langle \eta,u(t)\right\rangle \le B-\varepsilon
-\end{array}\begin{array}{c}
-\forall x\in\mathcal{C}\\
-\forall t\in E'
+\exists\,\varepsilon,B>0,\eta\in\mathbb{R}^{m}:\begin{array}{cc}
+\forall x\in\mathcal{C}: & \left\langle \eta,x\right\rangle \ge B\\
+\forall t\in E': & \left\langle \eta,u(t)\right\rangle \le B-\varepsilon
 \end{array}
 \]
 
@@ -1282,7 +1341,7 @@ strictly
 \end_layout
 
 \begin_layout Proof
-According to the previous remark we can represent with a 
+According to the previous remark, we can represent with a 
 \emph on
 countable
 \emph default
@@ -1332,12 +1391,12 @@ where
 ).
  Then 
 \begin_inset Formula 
-\[
-\begin{array}{c}
-\forall x\in\mathcal{C}:\left\langle \eta,x\right\rangle =g_{i}(x)\ge a_{i}\\
-\forall t\in E':\left\langle \eta,u(t)\right\rangle =g_{i}(u(t))\le a_{i}-\tfrac{1}{k}.
+\begin{gather*}
+\begin{array}{cc}
+\forall x\in\mathcal{C}: & \left\langle \eta,x\right\rangle =g_{i}(x)\ge a_{i}\\
+\forall t\in E': & \left\langle \eta,u(t)\right\rangle =g_{i}(u(t))\le a_{i}-\tfrac{1}{k}.
 \end{array}
-\]
+\end{gather*}
 
 \end_inset
 
@@ -1855,7 +1914,7 @@ If we assume the opposite, then in some non-null set
 \begin_inset Formula $\Ext\mathcal{C}$
 \end_inset
 
- and from the lema below 
+ and from the lema 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "lemma induction"
@@ -1865,7 +1924,7 @@ noprefix "false"
 
 \end_inset
 
- it follows 
+ below it follows 
 \begin_inset Formula $u$
 \end_inset
 
@@ -2019,7 +2078,7 @@ In other words,
 
 \end_deeper
 \begin_layout Proof
-The proof goes in the following steps
+The proof goes in the following steps:
 \end_layout
 
 \begin_deeper
@@ -2440,7 +2499,7 @@ For measurability of the mapping
 \[
 F_{j}=\left\{ \xi\in\mathcal{C}:\begin{array}{c}
 \d{\xi}{r_{j}}=\dist{\xi}{\Ext C}\\
-\text{и }\d{\xi}{r_{j}}>\d{\xi}{r_{i}}\forall i<j
+\text{and }\d{\xi}{r_{j}}>\d{\xi}{r_{i}}\text{ for all }i<j
 \end{array}\right\} ,\quad j=1,\ldots,m,
 \]
 
@@ -2450,7 +2509,7 @@ which partition
 \begin_inset Formula $\mathcal{C}$
 \end_inset
 
- and are measurable due to continuity of 
+ and are measurable due to continuity of the metric 
 \begin_inset Formula $\d{\cdot}{\cdot}$
 \end_inset
 
