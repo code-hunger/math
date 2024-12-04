@@ -6,15 +6,8 @@
 \origin unavailable
 \textclass article
 \begin_preamble
-\abovedisplayskip=5pt plus 1pt minus 9pt
-\abovedisplayshortskip=0pt plus 1pt
-\belowdisplayskip=5pt plus 1pt minus 9pt
-\belowdisplayshortskip=1pt plus 1pt minus 1pt
-
-\setlength\abovedisplayskip{2pt plus 3pt minus 2pt}
-\setlength\belowdisplayskip{2pt plus 3pt minus 2pt}
-
 \usepackage{tikz}
+\usepackage{quiver}
 \end_preamble
 \use_default_options true
 \begin_modules
@@ -174,6 +167,10 @@ Alexander Gudev
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Motivation
 \end_layout
 
 \begin_layout Definition*
@@ -451,11 +448,81 @@ Below for convenience we will assume
 \begin_inset Formula $x(t_{0})=0$
 \end_inset
 
-, in which case 
-\begin_inset Formula $x(t)=\int_{t_{0}}^{t}\Phi^{-1}(s)B(s)u(s)\ds.$
+ and won't be interested in the parts of the product 
+\begin_inset Formula $Y=\Phi^{-1}B$
+\end_inset
+
+, in in which case 
+\begin_inset Formula 
+\[
+x(t)=\int_{t_{0}}^{t}\Phi^{-1}(s)B(s)u(s)\ds=\int_{t_{0}}^{t}Y\cdot u.
+\]
+
 \end_inset
 
 
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+The 
+\emph default
+Bang-Bang
+\emph on
+ principle
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $C\subset\mathbb{R}^{m}$
+\end_inset
+
+ be a convex compact (of allowed control values).
+ For the system 
+\begin_inset Formula 
+\begin{align*}
+\dot{x} & =A(t)x(t)+B(t)u(t)\\
+x(0) & =\vec{0}
+\end{align*}
+
+\end_inset
+
+ every point accessible with 
+\bar under
+some
+\bar default
+ control 
+\begin_inset Formula $u:I\to C$
+\end_inset
+
+ in time 
+\begin_inset Formula $t$
+\end_inset
+
+ is accessible with an 
+\bar under
+extremal
+\bar default
+ control 
+\begin_inset Formula ${u^{0}:I\to\Ext C}$
+\end_inset
+
+ as well.
+\end_layout
+
+\begin_layout Standard
+We won't prove it in full generality, but only in the special case when
+ the allowed control values form the unit ball (Holmes) or a 
+\emph on
+simplex
+\emph default
+ (Hermes).
 \end_layout
 
 \begin_layout Standard
@@ -504,7 +571,7 @@ begin{tikzpicture}
 
 	
 \backslash
-clip (-1,-1.6) rectangle (7,1.6);
+clip (-1,-1.6) rectangle (9,1.6);
 \end_layout
 
 \begin_layout Plain Layout
@@ -588,7 +655,13 @@ xi =
 \backslash
 int_I Y
 \backslash
-cdot u$};
+cdot u = 
+\backslash
+int_I Y
+\backslash
+cdot 
+\backslash
+textcolor{blue}{u^0}$};
 \end_layout
 
 \begin_layout Plain Layout
@@ -686,9 +759,11 @@ u+0.5)
 \backslash
 x,{
 \backslash
-u+0.5*sin(pi*
+u+.2-0.5*sin(pi*
 \backslash
-x r)})
+x r)*exp((
+\backslash
+x-2.5)*3})
 \end_layout
 
 \begin_layout Plain Layout
@@ -753,7 +828,7 @@ uo - 0.5)
 \backslash
 uo + 0.5) -- (5, 
 \backslash
-uo + 0.5);;
+uo + 0.5);
 \end_layout
 
 \begin_layout Plain Layout
@@ -801,68 +876,6 @@ An extremal control
 
 \end_layout
 
-\begin_layout Theorem*
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-
-\emph on
-The 
-\emph default
-Bang-Bang
-\emph on
- principle
-\end_layout
-
-\end_inset
-
-Let 
-\begin_inset Formula $C\subset\mathbb{R}^{m}$
-\end_inset
-
- be a convex compact (of allowed control values).
- For the system 
-\begin_inset Formula 
-\begin{align*}
-\dot{x} & =A(t)x(t)+B(t)u(t)\\
-x(0) & =\vec{0}
-\end{align*}
-
-\end_inset
-
- every point accessible with 
-\bar under
-some
-\bar default
- control 
-\begin_inset Formula $u:I\to C$
-\end_inset
-
- in time 
-\begin_inset Formula $t$
-\end_inset
-
- is accessible with an 
-\bar under
-extremal
-\bar default
- control 
-\begin_inset Formula ${u^{0}:I\to\Ext C}$
-\end_inset
-
- as well.
-\end_layout
-
-\begin_layout Standard
-We won't prove it in full generality, but only in the special case when
- the allowed control values form the unit ball (Holmes) or a 
-\emph on
-simplex
-\emph default
- (Hermes).
-\end_layout
-
 \begin_layout Standard
 \begin_inset FormulaMacro
 \newcommand{\im}{\operatorname{Im}}
@@ -870,6 +883,10 @@ simplex
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Bang-Bang in the unit ball
 \end_layout
 
 \begin_layout Theorem
@@ -897,17 +914,10 @@ Let
 
  where 
 \begin_inset Formula 
-\[
-\Psi\coloneqq L^{\infty}\left(I,\left\{ \left\Vert x\right\Vert _{\infty}\le1\right\} \right)=\left(\Psi'\right)^{m}
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\Psi'\coloneqq L^{\infty}\left(I,\left[-1,1\right]\right),
-\]
+\begin{flalign*}
+\Psi & \coloneqq L^{\infty}\left(I,\left\{ \left\Vert x\right\Vert _{\infty}\le1\right\} \right)=\Psi_{1}^{m}\\
+\Psi_{1} & \coloneqq L^{\infty}\left(I,\left[-1,1\right]\right),
+\end{flalign*}
 
 \end_inset
 
@@ -936,7 +946,7 @@ We want
 \begin_inset Formula $\int_{I}Y\cdot u=\int_{I}Y\cdot v$
 \end_inset
 
-, but with
+, but with 
 \begin_inset Formula ${\left|v_{j}(t)\right|\overset{\text{a.e.}}{=}1}$
 \end_inset
 
@@ -956,7 +966,7 @@ v_{j}\big|_{\overline{B}_{j}}\equiv-1
 \end{array}.$
 \end_inset
 
- Equivalently,
+ The desired equality then is
 \begin_inset Formula 
 \begin{align*}
 \int_{I}u_{j}Y_{j}=\int_{I}v_{j}Y_{j} & =\int_{B_{j}}Y_{j}-\int_{\overline{B}_{j}}Y_{j}\\
@@ -966,7 +976,7 @@ v_{j}\big|_{\overline{B}_{j}}\equiv-1
 
 \end_inset
 
-that is,
+or
 \begin_inset Formula 
 \begin{equation}
 \int_{B_{j}}Y_{j}=\frac{1}{2}\int_{I}\left(u_{j}+1\right)Y_{j}.\label{eq:holmes}
@@ -975,7 +985,7 @@ that is,
 \end_inset
 
 We want to prove that to each 
-\begin_inset Formula $u_{j}\in\Psi'$
+\begin_inset Formula $u_{j}\in\Psi_{1}$
 \end_inset
 
  there corresponds a measurable 
@@ -991,17 +1001,19 @@ We want to prove that to each
 \begin_inset Formula $B_{j}$
 \end_inset
 
- looked for, we introduce the mappings, defining their part in the respective
- sides in the equality.
+ looked for, we introduce the mappings defining their 
+\emph on
+role
+\emph default
+ in the respective sides in the equality.
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-For 
 \begin_inset Formula $B_{j}$
 \end_inset
 
- this is the vector measure 
+ participates via the vector measure 
 \begin_inset Formula 
 \[
 \vec{\mu}_{j}(E)\coloneqq\int_{E}Y_{j},\quad E\in\mathcal{L}_{I},
@@ -1021,7 +1033,7 @@ For
 \begin_inset Formula $u_{j}$
 \end_inset
 
- this is the affine operator 
+ the dependency is through the affine operator 
 \begin_inset Formula $T_{j}:\Psi'\to\mathbb{R}^{n},$
 \end_inset
 
@@ -1044,7 +1056,7 @@ T_{j}(y)\coloneqq\frac{1}{2}\int_{I}\left(y(t)+1\right)\text{d}\vec{\mu}_{j},\qu
 -continuous, since for its linear part 
 \begin_inset Formula 
 \[
-L_{\infty}\ni y\mapsto\int_{I}yY_{j}\le\left\Vert y\right\Vert _{\infty}\vec{\mu}_{j}(I)\xrightarrow[\left\Vert y\right\Vert \to\infty]{}0.
+L_{\infty}\ni y\mapsto\int_{I}yY_{j}\le\left\Vert y\right\Vert _{\infty}\vec{\mu}_{j}(I)\xrightarrow[\left\Vert y\right\Vert \to0]{}0.
 \]
 
 \end_inset
@@ -1067,10 +1079,92 @@ noprefix "false"
 \begin_inset Formula $\vec{\mu}_{j}(B_{j})=Tu_{j}$
 \end_inset
 
-, and the statement we want to prove becomes the inclusion
+, and the statement we want to prove becomes the commutativity of the diagram
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% https://q.uiver.app/#q=WzAsMyxbMiwwLCJCX2pcXGluIFxcbWF0aGNhbCBMX0kiXSxbMSwxLCJcX
+G1hdGhiYiBSXm4iXSxbMCwwLCJcXFBzaVxcbmkgdV9qIl0sWzAsMSwiXFx2ZWNcXG11X2oiXSxbMiwxL
+CJUX2oiLDJdLFsyLDAsIlxcZXhpc3RzISIsMyx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZ
+CJ9fX1dXQ==
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\backslash
+begin{tikzcd}
+\end_layout
+
+\begin_layout Plain Layout
+
+	{u_j
+\backslash
+in 
+\backslash
+Psi} && {
+\backslash
+mathcal L_I 
+\backslash
+ni B_j} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	& {
+\backslash
+mathbb R^n}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{?}"{marking, allow upside down}, dotted, from=1-1, to=1-3]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{T_j}"', from=1-1, to=2-2]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{
+\backslash
+vec
+\backslash
+mu_j}", from=1-3, to=2-2]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzcd}
+\backslash
+]
+\end_layout
+
+\end_inset
+
+or the inclusion
 \begin_inset Formula 
 \[
-T_{j}\Psi'\subset\vec{\mu}_{j}(\mathcal{L}_{I}).
+T_{j}\Psi_{1}\subset\vec{\mu}_{j}(\mathcal{L}_{I}).
 \]
 
 \end_inset
@@ -1084,7 +1178,7 @@ By Lyapunov's theorem the RHS
 \end_inset
 
  is a convex compact, and since 
-\begin_inset Formula $\Psi'$
+\begin_inset Formula $\Psi_{1}$
 \end_inset
 
  is obviously convex and 
@@ -1105,12 +1199,12 @@ status open
 \end_inset
 
 linear, 
-\begin_inset Formula $T_{j}\Psi'$
+\begin_inset Formula $T_{j}\Psi_{1}$
 \end_inset
 
  is convex as well.
  Then it suffices to show 
-\begin_inset Formula $T_{j}\left(\Ext\Psi'\right)\subset\vec{\mu}_{j}(\mathcal{L}_{I}).$
+\begin_inset Formula $T_{j}\left(\Ext\Psi_{1}\right)\subset\vec{\mu}_{j}(\mathcal{L}_{I}).$
 \end_inset
 
 
@@ -1164,6 +1258,10 @@ T_{j}u=\vec{\mu}_{j}(E\cup\overline{E}').
 \end_layout
 
 \end_deeper
+\begin_layout Section
+Bang-Bang in a simplex
+\end_layout
+
 \begin_layout Definition
 From here on we fix a closed bounded interval 
 \begin_inset Formula $I$
@@ -1924,7 +2022,7 @@ noprefix "false"
 
 \end_inset
 
- below it follows 
+ below it follows that 
 \begin_inset Formula $u$
 \end_inset
 
