@@ -299,7 +299,7 @@ Now, by analogy with linear mappings, we define:
 \end{theorem}
 
 \begin{note}
-    A basis of a module $M$ can also be defined via the so-called \quotedblbase universal\quotedblright{} property: a subset $B \subseteq M$ is a basis if every function $f: B \to N$ in some module $N$ can be uniquely extended to a homomorphism.
+    A basis of a module $M$ can also be defined via the so-called universal property: a subset $B \subseteq M$ is a basis if every function $f: B \to N$ in some module $N$ can be uniquely extended to a homomorphism.
 \end{note}
 
 \begin{prop}
@@ -455,8 +455,8 @@ Now, we will examine how analogous statements for modules break:
         Conversely, the set $\{2\}$ is linearly independent, but we cannot extend it to a basis,
         since every element outside the span is dependent on the pair (in the same way as above).
 
-        Here, we directly see how the straightforward connection from vector spaces, \quotedblbase
-        linear span - linear independence,\quotedblright{} breaks apart.
+        Here, we directly see how the straightforward connection from vector spaces, \textit{
+        linear span - linear independence}, breaks apart.
 
         The reason we cannot remove any element of $\{2, 3\}$ while preserving the span is that
         neither can be expressed in terms of the other: $2 \neq \lambda \cdot 3$ for any $\lambda
@@ -564,7 +564,7 @@ the second, which serves as the first step toward the ultimate goal—the classi
 
 \subsection{Annihilator}
 We saw that in modules, it is possible to have $r \cdot m = 0$ for a nonzero scalar $r$ and a
-nonzero vector $m$. Let us study these \quotedblbase cross-structural\quotedblright{} zero divisors in more detail.
+nonzero vector $m$. Let us study these "cross-structural" zero divisors in more detail.
 
 \begin{deff}
     Let $M$ be a module over $R$.
@@ -710,7 +710,7 @@ Additionally, we assume commutativity of $R$ to ensure that the next statement
     It is worth noting that a torsion module is not necessarily finite, as in the examples involving
     residues. For instance, in the factor module $\mathbb{Q} / \Z$ over $\Z$, the elements are
     cosets of the form $\frac{p}{q} + \Z$, where $\frac{p}{q}$ is a proper fraction\footnote{If it
-    is not, we can separate out the largest integer part and \quotedblbase transfer\quotedblright{}
+    is not, we can separate out the largest integer part and "transfer"
     it to $\Z$. Formally, the elements in a coset differ by an element from the submodule, i.e., an
     integer, and we can then take the smallest positive representative.}, i.e., in the interval $[0,
     1)$. Clearly, then, multiplying (in the sense of "scalar multiplication") by the denominator $q$
@@ -879,8 +879,8 @@ We will now see that anomalies such as cross-structural zero divisors cannot occ
 \end{prop}
 
 The main reasoning here is that bases provide unique representations of zero, whereas torsion, or
-zero divisors, provide \emph{different} representations of zero. In a sense, bases \quotedblbase
-protect\quotedblright{} us from zero anomalies.
+zero divisors, provide \emph{different} representations of zero. In a sense, bases "protect" us from
+zero anomalies.
 
 \begin{proof}
     Let $M$ have a basis $B = \{b_i\}$, $m \in M$, and $r \cdot m = 0$. We will prove that $r = 0_R \lor m = 0_M$. We have:
@@ -1150,7 +1150,7 @@ With this definition, we can now formulate the main theorem:
 
     Nor does it state that, given a basis of $M'$, we can find a basis of $M$ that is a multiple of it.
 
-    What this theorem provides are \quotedblbase new\quotedblright{} bases for $M$ and $M'$.
+    What this theorem provides are "new" bases for $M$ and $M'$.
 
     In fact, such requests are not even reasonable. Consider $M = \Z^2$ with the basis $B = \{(1,0),
     (0,1)\}$ and its submodule $M' = \langle (1,1) \rangle \times \langle (-1, 1) \rangle$ with the
@@ -1168,12 +1168,12 @@ With this definition, we can now formulate the main theorem:
     its submodule.
 
     Finding aligned bases for these modules, in a sense, means finding such coordinate axes that,
-    pairwise, they are \quotedblbase parallel,\quotedblright{} and in each subsequent pair, the unit
+    pairwise, they are "parallel", and in each subsequent pair, the unit
     vector of the submodule is proportionally longer than that of the previous pair.
 
-    We begin with (one) \quotedblbase shortest\quotedblright{} coordinate axis. We examine all
-    possible linear functionals $\Hom(M, R)$ and choose one that \quotedblbase
-    preserves\quotedblright{} the most information about the submodule $M'$.
+    We begin with (one) "shortest" coordinate axis. We examine all
+    possible linear functionals $\Hom(M, R)$ and choose one that 
+    "preserves" the most information about the submodule $M'$.
 
     \myminipagebegin
     To do this, we consider the projections $\{\;\varphi(M') \;|\; \varphi \in \Hom(M,R) \;\}$ of
@@ -1363,8 +1363,7 @@ We can now prove the main result of this document using the statements formulate
 \section{Applications}%
 \paragraph{Jordan Normal Form}
 Let $T$ be a linear operator in the space $V = F^n$ over an algebraically closed field $F$. We can
-view $V$ as a \emph{module} over $F[T]$, the ring of polynomials with the variable \quotedblbase
-operator\quotedblright{} $T$.
+view $V$ as a \emph{module} over $F[T]$, the ring of polynomials with the variable "operator" $T$.
 
 In this perspective, for any vector $v \in V$, the scalar $c = a_m T^m + \cdots + a_1 T + a_0
 \text{Id}$ acts as:
