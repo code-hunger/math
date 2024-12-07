@@ -1,12 +1,12 @@
 \documentclass{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage[bulgarian]{babel}
+% \usepackage[bulgarian]{babel}
 
 \newif\ifusemulticols
 \newif\ifmobileview
 %\usemulticolstrue % true for two-column A4 format, false for sigle-column A6 format
-%\mobileviewtrue
+% \mobileviewtrue
 
 \ifusemulticols
     \usepackage[margin=0.5in]{geometry} % For compact feel
@@ -239,9 +239,9 @@ n \cdot a =
               then $r \cdot (k + n\Z) \coloneqq (r*k) + \Z$.
         \end{itemize}
 
-    \item Any ring homomorphism ${\varphi: R \to M}$ induces a module $M$ over $R$, where the
-      operation ${\cdot: R \times M \to M}$ is: $r \cdot m \coloneqq \varphi(r) *_M m$. We can think
-      of the ring $R$ \emph{acting} on $M$ through $\varphi$.
+    \item Any ring homomorphism ${\varphi: R \to M}$ induces a module $M$ over $R$, where the operation
+        $$\cdot: R \times M \to M$$ is: $r \cdot m \coloneqq \varphi(r) *_M m$. 
+        We can think of the ring $R$ \emph{acting} on $M$ through $\varphi$.
 \end{enumerate}
 
 \section{Concepts with Analogues in Linear Algebra}
@@ -270,9 +270,10 @@ Then $m - m' \in N$, and from the definition of a submodule, $r \cdot (m - m') \
         \item A set $\{m_1, \dots, m_k\} \subseteq M$ is called \newterm{linearly independent} if for any coefficients $\{r_i\}$, $\sum_i r_i m_i = 0$ implies $r_i = 0 \, \forall i$. A subset $S \subseteq M$ is called linearly independent if every finite subset of it is linearly independent.
 
         \item The \newterm{span} of the set $S \subseteq M$ is the set of all finite linear combinations of elements in $B$: 
-          $$\vecspan(B)=\left\{\; \sum_{i=1}^n r_i m_i \,\Big|\, r_i \in R, \{m_i\}_{i=1}^n \subseteq B \right\}.$$
-          We also say that $B$ \newterm{generates} the module $M$ if $\vecspan(B) = M$. 
-          If there exists such a finite $B$, we call $M$ a \newterm{finitely generated} module.
+            $$\vecspan(B)=\left\{\; \sum_{i=1}^n r_i m_i \,\Big|\, r_i \in R, \{m_i\}_{i=1}^n \subseteq B \right\}.$$
+            We also say that $B$ \newterm{generates} the module $M$ if $\vecspan(B) = M$. 
+            If there exists such a finite $B$, we call $M$ a \newterm{finitely generated} module.
+
         \item A subset $B \subseteq M$ is called a \newterm{basis} of $M$ if it is linearly independent and generates the module $M$.
     \end{itemize}
 \end{deff}
@@ -285,6 +286,7 @@ Now, by analogy with linear mappings, we define:
         \item $f$ is called a \newterm{homomorphism} of modules if it is a homomorphism of groups
             and, in addition, is consistent with scalar multiplication, i.e., $f(r \cdot m) = r \cdot
             f(m)$ for all $r \in R, m \in M$.
+
         \item If $f$ is a homomorphism and a bijection, then $f$ is called an \newterm{isomorphism},
             and the modules $M$ and $N$ are isomorphic.
 
@@ -402,10 +404,10 @@ To understand what happens with modules, we provide the following summary:
 \newcolumntype{L}{>{\centering\arraybackslash}p{0.5\linewidth}}
 \begin{table}[h]
     \begin{tabular}{L|L}
-        If $v \not\in \text{span}(S)$, then $v$ is independent of $S$. &
+        If $v \notin \text{span}(S)$, then $v$ is independent of $S$. &
         If $S$ is linearly dependent, then ${\exists v \in S}: {v \in \text{span}(S \setminus \{v\})}$ \\
         \hline
-        If $S$ is linearly independent, then $S$ can be extended to a basis. &
+        If $S$ is linearly independent, \mbox{then $S$ can be extended to a basis.} &
         If $\text{span}(S) = V$, then $S$ can be reduced to a basis.
     \end{tabular}%
 \end{table}
@@ -797,7 +799,6 @@ With the following proposition, we ensure that in the case of a finite basis, th
             theorem for the map: $$\left(\left(r_1, \ldots, r_k\right) + IR^k\right) \mapsto \left(r_1 + I, \ldots, r_k + I\right).$$
             This is clearly surjective, and its kernel is $IR^k$.
     \end{enumerate}
-
 \end{proof}
 
 This seemingly obvious statement might appear uninteresting to some and unworthy of attention.
@@ -1024,25 +1025,27 @@ This result can now be obtained as a corollary of the previous proposition:
             Assume all submodules of $R^n$ are free of rank at most $n$. 
             We will prove the statement for $M = R^{n+1}$.
 
-            \begin{minipage}{\linewidth}
-                \mywrapbegin{11}{r}{7cm}
+            \begin{minipage}[t]{\linewidth}
+                \mywrapbegin{12}{r}{7cm}
                 \asyinclude{free_submodules.asy}
                 \mywrapend
-
                 To utilize the induction hypothesis, consider $M$ as the direct sum $R \oplus R^n$
-                and its projection $\pi: (R \oplus R^n) \twoheadrightarrow \pi(M) \cong R^n$ onto
-                the second component: $$\pi(r_1, \ldots, r_{n+1}) = \left(0, r_2, \ldots, r_{n+1}\right).$$
+                and its projection 
+                $$\pi: (R \oplus R^n) \twoheadrightarrow \pi(M) \cong R^n$$
+                onto the second component: $$\pi(r_1, \ldots, r_{n+1}) = \left(0, r_2, \ldots, r_{n+1}\right).$$
                 This decomposes $M$ into two parts: $\image \pi$ and $\Ker \pi$.
 
                 As a projection, $\pi$ satisfies $\pi \circ \pi = \pi$. Let us consider its
                 restriction to $N$: $\overline{\pi} \coloneqq \pi|_N : N \to R^n$.
+
+                Applying the previous lemma with a minor adjustment\footnotemark, we
+                obtain: $$N \cong \Ker \overline{\pi} \oplus \image \overline{\pi}.$$
             \end{minipage}
 
-            Applying the previous lemma with a minor adjustment\footnote{It is not an issue to
-            assume $\pi(M) \le N$, as we can always find an isomorphic copy $N'$ of $\pi(N)$ within
-            $N$ with a corresponding isomorphism $h : \pi(N) \cong N'$, such that $h \circ
-            \overline{\pi} = \text{id}$, and then prove the statement for $\pi' = h \circ \pi$.}, we
-            obtain: $$N \cong \Ker \overline{\pi} \oplus \image \overline{\pi}.$$
+            \footnotetext{It is not an issue to
+                assume $\pi(M) \le N$, as we can always find an isomorphic copy $N'$ of $\pi(N)$ within
+                $N$ with a corresponding isomorphism $h : \pi(N) \cong N'$, such that $h \circ
+            \overline{\pi} = \text{id}$, and then prove the statement for $\pi' = h \circ \pi$.}
 
             Thus, $N = \Ker \overline{\pi} \oplus \image \overline{\pi}$. Both components of the sum are free:
             \begin{itemize}
@@ -1175,37 +1178,39 @@ With this definition, we can now formulate the main theorem:
     possible linear functionals $\Hom(M, R)$ and choose one that 
     "preserves" the most information about the submodule $M'$.
 
-    % \myminipagebegin
     To do this, we consider the projections $\{\;\varphi(M') \;|\; \varphi \in \Hom(M,R) \;\}$ of
     $M'$ onto $R$. These are submodules, hence ideals, and we can select the largest among them. 
     Let $\varphi$ be the projection such that $\varphi(M') \le R$ is maximal. Since $R$ is a principal
     ideal domain, $\varphi(M')$ is generated by some scalar $a_1 \neq 0$. Denote one of its preimages by $v'$.
 
-    \mywrapbegin{12}{r}{8cm}
-    \asyinclude{aligned_proof_first.asy}
-    \mywrapend
-
     We will check the following:
     \begin{miniprop}
         Every image of $v'$ under a linear functional $\widehat{\varphi}$ is a multiple of $a_1$.
     \end{miniprop}
+
     \begin{proof}
-        On the language of ideals, the statement essentially says that $\langle a_1 \rangle
-        \supseteq \langle \widehat{\varphi}(v') \rangle$.
+        On the language of ideals, the statement essentially says that 
+        $\langle a_1 \rangle \supseteq \langle \widehat{\varphi}(v') \rangle$.
 
-        Consider the greatest common divisor (GCD) $d$ of $a_1$ and $\langle \widehat{\varphi}(v') \rangle$. 
-        By Bézout's identity, we have:
-        $$d = r' a_1 + r'' \widehat{\varphi}(v') = r' \varphi(v') + r'' \widehat{\varphi}(v'),$$
-        meaning $d$ is a linear combination of two images of $v'$ under two linear functionals. 
-        Thus, $d$ is itself an image of $v'$ under the linear combination:
-        $$\psi = r' \varphi + r'' \widehat{\varphi} : M' \to R.$$
+        \begin{minipage}[t]{\linewidth}
+            \mywrapbegin{13}{rt}{.5\linewidth}\vspace{-\intextsep}
+            \asyinclude{aligned_proof_first.asy}
+            \mywrapend
 
-        This leads to the following inclusions:
-        \begin{enumerate}
-            \item $\langle d \rangle \le \psi(M')$, because $\image \psi$ is an ideal of $R$ and is also a principal ideal domain.
-            \item $\langle d \rangle \supseteq \langle \widehat{\varphi}(v') \rangle \cup \langle
-                a_1 \rangle$, since $d$ is the GCD of $\widehat{\varphi}(v')$ and $a_1$.
-        \end{enumerate}
+            Consider the greatest common divisor (GCD) $d$ of $a_1$ and $\langle \widehat{\varphi}(v') \rangle$. 
+            By Bézout's identity, we have:
+            $$d = r' a_1 + r'' \widehat{\varphi}(v') = r' \varphi(v') + r'' \widehat{\varphi}(v'),$$
+            meaning $d$ is a linear combination of two images of $v'$ under two linear functionals. 
+            Thus, $d$ is itself an image of $v'$ under the linear combination:
+            $$\psi = r' \varphi + r'' \widehat{\varphi} : M' \to R.$$
+            This leads to the following inclusions:
+            \begin{enumerate}
+                \item $\langle d \rangle \le \psi(M')$, because $\image \psi$ is an ideal of $R$ and is also a principal ideal domain.
+                \item $\langle d \rangle \supseteq \langle \widehat{\varphi}(v') \rangle \cup \langle
+                    a_1 \rangle$, since $d$ is the GCD of $\widehat{\varphi}(v')$ and $a_1$.
+            \end{enumerate}
+
+        \end{minipage}
 
         We obtained that for any linear functional 
         $\widehat \varphi$, $\varphi(N) = \langle a_1 \rangle \le \langle d \rangle \le \psi(N)$. 
@@ -1216,26 +1221,27 @@ With this definition, we can now formulate the main theorem:
         Thus, it turns out that:
         $$\langle a_1 \rangle + \langle \widehat{\varphi}(v') \rangle = \langle d \rangle = \langle a_1 \rangle,$$
         i.e., $\langle a_1 \rangle \supseteq \langle \widehat{\varphi}(v') \rangle$, and $a_1$ divides $\widehat{\varphi}(v')$ for any $\widehat{\varphi} : \Hom(M, R)$.
+
     \end{proof}
 
-    % \myminipageend
+    \begin{minipage}[t]{\linewidth}
+        \mywrapbegin{10}{r}{7cm}
+        \asyinclude{aligned_proof_second.asy}
+        \mywrapend
 
-    \mywrapbegin{11}{r}{7cm}
-    \asyinclude{aligned_proof_second.asy}
-    \mywrapend
+        Having established that every projection of $v'$ onto the ring is a multiple of $a_1$, let us
+        examine what happens when we decompose $v'$ in some basis of $M$.
 
-    Having established that every projection of $v'$ onto the ring is a multiple of $a_1$, let us
-    examine what happens when we decompose $v'$ in some basis of $M$.
+        Let $\{ e_i \}$ be a basis of $M$. Then: $$v' = \sum_i \lambda_i e_i.$$
 
-    Let $\{ e_i \}$ be a basis of $M$. Then: $$v' = \sum_i \lambda_i e_i.$$
-
-    Each coordinate $\lambda_i \in R$ of $v'$ is an image under a linear functional projecting the
-    $i$-th coordinate of any vector in $M$ onto the ring.
-    From the above reasoning, every $\lambda_i$ is a multiple of $a_1$, so we can write $\lambda_i =
-    a_1 \lambda_i'$. Therefore: $$v' = \sum_i \lambda_i e_i = \sum_i a_1 \lambda_i' e_i = a_1 \sum_i
-    \lambda_i' e_i = a_1 v,$$ 
-    where $v = \sum_i \lambda_i' e_i$. 
-    We have expressed $v'$ as the product of another vector and $a_1$.
+        Each coordinate $\lambda_i \in R$ of $v'$ is an image under a linear functional projecting the
+        $i$-th coordinate of any vector in $M$ onto the ring.
+        From the above reasoning, every $\lambda_i$ is a multiple of $a_1$, so we can write $\lambda_i =
+        a_1 \lambda_i'$. Therefore: $$v' = \sum_i \lambda_i e_i = \sum_i a_1 \lambda_i' e_i = a_1 \sum_i
+        \lambda_i' e_i = a_1 v,$$ 
+        where $v = \sum_i \lambda_i' e_i$. 
+        We have expressed $v'$ as the product of another vector and $a_1$.
+    \end{minipage}
 
     Applying $\varphi$ to both sides:
     \begin{align*}
@@ -1251,14 +1257,11 @@ With this definition, we can now formulate the main theorem:
     $$\langle v \rangle \stackrel{\varphi}{\mapsto} \langle 1_R \rangle = R.$$
     This suggests that we should take $v$ in the basis of $M$, and $a_1 v$ in the basis of $M'$.
 
-    \mywrapbegin{21}{r}{9cm}
-    \asyinclude{aligned_proof_decomp.asy}
-    \mywrapend
-
     Thus, the first aligned axes are $\langle v \rangle$ and $\langle v' \rangle$.
     Let's find the remaining axes!
 
-    We represent $M$ and $M'$ as direct sums of the first axes with submodules of lower dimensions.
+    % \mywrapbegin{13}{t}{8cm}
+    % \mywrapend
 
     \begin{enumerate}
         \item $M \cong \Ker \varphi \oplus \langle v \rangle$, using Lemma \ref{prop:idemp_endo_iso}
@@ -1269,6 +1272,8 @@ With this definition, we can now formulate the main theorem:
             \ref{prop:idemp_endo_iso}, but for the restriction $\varphi|_{M'} : M' \to \varphi(M') =
             \langle a_1 v \rangle = \langle v' \rangle$.
     \end{enumerate}
+
+    \asyinclude{aligned_proof_decomp.asy}
 
     We are now ready to proceed with the inductive step.
 

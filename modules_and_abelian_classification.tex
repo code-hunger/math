@@ -1233,8 +1233,8 @@ $$\Ann(\overline 7) = \{ r\in \Z \,|\, r\cdot \overline 7=0\}=\{r\in\Z\,|\,7r\eq
     Всяка координата $\lambda_i \in R$ на $v'$ е образ на линеен функционал, проектиращ $i$-тата
     координата на кой да е вектор от $M$ върху пръстена.
     По горните разсъждения, всяко $\lambda_i$ е кратно на $a_i$ и можем да го напишем като
-    $\lambda_i = a_1 \lambda_i'$. Тогава: $$v' = \sum_i \lambda_i e_i = \sum_i a_1 \lambda_i e_i =
-    a_1 \sum_i \lambda_i' e_i = a_1 v,$$
+    $\lambda_i = a_1 \lambda_i'$. 
+    Тогава: $$v' = \sum_i \lambda_i e_i = \sum_i a_1 \lambda_i e_i = a_1 \sum_i \lambda_i' e_i = a_1 v,$$
     полагайки $v = \sum_i \lambda_i'e_i$.
     Представихме $v'$ като умножение на друг вектор с $a_1$!
 
@@ -1245,11 +1245,9 @@ $$\Ann(\overline 7) = \{ r\in \Z \,|\, r\cdot \overline 7=0\}=\{r\in\Z\,|\,7r\eq
         a_1 ( 1 &- \varphi(v) ) = 0\\
         a_1 \neq 0 &\Rightarrow \varphi(v) = 1
     \end{align*}
-    И така, сега имаме вектори $v \in M, av \in N$, и проекция $\varphi$, за която $v
-    \stackrel{\varphi}\mapsto 1_R$.
+    И така, сега имаме вектори $v \in M, av \in N$, и проекция $\varphi$, за която $v \overset{\varphi}\mapsto 1_R$.
 
-    А ако погледнем цялата ос $\langle v \rangle$, то последното ни дава $\langle v \rangle
-    \stackrel{\varphi}\mapsto \langle 1_R \rangle = R$, което  подсказва, че ще искаме да вземем
+    А ако погледнем цялата ос $\langle v\rangle$, то последното ни дава $\langle v\rangle \overset{\varphi} \mapsto \langle 1_R\rangle = R$, което  подсказва, че ще искаме да вземем
     $v$ в базиса на $M$, а $v=a_1v$ - в базиса на $N$.
 
     \mywrapbegin{21}{r}{9cm}
@@ -1262,13 +1260,12 @@ $$\Ann(\overline 7) = \{ r\in \Z \,|\, r\cdot \overline 7=0\}=\{r\in\Z\,|\,7r\eq
     Представяме $M$ и $N$ като директни суми на първите оси с подмодули от по-ниски размерности:
 
     \begin{enumerate}
-        \item $M \cong \Ker \varphi \oplus \langle v \rangle$, като използваме %
-            лема \ref{prop:idemp_endo_iso} за изображението $(r \mapsto rv) \circ \varphi$ (тук
-            $r\mapsto rv$ е изоморфизъм от $R$ в $\langle v \rangle$).
+        \item $M \cong \Ker \varphi \oplus \langle v \rangle$, като използваме
+            лема \ref{prop:idemp_endo_iso} за изображението $(r \mapsto rv) \circ \varphi$ 
+            (тук $r\mapsto rv$ е изоморфизъм от $R$ в $\langle v \rangle$).
 
-        \item $N \cong (N \cap \Ker \varphi) \oplus \langle av \rangle$, отново с лема
-            \ref{prop:idemp_endo_iso}, но за рестрикцията $\varphi|_N: N \to \varphi(N) = \langle av
-            \rangle = \left(v'\right)$.
+        \item $N \cong (N \cap \Ker \varphi) \oplus \langle av \rangle$, отново с лема \ref{prop:idemp_endo_iso},
+          но за рестрикцията $\varphi|_N: N \to \varphi(N) = \langle av\rangle = \left(v'\right)$.
     \end{enumerate}
 
     Готови сме да задвижим индуктивната стъпка.
