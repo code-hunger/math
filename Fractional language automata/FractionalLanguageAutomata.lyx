@@ -1,0 +1,6211 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+%\usepackage{pstricks}
+\usepackage{pst-plot}
+\usepackage{pst-eps}
+\usepackage{pst-grad}
+\usepackage{extarrows}% http://ctan.org/pkg/extarrows
+\usepackage{quiver}
+
+\AtBeginDocument{
+  \renewcommand{\remarkname}{Discussion}
+}
+\usetikzlibrary{positioning,arrows.meta}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+enumitem
+\end_modules
+\maintain_unincluded_children no
+\language english
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+On the superregularity of 
+\begin_inset Formula $\bigcup_{k}\frac{1}{k}L$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\Hom}{\operatorname{Hom}}
+{\text{Hom}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Intro
+\end_layout
+
+\begin_layout Standard
+Given a regular language 
+\begin_inset Formula $L$
+\end_inset
+
+,
+ there is a well-known procedure for transforming its automata to one recognizing the language
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{1}{2}L=\{w\in\Sigma^{*}:ww'\in L\text{ for some }w'\text{ with }|w|=|w'|\}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\frac{1}{2}L$
+\end_inset
+
+ of all prefixes of words in 
+\begin_inset Formula $L$
+\end_inset
+
+ that are exactly half the length,
+ so 
+\begin_inset Formula $\frac{1}{2}L$
+\end_inset
+
+ is again regular.
+ The same applies to 
+\begin_inset Formula $\frac{1}{k}L$
+\end_inset
+
+ for any 
+\begin_inset Formula $k\in\mathbb{N}_{\ge1}$
+\end_inset
+
+.
+ The construction relies on back pointers moving from the final states a fixed number of steps (
+\begin_inset Formula $k-1$
+\end_inset
+
+) at a time.
+\end_layout
+
+\begin_layout Standard
+We show how such an automata can be constructed recognizing any union 
+\begin_inset Formula $\bigcup_{k}\frac{1}{k}L$
+\end_inset
+
+ and still be finite.
+ The index set is omitted because 
+\begin_inset Formula $k$
+\end_inset
+
+ can surprisingly range over any subset 
+\begin_inset Formula $B\subset\mathbb{N}$
+\end_inset
+
+ and the resulting language is still regular.
+ We prove a certain regularity in the way superpositions of the mentioned backpointers (simultanously for all 
+\begin_inset Formula $k$
+\end_inset
+
+) move through the automata as the input word is read,
+ which allows to reduce their otherwise infiniteness to a finite set of transitions.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Notation of 
+\begin_inset Formula $K$
+\end_inset
+
+-linear automata and languages
+\end_layout
+
+\begin_layout Standard
+This article is based on the language presented in 
+\emph on
+A Bialgebraic Approach to Automata and Formal Language Theory
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+target "https://arxiv.org/abs/0807.4553"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\emph default
+ by James Worthington.
+ This approach suits us for one main reason:
+ it renders correctness proofs trivial – definition (un)packing and application of linearity properties is all we apply.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+My gut feel about this is that the backpointers (and the final states in particular) that we use in the cache are philosophically 
+\emph on
+dual
+\emph default
+ to 
+\begin_inset Quotes eld
+\end_inset
+
+normal
+\begin_inset Quotes erd
+\end_inset
+
+ states.
+ While states are covariant w.r.t.
+ reading,
+ backpointers are contravariant:
+ a word 
+\begin_inset Formula $w$
+\end_inset
+
+ moves a state 
+\emph on
+forward
+\emph default
+ but a backpointer 
+\emph on
+backward
+\emph default
+.
+ Contravariance is well modelled in function arguments and linear algebra exploits this thoroughly.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We summarize the relevant concepts for understanding this article in this first section,
+ along with some interpretation.
+ Throughout,
+ we use:
+\end_layout
+
+\begin_layout Itemize
+a fixed semiring 
+\begin_inset Formula $K$
+\end_inset
+
+ quantifying 
+\begin_inset Quotes eld
+\end_inset
+
+presense
+\begin_inset Quotes erd
+\end_inset
+
+ of words and automata states.
+ For example,
+ 
+\begin_inset Formula $\mathbb{B}\coloneqq\left\langle \{0,1\},\lor,\land\right\rangle $
+\end_inset
+
+ captures sort of a 
+\begin_inset Quotes eld
+\end_inset
+
+strict
+\begin_inset Quotes erd
+\end_inset
+
+ presense:
+ a word is either present or not.
+\end_layout
+
+\begin_layout Itemize
+a fixed finite alphabet 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+the free 
+\begin_inset Formula $K$
+\end_inset
+
+-algebra 
+\begin_inset Formula $A$
+\end_inset
+
+ generated by 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+ That is,
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ consists of all (formal) finite sums of 
+\begin_inset Formula $K$
+\end_inset
+
+-weighted words over 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A_{n}$
+\end_inset
+
+ to denote the superposition of words of length 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+:
+ 
+\begin_inset Formula $A_{n}\coloneqq\sum_{w\in\Sigma^{n}}w$
+\end_inset
+
+.
+ As an actual element of 
+\begin_inset Formula $A$
+\end_inset
+
+,
+ and not just a set of words,
+ we get e.g.
+ the succinct notation 
+\begin_inset Formula $w\cdot A_{|w|}$
+\end_inset
+
+ for all words with prefix 
+\begin_inset Formula $w$
+\end_inset
+
+ that are double its length.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Hom(M,M')$
+\end_inset
+
+ to denote semimodule homomorphisms between semimodules 
+\begin_inset Formula $M$
+\end_inset
+
+ and 
+\begin_inset Formula $M'$
+\end_inset
+
+.
+ We use freely generated modules only,
+ which allow to define homomorphisms by their action on the generators.
+ Thus a linear map from the algebra 
+\begin_inset Formula $A$
+\end_inset
+
+ above is defined by an action over pure words,
+ 
+\begin_inset Formula $\Sigma^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+the word 
+\series bold
+cache
+\series default
+ to mean additional tensor product terms to an existing automata's states.
+ This allows us to view an automata with states 
+\begin_inset Formula $M\otimes N$
+\end_inset
+
+ conceptually as an automata with states 
+\begin_inset Formula $M$
+\end_inset
+
+ and possible cache values in 
+\begin_inset Formula $N$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+for an arbitrary set 
+\begin_inset Formula $S$
+\end_inset
+
+,
+ 
+\begin_inset Formula $K^{S}$
+\end_inset
+
+ to denote the free semimodule generated by 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ 
+\begin_inset Formula $K^{S}$
+\end_inset
+
+ consists of (formal,
+ finite) sums 
+\begin_inset Formula $\sum_{j}k_{j}s_{j}$
+\end_inset
+
+ for elements 
+\begin_inset Formula $k_{j}\in K,s_{j}\in S$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Thus the algebra 
+\begin_inset Formula $A$
+\end_inset
+
+ from above is also the free 
+\begin_inset Formula $K$
+\end_inset
+
+-semimodule over 
+\begin_inset Formula $\Sigma^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+the symbol 
+\begin_inset Formula $\coloneqq$
+\end_inset
+
+ to define the value of a newly introduced term,
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\leftrightharpoons$
+\end_inset
+
+ to define relations and boolean formulas,
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\equiv$
+\end_inset
+
+ to denote an equality which is a direct application of a definition.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\subset$
+\end_inset
+
+ to denote 
+\emph on
+non-strict
+\emph default
+ subsets.
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\End}{\operatorname{End}}
+{\text{End}}
+\end_inset
+
+Denote 
+\begin_inset Formula $\Hom(M,M)$
+\end_inset
+
+ by 
+\begin_inset Formula $\End M$
+\end_inset
+
+ and 
+\begin_inset Formula $\Hom(M,K)$
+\end_inset
+
+ by 
+\begin_inset Formula $M^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+A 
+\emph on
+language
+\emph default
+ is a homomorphism 
+\begin_inset Formula $L\in\Hom(A,K)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+That is,
+ a language is determined by the 
+\begin_inset Formula $K$
+\end_inset
+
+-quantified presense of words 
+\begin_inset Formula $L(w)\in K$
+\end_inset
+
+ in it.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+A 
+\begin_inset Formula $K$
+\end_inset
+
+
+\emph on
+-linear
+\emph default
+ 
+\emph on
+automata
+\emph default
+ 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ is a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzcd}[column sep=2pt,row sep=6pt,anchor=base]
+\end_layout
+
+\begin_layout Plain Layout
+
+	& {A
+\backslash
+otimes 
+\backslash
+bullet} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	{*} & 
+\backslash
+bullet & K
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow[from=1-2,
+ to=2-2]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow[from=2-1,
+ to=2-2]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow[from=2-2,
+ to=2-3]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzcd}
+\end_layout
+
+\end_inset
+
+-shaped diagram
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% https://q.uiver.app/#q=WzAsNCxbMCwxLCIqIl0sWzEsMSwiTSJdLFsyLDEsIksiXSxbMSwwLCJBXFxvdGltZXMgTSJdLFswLDEsInMiXSxbMiwxLCJcXE9tZWdhIiwyXSxbMywxLCJcXHRyaWFuZ2xlbGVmdCJdXQ== 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\backslash
+begin{tikzcd}
+\end_layout
+
+\begin_layout Plain Layout
+
+	& {M
+\backslash
+otimes A} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	{*} & M & K
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["
+\backslash
+triangleleft",
+ from=1-2,
+ to=2-2]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["s",
+ from=2-1,
+ to=2-2]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["
+\backslash
+Omega",
+ from=2-2,
+ to=2-3]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzcd}
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+defined by the data
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+we omit mentioning 
+\begin_inset Formula $A$
+\end_inset
+
+ here despite its presense in the diagram because it's defined by the fixed alphabet 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ in the whole article.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathcal{A}=\left(s,M,\triangleleft,\Omega\right)$
+\end_inset
+
+ where
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $M$
+\end_inset
+
+ is a 
+\begin_inset Formula $K$
+\end_inset
+
+-semimodule of (linear combinations of) states;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\triangleleft$
+\end_inset
+
+ is an action of 
+\begin_inset Formula $A$
+\end_inset
+
+ on 
+\begin_inset Formula $M$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\triangleleft\in\Hom(M\otimes A,M)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+By the classical isomorphism
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+it holds at least if we assume 
+\begin_inset Formula $M$
+\end_inset
+
+ is finitely & freely generated,
+ which is a luxury we can afford here.
+ We only construct free semimodules and tensor products of existing semimodules,
+ so if our starting automata are modеled by free semimodules we're all good.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\Hom(M\otimes A,M)\cong\Hom(A,\End M)$
+\end_inset
+
+ we interpret 
+\begin_inset Formula $\triangleleft$
+\end_inset
+
+ as a state transition 
+\begin_inset Quotes eld
+\end_inset
+
+read word
+\begin_inset Quotes erd
+\end_inset
+
+ map 
+\begin_inset Formula 
+\[
+\triangleleft:A\to\End M
+\]
+
+\end_inset
+
+ that is 
+\begin_inset Formula $K$
+\end_inset
+
+-linear and also preserves algebra multiplication:
+ reading a word 
+\begin_inset Formula $w\cdot w'$
+\end_inset
+
+ is the same as reading 
+\begin_inset Formula $w$
+\end_inset
+
+ and then 
+\begin_inset Formula $w'$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+m\triangleleft(w\cdot w')=(m\triangleleft w)\triangleleft w',
+\]
+
+\end_inset
+
+ or just
+\begin_inset Formula 
+\[
+\triangleleft(ww')=(\triangleleft w')\circ(\triangleleft w),
+\]
+
+\end_inset
+
+ an equality in 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\End M$
+\end_inset
+
+ (composition in the last equality is reversed because of how 
+\begin_inset Formula $\circ$
+\end_inset
+
+ works 
+\begin_inset Formula $\frownie$
+\end_inset
+
+).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $s\in M$
+\end_inset
+
+ is a start state;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Omega\in\Hom(M,K)$
+\end_inset
+
+ is an 
+\begin_inset Formula $\Omega$
+\end_inset
+
+bservation function.
+\begin_inset Newline newline
+\end_inset
+
+For example,
+ with 
+\begin_inset Formula $K=\mathbb{B}$
+\end_inset
+
+,
+ a state
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+actually any superpositions of states
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $m\in M$
+\end_inset
+
+ is 
+\begin_inset Formula $K$
+\end_inset
+
+-final if 
+\begin_inset Formula $\Omega(m)$
+\end_inset
+
+ outputs 
+\begin_inset Quotes eld
+\end_inset
+
+presense
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\Omega(m)=\top$
+\end_inset
+
+,
+ otherwise it is non-final.
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+Such automata are intrinsically non-deterministic.
+ A classical deterministic automata with a state set 
+\begin_inset Formula $Q$
+\end_inset
+
+ is realized as a 
+\begin_inset Formula $\mathbb{B}$
+\end_inset
+
+-linear one by taking the free semimodule 
+\begin_inset Formula $M=\mathbb{B}^{Q}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+For an automata 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+,
+ the 
+\emph on
+language
+\emph default
+ of the automata is the homomorphism 
+\begin_inset Formula $\rho_{\mathcal{A}}\in\Hom(A,K)$
+\end_inset
+
+ defined by completing 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\backslash
+begin{tikzcd}
+\end_layout
+
+\begin_layout Plain Layout
+
+	A
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+arrow[
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+otimes s
+\begin_inset Quotes erd
+\end_inset
+
+,
+ r]
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+arrow[
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+rho
+\begin_inset Quotes erd
+\end_inset
+
+{description},
+ rrd,
+ dotted]
+\end_layout
+
+\begin_layout Plain Layout
+
+	& M
+\backslash
+otimes A
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+arrow[
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+triangleleft
+\begin_inset Quotes erd
+\end_inset
+
+,
+ r]
+\end_layout
+
+\begin_layout Plain Layout
+
+	& M
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+arrow[
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+Omega
+\begin_inset Quotes erd
+\end_inset
+
+,
+ d]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+&& K,
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzcd}
+\backslash
+]
+\end_layout
+
+\end_inset
+
+i.e.
+ 
+\begin_inset Formula 
+\[
+\rho_{\mathcal{A}}(w)=\Omega(s\triangleleft w)
+\]
+
+\end_inset
+
+ for all words 
+\begin_inset Formula $w\in\Sigma^{*}$
+\end_inset
+
+,
+ extended linearly.
+\end_layout
+
+\begin_layout Definition
+This should be self-explanatory:
+ a word 
+\begin_inset Formula $w\in\Sigma^{*}$
+\end_inset
+
+ is 
+\begin_inset Formula $K$
+\end_inset
+
+-recognized by 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ if the state it reaches,
+ 
+\begin_inset Formula $s\triangleleft w$
+\end_inset
+
+,
+ is 
+\begin_inset Formula $K$
+\end_inset
+
+-final.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+doesn't work nicely because in the 1/k construction we'd have to treat 
+\begin_inset Formula $\Sigma^{n}$
+\end_inset
+
+ not as a set but as an expression 
+\begin_inset Formula $\sum_{w\in\Sigma^{n}}w$
+\end_inset
+
+ in 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $A$
+\end_inset
+
+ acts on a semimodule 
+\begin_inset Formula $M$
+\end_inset
+
+,
+ it acts naturally on 
+\begin_inset Formula $M^{*}=\Hom(M,K)$
+\end_inset
+
+,
+ too:
+\end_layout
+
+\begin_layout Definition
+\begin_inset CommandInset label
+LatexCommand label
+name "def:dual-action-def"
+
+\end_inset
+
+
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Dual action
+\end_layout
+
+\end_inset
+
+ For 
+\begin_inset Formula $w\in A,m^{*}\in M^{*}$
+\end_inset
+
+,
+ define 
+\begin_inset Formula $m^{*}\triangleleft^{*}w\in M^{*}$
+\end_inset
+
+ by
+\begin_inset Formula 
+\[
+(m^{*}\triangleleft^{*}w)(m)\coloneqq m^{*}(m\triangleleft w).
+\]
+
+\end_inset
+
+Or,
+ in point-free style,
+\begin_inset Formula 
+\begin{gather*}
+\triangleleft^{*}:A\otimes M^{*}\to M^{*}\\
+m^{*}\triangleleft^{*}w\coloneqq m^{*}\circ(\triangleleft w).
+\end{gather*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:dual-action-compatibility"
+
+\end_inset
+
+An action 
+\begin_inset Formula $M\triangleleft A$
+\end_inset
+
+ is compatible with its dual:
+\begin_inset Formula 
+\[
+(m^{*}\triangleleft^{*}w')(m\triangleleft w)=m^{*}(m\triangleleft ww')
+\]
+
+\end_inset
+
+ for all 
+\begin_inset Formula $m^{*}\in M^{*},m\in M,w,w'\in\Sigma^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Multiplicativity of 
+\begin_inset Formula $\triangleleft$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+\begin_inset Formula $\frac{1}{k}$
+\end_inset
+
+ on languages and automata
+\end_layout
+
+\begin_layout Definition*
+For 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+ and 
+\begin_inset Formula $w,w'\in\Sigma^{*}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $w$
+\end_inset
+
+ is 
+\begin_inset Formula $\frac{1}{k}$
+\end_inset
+
+-long prefix of 
+\begin_inset Formula $ww'$
+\end_inset
+
+ if 
+\begin_inset Formula 
+\[
+k\left|w\right|=\left|ww'\right|.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+preliminary
+\end_layout
+
+\end_inset
+
+For 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+ and a language 
+\begin_inset Formula $L\in\Hom(A,K)$
+\end_inset
+
+,
+ define the language 
+\begin_inset Formula $\frac{1}{k}L$
+\end_inset
+
+ of all 
+\begin_inset Formula $\frac{1}{k}$
+\end_inset
+
+-long prefixes of all words in 
+\begin_inset Formula $L$
+\end_inset
+
+,
+ 
+\begin_inset Formula 
+\[
+\frac{1}{k}L(w)\coloneqq\sum_{w'\in\Sigma^{*}}^{k|w|=|ww'|}L(ww').
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example*
+For 
+\begin_inset Formula $\Sigma=\{a,b\}$
+\end_inset
+
+,
+ 
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2}L(ab) & =L(abaa)+L(abab)+L(abba)+L(abbb)
+\end{align*}
+
+\end_inset
+
+so 
+\begin_inset Formula $ab$
+\end_inset
+
+ is in 
+\begin_inset Formula $\frac{1}{2}L$
+\end_inset
+
+ iff at least one of 
+\begin_inset Formula $abaa,abab,abba,abbb$
+\end_inset
+
+ is in 
+\begin_inset Formula $L$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark*
+The operation 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+ is known to preserve regularity of languages,
+ and the proof straightforwardly generalizes to 
+\begin_inset Formula $\frac{1}{k}$
+\end_inset
+
+.
+ The 
+\begin_inset Formula $K$
+\end_inset
+
+-linear translation of the construction has the interesting effect that its correctness proof is a direct application of definitions,
+ while the classical way requires one to prove a state invariant upfront.
+ The 
+\begin_inset Formula $K$
+\end_inset
+
+-linear construction seems to somehow already embed this invariant,
+ so it is worth it to present it and prove it here.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+Linearity of 
+\begin_inset Formula $L$
+\end_inset
+
+ implies we can rewrite
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{k}L(w)\equiv\sum_{w'\in\Sigma^{*}}^{k|w|=|ww'|}L(ww') & \overset{\text{lin}}{=}L\Big(w\cdot\sum_{w'\in\Sigma^{*}}^{k\left|w\right|=\left|ww'\right|}w'\Big)\\
+ & =L\left(wA_{(k-1)\left|w\right|}\right)
+\end{align*}
+
+\end_inset
+
+so we can redefine more succinctly:
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{1}{k}L$
+\end_inset
+
+,
+ again
+\end_layout
+
+\end_inset
+
+For a language 
+\begin_inset Formula $L$
+\end_inset
+
+ and 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+,
+ 
+\begin_inset Formula 
+\[
+\frac{1}{k}L(w)\coloneqq L\left(wA_{(k-1)\left|w\right|}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\tr}{\textrm{{tr}}}
+{\text{tr}}
+\end_inset
+
+
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+A well-known automata recognizing 
+\begin_inset Formula $\frac{1}{2}L$
+\end_inset
+
+ is formed from 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ by adding cache that tracks from the back the states from which a final state is reachable in the same number of steps as the length of the word currently being read:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$$
+\backslash
+begin{tikzpicture}[>=Stealth,
+\end_layout
+
+\begin_layout Plain Layout
+
+  state/.style={circle,draw,inner sep=1.5pt,minimum size=8pt},
+\end_layout
+
+\begin_layout Plain Layout
+
+  node distance=10mm]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  % left three states
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node[state] (s1) {};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node[state,
+ right=of s1] (s2) {};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node[state,
+ right=of s2] (s3) {$q$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  % middle dots
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+coordinate (mid) at ($(s3.east)+(12mm,0)$);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+foreach 
+\backslash
+dx in {-0.12,0,0.12}
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+fill ($(mid)+(
+\backslash
+dx,0)$) circle (0.6pt);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  % right three states
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node[state,
+ fill=lightgray] (s4) at ($(mid)+(12mm,0)$) {$c$};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node[state,
+ right=of s4] (s5) {};
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node[state,
+ right=of s5,
+ double] (s6) {};
+\end_layout
+
+\begin_layout Plain Layout
+
+  % and some branching state
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node[state,
+ fill=lightgray,
+ below=1em of s4] (s7) {$c$};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  % arrows with labels
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[->] ($(s1)-(1.5em,0)$) -- (s1);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[->] (s1) -- node[below]{$a_1$} (s2);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[->] (s2) -- node[below]{$a_2$} (s3);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  % arrows interrupted by dots
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+coordinate (beforeDots) at ($(mid)+(-4mm,0)$);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+coordinate (afterDots)  at ($(mid)+( 4mm,0)$);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[->] (s3) -- node[below]{$a_3$} (beforeDots);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[->] (afterDots) -- node[below]{$a_4$} (s4);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[->] (s4) -- node[below]{$a_5$} (s5);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[->] (s5) -- node[below]{$a_6$} (s6);
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[->] (s7) to[out=0,
+ in=225] node[below]{$a_7$} (s5);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% A coordinate west of s3 for starting point
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+coordinate (ext) at ($(s3.west)+(-8mm,10pt)$);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% Curved double arrow into s3 from west to southeast
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[->,
+ double,
+ bend left=30] (ext) node[above]{while reading $w$...} to (s3.north west);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[->,
+ double,
+ bend right=30,
+ transform canvas={yshift=3pt}]
+\end_layout
+
+\begin_layout Plain Layout
+
+	(s5.north west) to node[above]{...track states from the back} (s4.north east);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}$$
+\end_layout
+
+\end_inset
+
+so that when the current state 
+\begin_inset Formula $q$
+\end_inset
+
+ hits one of the cached 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[baseline=(c.base)]
+\backslash
+node[draw,circle,fill=lightgray,inner sep=1pt,minimum size=1em] (c) {$c$};
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+ from the back,
+ we know that the word read so far is a prefix of a twice as long word in 
+\begin_inset Formula $L$
+\end_inset
+
+.
+ The possible values for the cache are in the powerset 
+\begin_inset Formula $2^{M}$
+\end_inset
+
+,
+ thus are finitely many and 
+\begin_inset Formula $\frac{1}{2}\mathcal{A}$
+\end_inset
+
+ is still finite.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+For a general 
+\begin_inset Formula $k\ge1$
+\end_inset
+
+,
+ an automata recognizing 
+\begin_inset Formula $\frac{1}{k}L$
+\end_inset
+
+ is formed analogously - in that case the back pointers are moved 
+\begin_inset Formula $(k-1)$
+\end_inset
+
+ steps on each symbol read.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The formal construction in the 
+\begin_inset Formula $K$
+\end_inset
+
+-linear language now follows.
+\end_layout
+
+\begin_layout Definition
+For 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+ and an automata 
+\begin_inset Formula $\mathcal{A}=\left(s,M,\triangleleft,\Omega\right)$
+\end_inset
+
+ define 
+\begin_inset Formula $\frac{1}{k}\mathcal{A}$
+\end_inset
+
+ by the diagram
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% https://q.uiver.app/#q=WzAsNSxbMSwwLCJBXFxvdGltZXMgTVxcb3RpbWVzIFxcRW5kIE0iXSxbMCwxLCIqIl0sWzEsMSwiTVxcb3RpbWVzIFxcRW5kIE0iXSxbMywxLCJLIl0sWzIsMSwiTSJdLFswLDIsIlxcdHJpYW5nbGVsZWZ0X3tcXG5pY2VmcmFjIDEga30iXSxbMSwyLCJzXFxvdGltZXMgXFx0ZXh0cm17aWR9Il0sWzIsNCwiXFx0ciIsMV0sWzQsMywiXFxPbWVnYSIsMV1d
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\backslash
+begin{tikzcd}
+\end_layout
+
+\begin_layout Plain Layout
+
+	& {A
+\backslash
+otimes M
+\backslash
+otimes M^*} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	{*} & {M
+\backslash
+otimes M^*} & K
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{
+\backslash
+triangleleft_{
+\backslash
+nicefrac 1 k}}",
+ from=1-2,
+ to=2-2]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{s
+\backslash
+otimes 
+\backslash
+Omega}",
+ from=2-1,
+ to=2-2]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["
+\backslash
+tr"{},
+ from=2-2,
+ to=2-3]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzcd}
+\backslash
+]
+\end_layout
+
+\end_inset
+
+where the action of 
+\begin_inset Formula $A$
+\end_inset
+
+ on 
+\begin_inset Formula $M\otimes M^{*}$
+\end_inset
+
+ is defined by
+\begin_inset Formula 
+\[
+(m\otimes f)\triangleleft_{\nicefrac{1}{k}}w\coloneqq(m\triangleleft w)\otimes\left(f\triangleleft^{*}A_{(k-1)\left|w\right|}\right)
+\]
+
+\end_inset
+
+for 
+\begin_inset Formula $w\in A$
+\end_inset
+
+ and pure states 
+\begin_inset Formula $m\otimes f$
+\end_inset
+
+,
+ extended linearly to all 
+\begin_inset Formula $M\otimes M^{*}$
+\end_inset
+
+.
+ The backpointer 
+\begin_inset Formula $f$
+\end_inset
+
+ here is acted upon via the dual action 
+\begin_inset Formula $\triangleleft^{*}$
+\end_inset
+
+ as in definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:dual-action-def"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The observation function here 
+\begin_inset Formula $\tr$
+\end_inset
+
+ is the usual trace operator 
+\begin_inset Formula $\tr(m\otimes f)=f(m)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Remark*
+Notice how the formal definition of 
+\begin_inset Formula $\triangleleft_{\nicefrac{1}{k}}$
+\end_inset
+
+ follows directly the idea in the discussion above:
+ the old 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ state 
+\begin_inset Formula $m$
+\end_inset
+
+ is moved forward with 
+\begin_inset Formula $w$
+\end_inset
+
+,
+ while the backpointers 
+\begin_inset Formula $f$
+\end_inset
+
+ are pulled 
+\begin_inset Formula $\left(k-1\right)\left|w\right|$
+\end_inset
+
+ steps (symbols) back.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+\begin_inset CommandInset label
+LatexCommand label
+name "rem:duality"
+
+\end_inset
+
+It is also interesting to observe how the pullback is done by a 
+\emph on
+forward
+\emph default
+ action 
+\begin_inset Formula $\triangleleft A_{(k-1)|w|}$
+\end_inset
+
+ applied at a 
+\emph on
+contravariant
+\emph default
+ position (i.e.
+ dually).
+ This in contrast with the classical set-theoretic solution where we have to move 
+\begin_inset Formula $m$
+\end_inset
+
+ forward and the backpointers set backward.
+ Here we only ever use the same go-forward operator 
+\begin_inset Formula $\triangleleft$
+\end_inset
+
+ and just apply it at different positions.
+\end_layout
+
+\begin_layout Proposition
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Correctness of 
+\begin_inset Formula $\frac{1}{k}\mathcal{A}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+For 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+,
+ an automata 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ and its language 
+\begin_inset Formula $L$
+\end_inset
+
+,
+ the automata 
+\begin_inset Formula $\frac{1}{k}\mathcal{A}$
+\end_inset
+
+ defined above recognizes exactly the language 
+\begin_inset Formula $\frac{1}{k}L$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\rho_{\frac{1}{k}\mathcal{A}}=\frac{1}{k}\rho_{\mathcal{A}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Proof (diagram)
+\end_layout
+
+\end_inset
+
+Before placing 
+\begin_inset Formula $M=M$
+\end_inset
+
+ and 
+\begin_inset Formula $K=K$
+\end_inset
+
+,
+ the diagram
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% https://q.uiver.app/#q=WzAsMTAsWzEsMCwiQVxcb3RpbWVzIE1cXG90aW1lcyBcXEVuZCBNIl0sWzMsMCwiTVxcb3RpbWVzIFxcRW5kIE0iXSxbMCwxLCJBIl0sWzQsMSwiTSJdLFs1LDEsIksiXSxbMiwyLCJcXHN0YXIiXSxbMCwzLCJBIl0sWzQsMywiTSJdLFs1LDMsIksiXSxbMiw0LCJBXFxvdGltZXMgTSJdLFswLDEsIntcXHRyaWFuZ2xlbGVmdFxcb3RpbWVzXFx0cmlhbmdsZWxlZnR9IiwxXSxbMSwzLCJcXHRyIl0sWzIsMCwie1xcb3RpbWVzIHNcXG90aW1lc1xcdGV4dHJte2lkfX0iLDAseyJsYWJlbF9wb3NpdGlvbiI6MzB9XSxbMiw0LCJ7XFxyaG9fezEva1xcbWF0aGNhbCBBfX0iLDEseyJjdXJ2ZSI6LTMsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI
+6ImRvdHRlZCJ9fX1dLFsyLDYsIntcXHRyaWFuZ2xlbGVmdCBcXFNpZ21hXnsoay0xKXx3fH19IiwxXSxbMyw0LCJcXE9tZWdhIiwwLHsiY3VydmUiOi0xfV0sWzQsOCwiPyIsMSx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsMSwieyhzXFx0cmlhbmdsZWxlZnQgdylcXG90aW1lcyhcXHRyaWFuZ2xlbGVmdFxcU2lnbWFeeyhrLTEpfHd8fSl9IiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzUsMiwidyIsMSx7ImN1cnZlIjotMX1dLFs1LDMsIntzXFx0cmlhbmdsZWxlZnQgdyBcXHRyaWFuZ2xlbGVmdFxcU2lnbWFeeyhrLTEpfHd8fX0iLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0
+ZWQifX19XSxbNSw2LCJ7d1xcU2lnbWFeeyhrLTEpfHd8fX0iLDEseyJjdXJ2ZSI6MSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzUsNywie3NcXHRyaWFuZ2xlbGVmdCB3XFxTaWdtYV57KGstMSl8d3x9fSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFs2LDcsIntzXFx0cmlhbmdsZWxlZnQgfSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFs2LDgsIntcXHJob197XFxtYXRoY2FsIEF9fSIsMSx7ImN1cnZlIjoyLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbNiw5LCJ7XFxvdGltZXMgc30iLDJdLFs3LDMsIj8iLDEseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZ
+CI6eyJuYW1lIjoibm9uZSJ9fX1dLFs3LDgsIlxcT21lZ2EiLDIseyJjdXJ2ZSI6MX1dLFs5LDcsIlxcdHJpYW5nbGVsZWZ0IiwyXSxbMiw4LCJcXG5pY2VmcmFrIDEgayBcXHJob197XFxtYXRoY2FsIEF9IiwxLHsiY3VydmUiOi0yLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbMTksMjEsIiEiLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MTAsInRhcmdldCI6MTB9LCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifX19XV0=
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\backslash
+begin{tikzcd}[column sep=tiny,
+ row sep=large]
+\end_layout
+
+\begin_layout Plain Layout
+
+	& {A
+\backslash
+otimes M
+\backslash
+otimes 
+\backslash
+End M} && {M
+\backslash
+otimes 
+\backslash
+End M} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	A &&&& M & K 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	&& 
+\backslash
+star 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	A &&&& M & K 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	&& {A
+\backslash
+otimes M}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{{
+\backslash
+triangleleft
+\backslash
+otimes
+\backslash
+triangleleft}}"{description},
+ from=1-2,
+ to=1-4]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["
+\backslash
+tr",
+ from=1-4,
+ to=2-5]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{{
+\backslash
+otimes s
+\backslash
+otimes
+\backslash
+textrm{id}}}"{pos=0.3},
+ from=2-1,
+ to=1-2]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{{
+\backslash
+rho_{1/k
+\backslash
+mathcal A}}}"{description},
+ curve={height=-18pt},
+ dash dot dot,
+ from=2-1,
+ to=2-6]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{{
+\backslash
+triangleleft 
+\backslash
+Sigma^{(k-1)|w|}}}"{description},
+ from=2-1,
+ to=4-1]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{
+\backslash
+nicefrac 1 k 
+\backslash
+rho_{
+\backslash
+mathcal A}}"{description},
+ curve={height=-18pt},
+ pos=0.3,
+ dash dot dot,
+ from=2-1,
+ to=4-6]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["
+\backslash
+Omega",
+ bend left=5em,
+ from=2-5,
+ to=2-6]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{?}"{description},
+ equals,
+ from=2-6,
+ to=4-6]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{{(s
+\backslash
+triangleleft w)
+\backslash
+otimes(
+\backslash
+triangleleft
+\backslash
+Sigma^{(k-1)|w|})}}"{description},
+ dotted,
+ from=3-3,
+ to=1-4]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["w"{description},
+ curve={height=-6pt},
+ from=3-3,
+ to=2-1]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow[""{name=0,
+ anchor=center,
+ inner sep=0},
+ "{{s
+\backslash
+triangleleft w 
+\backslash
+triangleleft
+\backslash
+Sigma^{(k-1)|w|}}}"{description},
+ dashed,
+ from=3-3,
+ to=2-5]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{w
+\backslash
+Sigma^{(k-1)|w|}}"{description},
+ curve={height=6pt},
+ dotted,
+ from=3-3,
+ to=4-1]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow[""{name=1,
+ anchor=center,
+ inner sep=0},
+ "{{s
+\backslash
+triangleleft w
+\backslash
+Sigma^{(k-1)|w|}}}"{description},
+ dashed,
+ from=3-3,
+ to=4-5]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{{s
+\backslash
+triangleleft }}"{description},
+ dotted,
+ from=4-1,
+ to=4-5]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{{
+\backslash
+rho_{
+\backslash
+mathcal A}}}"{description},
+ curve={height=12pt},
+ dotted,
+ from=4-1,
+ to=4-6]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{{
+\backslash
+otimes s}}"',
+ from=4-1,
+ to=5-3]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{?}"{description},
+ equals,
+ from=4-5,
+ to=2-5]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["
+\backslash
+Omega"',
+ bend right=5em,
+ from=4-5,
+ to=4-6]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["
+\backslash
+triangleleft"',
+ from=5-3,
+ to=4-5]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow[shorten <=3pt,
+ shorten >=3pt,
+ Rightarrow,
+ 2tail reversed,
+ from=0,
+ to=1]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzcd}
+\backslash
+]
+\end_layout
+
+\end_inset
+
+commutes by definition(s).
+ The two dashed arrows 
+\begin_inset Formula $\star\to M$
+\end_inset
+
+ are equal for all 
+\begin_inset Formula $w\in A$
+\end_inset
+
+ because 
+\begin_inset Formula $\triangleleft:A\to\End M$
+\end_inset
+
+ preserves algebra multiplication.
+ Hence the equalities 
+\begin_inset Formula $M=M,K=K$
+\end_inset
+
+ preserve diagram commutativity and the arrows 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+(
+\backslash
+begin{tikzcd}[column sep=large]K & 
+\backslash
+arrow[
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+rho_{
+\backslash
+nicefrac1k
+\backslash
+mathcal A}
+\begin_inset Quotes erd
+\end_inset
+
+',
+ l,
+ dash dot dot] A 
+\backslash
+arrow[
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+nicefrac{1}{k}
+\backslash
+rho_{
+\backslash
+mathcal{A}}
+\begin_inset Quotes erd
+\end_inset
+
+,
+ r,
+ dash dot dot] & K
+\backslash
+end{tikzcd}
+\backslash
+)
+\end_layout
+
+\end_inset
+
+ are equal.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+(Un)Folding definitions and multiplicativity of 
+\begin_inset Formula $\triangleleft$
+\end_inset
+
+ applied
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+We could apply proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:dual-action-compatibility"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ to do 
+\begin_inset Formula $\overset{\triangleleft^{*}}{\equiv}$
+\end_inset
+
+ and 
+\begin_inset Formula $\overset{!}{=}$
+\end_inset
+
+ in on go,
+ but we prefer to stress on the trivial character of the proof.
+\end_layout
+
+\end_inset
+
+ at 
+\begin_inset Formula $\overset{!}{=}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\rho_{\frac{1}{k}\mathcal{A}}(w) & \overset{\rho}{\equiv}\tr((s\otimes\Omega)\triangleleft_{\nicefrac{1}{k}}w)\\
+ & \overset{\triangleleft}{\equiv}\tr\left((s\triangleleft w)\otimes\left(\Omega\triangleleft^{*}A_{(k-1)\left|w\right|}\right)\right)\\
+ & \overset{\tr}{\equiv}\left(\Omega\triangleleft^{*}A_{(k-1)\left|w\right|}\right)\left(s\triangleleft w\right)\\
+ & \overset{\triangleleft^{*}}{\equiv}\Omega\left(s\triangleleft w\triangleleft A_{(k-1)\left|w\right|}\right)\\
+ & \overset{!}{=}\Omega\left(s\triangleleft wA_{(k-1)\left|w\right|}\right)\\
+ & \overset{\rho}{\equiv}\rho_{\mathcal{A}}\left(wA_{(k-1)\left|w\right|}\right)\\
+ & \overset{\nicefrac{1}{k}}{\equiv}\frac{1}{k}\rho_{\mathcal{A}}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Regularity of the backpointers
+\end_layout
+
+\begin_layout Standard
+In this section we fix a 
+\begin_inset Formula $K$
+\end_inset
+
+-semimodule 
+\begin_inset Formula $M$
+\end_inset
+
+ of states and an action 
+\begin_inset Formula $M\triangleleft A$
+\end_inset
+
+.
+ Again,
+ 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ is the alphabet and for 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\Sigma^{n}$
+\end_inset
+
+ is the set of words of length 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ We also fix a set 
+\begin_inset Formula $B\subset\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Here we look at how much chaos theere is (not) in the way our backpointers move.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+For 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+,
+ define the operator 
+\begin_inset Formula $\sigma_{n}\in\End M$
+\end_inset
+
+,
+ advancing states simultaneously by any number of steps divisible by 
+\begin_inset Formula $n$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\sigma_{n}(m)\coloneqq\sum_{k\in B}m\triangleleft A_{kn}=m\triangleleft\left(\sum_{k\in B}A_{kn}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+By construction 
+\begin_inset Formula 
+\[
+\Omega\circ\sigma_{n}
+\]
+
+\end_inset
+
+ matches states that can reach a final state in a number of steps divisible by 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Just like in 
+\begin_inset Formula $\frac{1}{k}\mathcal{A}$
+\end_inset
+
+,
+ we would like to use 
+\begin_inset Formula $\Omega\circ\sigma_{n}$
+\end_inset
+
+ as a cache in an automata for 
+\begin_inset Formula $\sum_{k\in B}\frac{1}{k}L$
+\end_inset
+
+,
+ so that after reading a word of length 
+\begin_inset Formula $\left|w\right|=n$
+\end_inset
+
+ we can test with 
+\begin_inset Formula $\Omega(\sigma_{n}(w))$
+\end_inset
+
+ if 
+\begin_inset Formula $w$
+\end_inset
+
+ extends to a word 
+\begin_inset Formula $ww'$
+\end_inset
+
+ in the original language 
+\begin_inset Formula $L$
+\end_inset
+
+ of length a multiple of 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ We could try to use the set 
+\begin_inset Formula $\left\{ \sigma_{n}:n\in\mathbb{N}\right\} \subset\End M,$
+\end_inset
+
+ which is finite.
+ The problem is that a mapping in 
+\begin_inset Formula $\End M$
+\end_inset
+
+ of the form 
+\begin_inset Formula $\sigma_{n}\mapsto\sigma_{n+1}$
+\end_inset
+
+ (independent from 
+\begin_inset Formula $n$
+\end_inset
+
+) does not generally exist,
+ and so we cannot define an unambiguous 1-step transition function over these states.
+\end_layout
+
+\end_deeper
+\begin_layout Example*
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+an ill-defined 
+\begin_inset Formula $\sigma_{n}\mapsto\sigma_{n+1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Consider for example an automata with 3 states 
+\begin_inset Formula $a,b,c,$
+\end_inset
+
+ over a 1-letter alphabet,
+ with state transitions 
+\begin_inset Formula $a\mapsto b\mapsto c\mapsto a.$
+\end_inset
+
+ It is easy to see that 
+\begin_inset Formula $\sigma_{3k}=\text{id}$
+\end_inset
+
+,
+ while 
+\begin_inset Formula $\sigma_{3k+1}=\sigma_{3k+2}=\text{const}_{a+b+c}$
+\end_inset
+
+.
+ The periodicity of 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is of the shape
+\begin_inset Formula 
+\[
+1\;0\;0\;1\;0\;0\;\ldots,
+\]
+
+\end_inset
+
+ and so a right-shift action is only definable if we have access to the current index.
+\end_layout
+
+\begin_layout Example*
+So we need at least some access to the indices.
+ Let us linearize and consider the entire object 
+\begin_inset Formula $\sigma_{\bullet}$
+\end_inset
+
+,
+ 
+\emph on
+including
+\emph default
+ the indices:
+\end_layout
+
+\begin_layout Definition
+The (unindexed) 
+\begin_inset Formula $\sigma\in\Hom(K^{\mathbb{N}}\otimes M,M)$
+\end_inset
+
+ then is just 
+\begin_inset Formula 
+\begin{align*}
+\sigma:K^{\mathbb{N}}\otimes M & \to M\\
+\sigma(n\otimes m) & \coloneqq\sigma_{n}(m)
+\end{align*}
+
+\end_inset
+
+for 
+\begin_inset Formula $n\in\mathbb{N},m\in M$
+\end_inset
+
+.
+ It is 
+\begin_inset Formula $K$
+\end_inset
+
+-linear with respect to the 
+\begin_inset Formula $M$
+\end_inset
+
+ tensor term because 
+\begin_inset Formula $\sigma_{n}$
+\end_inset
+
+ is linear.
+ 
+\end_layout
+
+\begin_layout Standard
+We could use 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ directly (or just 
+\begin_inset Formula $K^{\mathbb{N}}$
+\end_inset
+
+,
+ rather) as a cache for our automata for 
+\begin_inset Formula $\sum_{k}\frac{1}{k}L$
+\end_inset
+
+ and it would be correct.
+ It would just not be finite.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Recall that 
+\begin_inset Formula $A_{1}=\sum_{a\in\Sigma}a$
+\end_inset
+
+ is just the superposition of all letters in the alphabet,
+ so 
+\begin_inset Formula $\triangleleft A_{1}$
+\end_inset
+
+ is the action of advancing states by one step.
+\end_layout
+
+\begin_layout Proposition
+The sequence in 
+\begin_inset Formula $\End M$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\triangleleft A_{1},\triangleleft A_{2},\triangleleft A_{3},\triangleleft A_{4},\ldots
+\]
+
+\end_inset
+
+ is eventually periodic of some period 
+\begin_inset Formula $p\in\mathbb{N}$
+\end_inset
+
+,
+ starting from some 
+\begin_inset Formula $n_{0}\in\mathbb{N}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proposition
+In fact,
+ it is the sequence of 
+\begin_inset Formula $n$
+\end_inset
+
+-fold iterations of 
+\begin_inset Formula $\triangleleft A_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+By multiplicativity of 
+\begin_inset Formula $\triangleleft,$
+\end_inset
+
+ 
+\begin_inset Formula $\triangleleft A_{n}$
+\end_inset
+
+ means either side of 
+\begin_inset Formula 
+\[
+\triangleleft\left(A_{1}^{n}\right)=\left(\triangleleft A_{1}\right)^{n},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\begin{array}{c}
+A_{1}^{n}\equiv A_{1}\cdot\,\cdots\,\cdot A_{1},\\
+\left(\triangleleft A_{1}\right)^{n}\equiv\left(\triangleleft A_{1}\right)\circ\cdots\circ\left(\triangleleft A_{1}\right)
+\end{array}$
+\end_inset
+
+ are repeated concatenation and composition,
+ respectively.
+\end_layout
+
+\begin_layout Proof
+Then 
+\begin_inset Formula $\triangleleft A_{n+1}=\left(\triangleleft A_{n}\right)\circ\left(\triangleleft A_{1}\right)$
+\end_inset
+
+,
+ so every next term in the sequence is entirely determined by the previous one.
+ Each 
+\begin_inset Formula $\triangleleft A_{n}$
+\end_inset
+
+ lies in 
+\begin_inset Formula $\End M$
+\end_inset
+
+,
+ which is finite.
+\end_layout
+
+\begin_layout Proposition
+The sequence 
+\begin_inset Formula $\sigma_{1},\sigma_{2},\ldots$
+\end_inset
+
+ is eventually periodic.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+That is,
+ the history of our wannabe cache is regular enough,
+ and that will allow us to actually encode it in a 
+\emph on
+finite
+\emph default
+ automata.
+\end_layout
+
+\begin_layout Proof
+Take 
+\begin_inset Formula $n_{0},p$
+\end_inset
+
+ as in the above proposition.
+ For 
+\begin_inset Formula $n\ge n_{0}$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\sigma_{n+p}\equiv\sum_{k\in B}\triangleleft A_{1}^{k(n+p)}=\sum_{k\in B}\left(\triangleleft A_{1}^{p}\right)^{k}\circ\left(\triangleleft A_{1}^{kn}\right)\overset{!}{=}\sum_{k\in B}\triangleleft A_{1}^{kn}\equiv\sigma_{n}.
+\]
+
+\end_inset
+
+The equality 
+\begin_inset Formula $\overset{!}{=}$
+\end_inset
+
+ uses that 
+\begin_inset Formula $\triangleleft\Sigma^{p}$
+\end_inset
+
+ is the identity operator on its input (by the eventual periodicity of 
+\begin_inset Formula $\triangleleft\Sigma$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Remark*
+The eventual periodicity of 
+\begin_inset Formula $\sigma_{1},\sigma_{2},\sigma_{3},\ldots$
+\end_inset
+
+ means that a finite prefix exists indexed by 
+\begin_inset Formula $N=\{0,\ldots,n_{0},\ldots,n_{0}+p-1\}$
+\end_inset
+
+ which admits a well-defined (index-dependent) right-shift operation compatible with the global right-shift on the entire 
+\begin_inset Formula $\sigma$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\begin{cases}
+\sigma_{n}\mapsto\sigma_{n+1} & \text{if}\;n<n_{0}+p-1\\
+\sigma_{n}\mapsto\sigma_{n_{0}} & \text{if}\;n=n_{0}+p-1
+\end{cases}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The next propositions achieves this,
+ but without the case analysis on the indices,
+ and allows for arbitrary 
+\begin_inset Formula $\sigma_{n}\mapsto\sigma_{n+n'}$
+\end_inset
+
+ moves directly from periodicity of 
+\begin_inset Formula $\sigma$
+\end_inset
+
+,
+ using a suitable equivalence on 
+\begin_inset Formula $\mathbb{N}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Technicalities
+\end_layout
+
+\begin_layout Standard
+So far we established how 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is essentially finite in amount of data.
+ The rest of this section builds the finite analogue of 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ formally.
+\end_layout
+
+\begin_layout Standard
+To keep track of time (reading symbols),
+ we prepare
+\end_layout
+
+\begin_layout Definition
+As a monoid 
+\begin_inset Formula $\Sigma^{*}$
+\end_inset
+
+ (multiplicatively) acts on 
+\begin_inset Formula $\mathbb{N}$
+\end_inset
+
+ (additively) by 
+\begin_inset Formula $n\triangleleft w=n+|w|.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We now show how the infinite sequence 
+\begin_inset Formula $\sigma:\mathbb{N}\to\End M$
+\end_inset
+
+ factors 
+\begin_inset Formula 
+\[
+\sigma=\hat{\sigma}\circ\pi
+\]
+
+\end_inset
+
+ through some 
+\emph on
+finite
+\emph default
+ 
+\begin_inset Formula $\hat{\sigma}:N\to\End M$
+\end_inset
+
+ that still supports unambiguous right-shifts (unlike the unindexed 
+\begin_inset Formula $\End M$
+\end_inset
+
+).
+ More precisely:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:factorization"
+
+\end_inset
+
+There exists a 
+\emph on
+finite
+\emph default
+ factorization 
+\begin_inset Formula 
+\[
+\mathbb{N}\overset{\pi}{\longrightarrow}N=\mathbb{N}\mathrel{/}\sim
+\]
+
+\end_inset
+
+ respected both by 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ and the action 
+\begin_inset Formula $\mathbb{N}\triangleleft\Sigma^{*}$
+\end_inset
+
+.
+ That is,
+ if 
+\begin_inset Formula $n\sim n',$
+\end_inset
+
+ then 
+\begin_inset Formula $\sigma_{n}=\sigma_{n'}$
+\end_inset
+
+ and for all 
+\begin_inset Formula $w\in\Sigma^{*}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left(n\triangleleft w\right)\sim\left(n'\triangleleft w\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This immediately implies
+\end_layout
+
+\begin_layout Corollary
+The projection 
+\begin_inset Formula $\pi:\mathbb{N}\to N$
+\end_inset
+
+ pushes forward both 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbb{N}\triangleleft\Sigma^{*},$
+\end_inset
+
+ inducing
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+the so wanted 
+\begin_inset Formula $\hat{\sigma}:N\to\End M$
+\end_inset
+
+ such that 
+\begin_inset Formula $\sigma_{n}=\hat{\sigma}_{\pi(n)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+a well-defined action 
+\begin_inset Formula $N\triangleleft\Sigma^{*}$
+\end_inset
+
+:
+ 
+\begin_inset Formula $\pi(n)\triangleleft w=\pi(n+w);$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Proof
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Proof (of proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:factorization"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+Define 
+\begin_inset Formula $N$
+\end_inset
+
+ to be the factor of 
+\begin_inset Formula $\mathbb{N}$
+\end_inset
+
+ over the equivalence relation
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+That is,
+ we identify positions in the sequence 
+\begin_inset Formula $\sigma_{n}$
+\end_inset
+
+ that have identical tails in order to 1) reduce it to a finite object,
+ but 2) still preserve enough of 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ to have a well-defined 
+\begin_inset Quotes eld
+\end_inset
+
+going right
+\begin_inset Quotes erd
+\end_inset
+
+ operation.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+n\sim n'\leftrightharpoons\forall k\ge0:\sigma_{n+k}=\sigma_{n'+k}.
+\]
+
+\end_inset
+
+
+\begin_inset Formula $N$
+\end_inset
+
+ is finite because 
+\begin_inset Formula $\sigma_{n}$
+\end_inset
+
+ is periodic
+\emph on
+.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Should we elaborate more,
+ or is this clear enough?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\sigma$
+\end_inset
+
+ respects 
+\begin_inset Formula $\sim$
+\end_inset
+
+:
+ put 
+\begin_inset Formula $k=0$
+\end_inset
+
+ in the definition of 
+\begin_inset Formula $\sim$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+the action 
+\begin_inset Formula $\mathbb{N}\triangleleft A$
+\end_inset
+
+ respects 
+\begin_inset Formula $\sim$
+\end_inset
+
+ too:
+ put 
+\begin_inset Formula $k=\left|w\right|$
+\end_inset
+
+ in the definition of 
+\begin_inset Formula $\sim$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Below,
+ for 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+ we will write 
+\begin_inset Formula $\hat{\sigma}_{n}$
+\end_inset
+
+ to mean 
+\begin_inset Formula $\hat{\sigma}_{\pi(n)}$
+\end_inset
+
+.
+ Then we have
+\begin_inset Formula 
+\[
+\hat{\sigma}_{n}=\hat{\sigma}_{\pi(n)}\overset{!}{=}\sigma_{n}
+\]
+
+\end_inset
+
+ because 
+\begin_inset Formula $\sigma=\hat{\sigma}\circ\pi$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+The monoid action 
+\begin_inset Formula $N\triangleleft\Sigma^{*}$
+\end_inset
+
+ induces an action 
+\begin_inset Formula $K^{N}\triangleleft A$
+\end_inset
+
+ between the respective free 
+\begin_inset Formula $K$
+\end_inset
+
+-semimodules (recall 
+\begin_inset Formula $A$
+\end_inset
+
+ is a free semimodule over 
+\begin_inset Formula $\Sigma^{*}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+Here again we can linearize the sequence 
+\begin_inset Formula $\hat{\sigma}:N\to\End M$
+\end_inset
+
+ to a morphism 
+\begin_inset Formula ${\hat{\sigma}\in\Hom(K^{N}\otimes M,M)}$
+\end_inset
+
+,
+ so that we can use it in the linear automata.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The 
+\begin_inset Formula $\sum_{k\in B}\frac{1}{k}$
+\end_inset
+
+ operation
+\end_layout
+
+\begin_layout Definition
+\begin_inset CommandInset label
+LatexCommand label
+name "def:union-construction"
+
+\end_inset
+
+For an automata 
+\begin_inset Formula $\mathcal{A}=\left(s,M,\triangleleft,\Omega\right)$
+\end_inset
+
+ and a set 
+\begin_inset Formula $B\subset\mathbb{N}$
+\end_inset
+
+ define an automata 
+\begin_inset Formula 
+\[
+{\textstyle \sum}_{k\in B}\tfrac{1}{k}\mathcal{A}\coloneqq\left(\hat{s}=s\otimes0,\hat{M}=M\otimes K^{\mathbb{N}\mathrel{/}\sim},\hat{M}\mathrel{\hat{\triangleleft}}A,\hat{\Omega}\right)
+\]
+
+\end_inset
+
+with diagram
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\backslash
+begin{tikzcd}[row sep=normal,
+ column sep=small]
+\end_layout
+
+\begin_layout Plain Layout
+
+	& {A
+\backslash
+otimes M
+\backslash
+otimes K^N} 
+\backslash
+arrow["
+\backslash
+hat
+\backslash
+triangleleft"'{xshift=-3},
+ d]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	{*}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+arrow["{s
+\backslash
+otimes 0}",
+ r]
+\end_layout
+
+\begin_layout Plain Layout
+
+	& {M 
+\backslash
+otimes K^N}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+arrow[r,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+hat
+\backslash
+sigma
+\begin_inset Quotes erd
+\end_inset
+
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+	& M 
+\backslash
+arrow[r,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+Omega
+\begin_inset Quotes erd
+\end_inset
+
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+	& K
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzcd}
+\backslash
+]
+\end_layout
+
+\end_inset
+
+where 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label=
+\backslash
+Roman{enumi}.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The states are 
+\begin_inset Formula 
+\[
+\hat{M}\coloneqq M\otimes K^{N},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $N=\mathbb{N}\mathrel{/}\sim$
+\end_inset
+
+ is the tail-factorization of 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ from Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:factorization"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ (or just the number 
+\begin_inset Formula $N=n_{0}+p-1$
+\end_inset
+
+ with 
+\begin_inset Formula $n_{0},p$
+\end_inset
+
+ from the propositions earlier).
+ 
+\begin_inset Newline newline
+\end_inset
+
+That is,
+ in 
+\begin_inset Formula $\hat{M}$
+\end_inset
+
+ we use the states of 
+\begin_inset Formula $M$
+\end_inset
+
+ and cache a congruence on how many symbols we've read.
+\end_layout
+
+\begin_layout Enumerate
+The start state is 
+\begin_inset Formula 
+\[
+\hat{s}\coloneqq s\otimes0,
+\]
+
+\end_inset
+
+ i.e.
+ we start from the start and and record 0 steps from the end (note that 
+\begin_inset Formula $\hat{\sigma}_{0}=\text{id}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+The action of 
+\begin_inset Formula $A$
+\end_inset
+
+ on 
+\begin_inset Formula $\hat{M}$
+\end_inset
+
+ is defined either point-free by a pair of left-looking eyes
+\begin_inset Formula 
+\[
+\hat{\triangleleft}\coloneqq\left(\cdot\triangleleft\cdot\right)\otimes\left(\cdot\triangleleft\cdot\right),
+\]
+
+\end_inset
+
+(the two 
+\begin_inset Formula $\triangleleft$
+\end_inset
+
+ denoting the actions of 
+\begin_inset Formula $A$
+\end_inset
+
+ on 
+\begin_inset Formula $M$
+\end_inset
+
+ and 
+\begin_inset Formula $K^{N}$
+\end_inset
+
+,
+ respectively),
+\begin_inset Newline newline
+\end_inset
+
+pointwise on 
+\begin_inset Formula $A$
+\end_inset
+
+ as
+\begin_inset Formula 
+\begin{align*}
+A & \to\End\left(M\otimes K^{N}\right)\\
+w & \mapsto\left(\triangleleft_{M}w\right)\otimes\left(\triangleleft_{N}w\right),
+\end{align*}
+
+\end_inset
+
+ or explicitly,
+ 
+\begin_inset Formula 
+\[
+(m\otimes n)\mathrel{\hat{\triangleleft}}w\coloneqq(m\triangleleft w)\otimes\left(n\triangleleft w\right),
+\]
+
+\end_inset
+
+for all words 
+\begin_inset Formula $w\in\Sigma^{*}$
+\end_inset
+
+ and pure states 
+\begin_inset Formula $m\otimes n$
+\end_inset
+
+,
+ extended linearly.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+That is,
+ we 
+\begin_inset Quotes eld
+\end_inset
+
+push 
+\begin_inset Formula $m$
+\end_inset
+
+ forward with 
+\begin_inset Formula $w$
+\end_inset
+
+ in the original automata,
+ and pull 
+\begin_inset Formula $\Omega\circ\hat{\sigma}_{n}$
+\end_inset
+
+ backward with the length of 
+\begin_inset Formula $w$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+The final states 
+\begin_inset Formula $\hat{\Omega}$
+\end_inset
+
+ are defined by completing
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\backslash
+begin{tikzcd}
+\end_layout
+
+\begin_layout Plain Layout
+
+	M
+\backslash
+otimes K^N
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+arrow[
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+hat
+\backslash
+Omega
+\begin_inset Quotes erd
+\end_inset
+
+',
+ dotted,
+ rd]
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+arrow[
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+hat
+\backslash
+sigma
+\begin_inset Quotes erd
+\end_inset
+
+,
+ r]
+\end_layout
+
+\begin_layout Plain Layout
+
+	& M
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+arrow[
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+Omega
+\begin_inset Quotes erd
+\end_inset
+
+,
+ d]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	& K,
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzcd}
+\backslash
+]
+\end_layout
+
+\end_inset
+
+that is,
+ 
+\begin_inset Formula 
+\[
+\hat{\Omega}(m\otimes n)\coloneqq\Omega\left(\hat{\sigma}(n\otimes m)\right)\equiv\Omega\left(\hat{\sigma}_{n}(m)\right),
+\]
+
+\end_inset
+
+or 
+\begin_inset Quotes eld
+\end_inset
+
+we are finished whenever there is a final state (detected by 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ in the original automata) among the states that the current 
+\begin_inset Formula $m\in M$
+\end_inset
+
+ can reach in a number of steps divisible by 
+\begin_inset Formula $n$
+\end_inset
+
+ (denoted by 
+\begin_inset Formula $\hat{\sigma}_{n}(m)$
+\end_inset
+
+)
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Remark*
+The link 
+\begin_inset Formula 
+\[
+M\otimes K^{N}\overset{\hat{\sigma}}{\longrightarrow}M
+\]
+
+\end_inset
+
+ is arguably the most important arrow in the automata diagram because it tells us at any time which states we'd be in if we were to read (starting from the current state) simultaneously all words of any multiple of the length of the word read so far.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Correctness of 
+\begin_inset Formula ${\textstyle {\textstyle \sum}_{k\in B}}\tfrac{1}{k}\mathcal{A}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The above construction is correct:
+\end_layout
+
+\begin_layout Theorem
+For a set 
+\begin_inset Formula $B\subset\mathbb{N}$
+\end_inset
+
+,
+ an automata 
+\begin_inset Formula $A$
+\end_inset
+
+ and its language 
+\begin_inset Formula $L$
+\end_inset
+
+,
+ the automata 
+\begin_inset Formula ${\textstyle {\textstyle \sum}_{k\in B}}\tfrac{1}{k}\mathcal{A}$
+\end_inset
+
+ defined above recognizes exactly the language 
+\begin_inset Formula ${\textstyle {\textstyle \sum}_{k\in B}}\tfrac{1}{k}L$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\rho_{{\textstyle {\scriptstyle \sum_{k\in B}}}1/k\mathcal{A}}={\textstyle \sum}_{k\in B}\tfrac{1}{k}\rho_{\mathcal{A}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Like for 
+\begin_inset Formula $\frac{1}{k}\mathcal{A}$
+\end_inset
+
+,
+ the proof is just associativity of 
+\begin_inset Formula $\triangleleft$
+\end_inset
+
+ and linearity of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+,
+ squeezed between direct application of definitions.
+ 
+\end_layout
+
+\begin_layout Proof
+Definition expansions of the two sides of the equality are laid out on the respective sides here:
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\backslash
+begin{tikzcd}[column sep=-1cm,
+ row sep=small]
+\end_layout
+
+\begin_layout Plain Layout
+
+	& {w
+\backslash
+in 
+\backslash
+Sigma^*} 
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+arrow["{
+\backslash
+rho_{
+\backslash
+sum_k 1/k 
+\backslash
+mathcal A}}"{description},
+ dddl,
+ curve={height=0}]
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+arrow["{
+\backslash
+sum_k 1/k 
+\backslash
+rho_{
+\backslash
+mathcal A}}"{description},
+ dddr,
+ curve={height=0}] 
+\backslash
+
+\backslash
+ 
+\backslash
+
+\backslash
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% line 1
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\backslash
+rho_{{
+\backslash
+textstyle {
+\backslash
+scriptstyle 
+\backslash
+sum_{k}}}1/k
+\backslash
+mathcal{A}}(w)}
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+arrow[
+\begin_inset Quotes eld
+\end_inset
+
+{
+\backslash
+rho 
+\backslash
+equiv 
+\backslash
+hat
+\backslash
+Omega
+\backslash
+circ (
+\backslash
+hat s
+\backslash
+hat
+\backslash
+triangleleft)}
+\begin_inset Quotes erd
+\end_inset
+
+',
+ 
+\begin_inset Quotes eld
+\end_inset
+
+{
+\backslash
+hat s
+\backslash
+equiv s
+\backslash
+otimes 0}
+\begin_inset Quotes erd
+\end_inset
+
+,
+ equal,
+ d,
+ outer sep=3pt]
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+arrow[
+\begin_inset Quotes eld
+\end_inset
+
+?
+\begin_inset Quotes erd
+\end_inset
+
+{description},
+ equal,
+ dashed,
+ rr]
+\end_layout
+
+\begin_layout Plain Layout
+
+		&& 
+\backslash
+sum_{k
+\backslash
+in B}
+\backslash
+frac{1}{k}
+\backslash
+rho_{
+\backslash
+mathcal{A}}(w) 
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+arrow[
+\begin_inset Quotes eld
+\end_inset
+
+{
+\backslash
+nicefrac{1}{k}
+\backslash
+rho(w)
+\backslash
+equiv
+\backslash
+rho(w
+\backslash
+cdot A_{(k-1)|w|})}
+\begin_inset Quotes erd
+\end_inset
+
+,
+ equal,
+ dd] 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% line 2
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\backslash
+hat
+\backslash
+Omega((s
+\backslash
+otimes 0)
+\backslash
+mathrel{
+\backslash
+hat
+\backslash
+triangleleft} w)} 
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+arrow[
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+textrm{def.
+ of }
+\backslash
+hat
+\backslash
+triangleleft
+\begin_inset Quotes erd
+\end_inset
+
+,
+ equal,
+ d]
+\end_layout
+
+\begin_layout Plain Layout
+
+		&&
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% line 3
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\backslash
+hat
+\backslash
+Omega((s
+\backslash
+triangleleft w)
+\backslash
+otimes |w|))} 
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+arrow[
+\begin_inset Quotes eld
+\end_inset
+
+{
+\backslash
+mathrm{def.
+\backslash
+,
+ of 
+\backslash
+;} 
+\backslash
+hat
+\backslash
+Omega;}
+\begin_inset Quotes erd
+\end_inset
+
+,
+ equal,
+ d]
+\end_layout
+
+\begin_layout Plain Layout
+
+		&& {
+\backslash
+sum_{k
+\backslash
+in B}
+\backslash
+rho_{
+\backslash
+mathcal{A}}
+\backslash
+left(w
+\backslash
+cdot A_{(k-1)
+\backslash
+left|w
+\backslash
+right|}
+\backslash
+right)}
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+arrow[
+\begin_inset Quotes eld
+\end_inset
+
+{
+\backslash
+rho_{
+\backslash
+mathcal A} 
+\backslash
+equiv 
+\backslash
+Omega
+\backslash
+circ (s
+\backslash
+triangleleft)}
+\begin_inset Quotes erd
+\end_inset
+
+,
+ equal,
+ dd]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% line 4
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\backslash
+Omega(
+\backslash
+hat
+\backslash
+sigma((s
+\backslash
+triangleleft w)
+\backslash
+otimes|w|)}
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+arrow[
+\begin_inset Quotes eld
+\end_inset
+
+{
+\backslash
+mathrm{def.
+\backslash
+,
+ of 
+\backslash
+;} 
+\backslash
+hat
+\backslash
+sigma}
+\begin_inset Quotes erd
+\end_inset
+
+,
+ equal,
+ d]
+\end_layout
+
+\begin_layout Plain Layout
+
+		&& 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% line 5
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\backslash
+Omega
+\backslash
+left((s
+\backslash
+triangleleft w)
+\backslash
+triangleleft{
+\backslash
+textstyle 
+\backslash
+sum}_{k
+\backslash
+in B} A_{k
+\backslash
+left|w
+\backslash
+right|}
+\backslash
+right)}
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+arrow[
+\begin_inset Quotes eld
+\end_inset
+
+{
+\backslash
+textrm{linearity of $
+\backslash
+Omega$}}
+\begin_inset Quotes erd
+\end_inset
+
+{description},
+ ddr,
+ equal,
+ start anchor=south,
+ end anchor=north west]
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+arrow[
+\begin_inset Quotes eld
+\end_inset
+
+!
+\begin_inset Quotes erd
+\end_inset
+
+,
+ rr,
+ equal]
+\end_layout
+
+\begin_layout Plain Layout
+
+		&& {{
+\backslash
+textstyle 
+\backslash
+sum}_{k
+\backslash
+in B}
+\backslash
+Omega
+\backslash
+left(s
+\backslash
+triangleleft w
+\backslash
+cdot A_{k
+\backslash
+left|w
+\backslash
+right|}
+\backslash
+right)}
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+arrow[
+\begin_inset Quotes eld
+\end_inset
+
+{
+\backslash
+textrm{multiplicativity of $
+\backslash
+triangleleft$}}
+\begin_inset Quotes erd
+\end_inset
+
+{description},
+ ddl,
+ equal,
+ start anchor=south,
+ end anchor=north east] 
+\backslash
+
+\backslash
+ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% bottom line
+\end_layout
+
+\begin_layout Plain Layout
+
+	& {
+\backslash
+sum_{k
+\backslash
+in B}
+\backslash
+Omega
+\backslash
+left(s
+\backslash
+triangleleft w
+\backslash
+triangleleft A_{k
+\backslash
+left|w
+\backslash
+right|}
+\backslash
+right)} &
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzcd}
+\backslash
+]
+\end_layout
+
+\end_inset
+
+An equality chain with all steps explicit follows:
+\begin_inset Formula 
+\begin{align*}
+\rho_{{\textstyle {\scriptstyle \sum_{k\in B}}}1/k\mathcal{A}}(w) & \overset{\rho}{\equiv}\hat{\Omega}(\hat{s}\mathrel{\hat{\triangleleft}}w)\\
+ & \overset{\hat{s}}{\equiv}\hat{\Omega}((s\otimes0)\mathrel{\hat{\triangleleft}}w)\\
+ & \overset{\hat{\triangleleft}}{\equiv}\hat{\Omega}\Big((s\triangleleft w)\otimes\left|w\right|\Big)\\
+ & \overset{\hat{\Omega}}{\equiv}\Omega\left(\hat{\sigma}\left(\left(s\triangleleft w\right)\otimes\left|w\right|\right)\right)\\
+ & \overset{\hat{\sigma}}{\equiv}\Omega\left((s\triangleleft w)\triangleleft{\textstyle \sum}_{k\in B}A_{k\left|w\right|}\right)\\
+ & \stackrel[\text{lin}]{\Omega}{=}\sum_{k\in B}\Omega\left(s\triangleleft w\triangleleft A_{k\left|w\right|}\right)\\
+ & \stackrel[\text{mul}]{\triangleleft}{=}\sum_{k\in B}\Omega\left(s\triangleleft w\cdot A_{k\left|w\right|}\right)\\
+ & \overset{\rho}{\equiv}\sum_{k\in B}\rho_{\mathcal{A}}\left(w\cdot A_{k\left|w\right|}\right)\\
+ & \overset{\nicefrac{1}{k}}{\equiv}\sum_{k\in B}\frac{1}{k}\rho_{\mathcal{A}}(w).
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Proof (experimental,
+ WIP)
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% https://q.uiver.app/#q=WzAsMTAsWzEsMCwiQVxcb3RpbWVzIE1cXG90aW1lcyBcXEVuZCBNIl0sWzMsMCwiTVxcb3RpbWVzIFxcRW5kIE0iXSxbMCwxLCJBIl0sWzQsMSwiTSJdLFs1LDEsIksiXSxbMiwyLCJcXHN0YXIiXSxbMCwzLCJBIl0sWzQsMywiTSJdLFs1LDMsIksiXSxbMiw0LCJBXFxvdGltZXMgTSJdLFswLDEsInt7XFx0cmlhbmdsZWxlZnRcXG90aW1lc1xcdHJpYW5nbGVsZWZ0fX0iLDFdLFsxLDMsIlxcdHIiXSxbMiwwLCJ7e1xcb3RpbWVzIHNcXG90aW1lc1xcdGV4dHJte2lkfX19IiwwLHsibGFiZWxfcG9zaXRpb24iOjMwfV0sWzIsNCwie3tcXHJob197XFxzdW1fazEva1xcbWF0aGNhbCBBfX19IiwxLHsiY3VydmUiOi0zLCJzdHlsZSI6eyJ
+ib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbMiw2LCJcXHN1bV9re3tcXHRyaWFuZ2xlbGVmdCBcXFNpZ21hXnsoay0xKXx3fH19fSIsMV0sWzIsOCwie1xcbmljZWZyYWMgMSBrIFxccmhvX3tcXG1hdGhjYWwgQX19IiwxLHsibGFiZWxfcG9zaXRpb24iOjMwLCJjdXJ2ZSI6LTMsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFszLDQsIlxcT21lZ2EiLDAseyJjdXJ2ZSI6LTF9XSxbNCw4LCJ7P30iLDEseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDEsIlxcc3VtX2t7eyhzXFx0cmlhbmdsZWxlZnQgdylcXG90aW1lcyhcXHRyaWFuZ2xlbGVmdFxcU2lnbWFeeyhrLTEpfHd8fSl9fSIsMSx7InN0eWxl
+Ijp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFs1LDIsInciLDEseyJjdXJ2ZSI6LTF9XSxbNSwzLCJcXHN1bV9re3tzXFx0cmlhbmdsZWxlZnQgdyBcXHRyaWFuZ2xlbGVmdFxcU2lnbWFeeyhrLTEpfHd8fX19IiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV0sWzUsNiwiXFxzdW1fa3t7d1xcU2lnbWFeeyhrLTEpfHd8fX19IiwxLHsiY3VydmUiOjEsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFs1LDcsIlxcc3VtX2t7e3NcXHRyaWFuZ2xlbGVmdCB3XFxTaWdtYV57KGstMSl8d3x9fX0iLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbNiw3LCJ7e3NcXHRyaWFuZ2xlbGVmdCB9fSIsM
+Sx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFs2LDgsInt7XFxyaG9fe1xcbWF0aGNhbCBBfX19IiwxLHsiY3VydmUiOjIsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFs2LDksInt7XFxvdGltZXMgc319IiwyXSxbNywzLCJ7P30iLDEseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs3LDgsIlxcT21lZ2EiLDIseyJjdXJ2ZSI6MX1dLFs5LDcsIlxcdHJpYW5nbGVsZWZ0IiwyXSxbMjAsMjIsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjoxNSwidGFyZ2V0IjoxNX0sInN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dXQ==
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\backslash
+begin{tikzcd}[column sep=tiny,
+ row sep=large]
+\end_layout
+
+\begin_layout Plain Layout
+
+	& {A
+\backslash
+otimes M
+\backslash
+otimes 
+\backslash
+End M} && {M
+\backslash
+otimes 
+\backslash
+End M} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	A &&&& M & K 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	&& 
+\backslash
+star 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	A &&&& M & K 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	&& {A
+\backslash
+otimes M}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{{{
+\backslash
+triangleleft
+\backslash
+otimes
+\backslash
+triangleleft}}}"{description},
+ from=1-2,
+ to=1-4]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["
+\backslash
+tr",
+ from=1-4,
+ to=2-5]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{{{
+\backslash
+otimes s
+\backslash
+otimes
+\backslash
+textrm{id}}}}"{pos=0.3},
+ from=2-1,
+ to=1-2]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{{{
+\backslash
+rho_{
+\backslash
+sum_k1/k
+\backslash
+mathcal A}}}}"{description},
+ curve={height=-18pt},
+ dotted,
+ from=2-1,
+ to=2-6]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{
+\backslash
+sum_k{{
+\backslash
+triangleleft 
+\backslash
+Sigma^{(k-1)|w|}}}}"{description},
+ from=2-1,
+ to=4-1]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{{
+\backslash
+sum_k
+\backslash
+nicefrac 1 k 
+\backslash
+rho_{
+\backslash
+mathcal A}}}"{description,
+ pos=0.3},
+ curve={height=-18pt},
+ dotted,
+ from=2-1,
+ to=4-6]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["
+\backslash
+Omega",
+ bend left=5em,
+ from=2-5,
+ to=2-6]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{{?}}"{description},
+ equals,
+ from=2-6,
+ to=4-6]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{
+\backslash
+sum_k{{(s
+\backslash
+triangleleft w)
+\backslash
+otimes(
+\backslash
+triangleleft
+\backslash
+Sigma^{(k-1)|w|})}}}"{description},
+ dotted,
+ from=3-3,
+ to=1-4]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["w"{description},
+ curve={height=-6pt},
+ from=3-3,
+ to=2-1]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow[""{name=0,
+ anchor=center,
+ inner sep=0},
+ "{
+\backslash
+sum_k{{s
+\backslash
+triangleleft w 
+\backslash
+triangleleft
+\backslash
+Sigma^{(k-1)|w|}}}}"{description},
+ dotted,
+ from=3-3,
+ to=2-5]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{
+\backslash
+sum_k{{w
+\backslash
+Sigma^{(k-1)|w|}}}}"{description},
+ curve={height=6pt},
+ dotted,
+ from=3-3,
+ to=4-1]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow[""{name=1,
+ anchor=center,
+ inner sep=0},
+ "{
+\backslash
+sum_k{{s
+\backslash
+triangleleft w
+\backslash
+Sigma^{(k-1)|w|}}}}"{description},
+ dotted,
+ from=3-3,
+ to=4-5]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{{{s
+\backslash
+triangleleft }}}"{description},
+ dotted,
+ from=4-1,
+ to=4-5]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{{{
+\backslash
+rho_{
+\backslash
+mathcal A}}}}"{description},
+ curve={height=12pt},
+ dotted,
+ from=4-1,
+ to=4-6]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{{{
+\backslash
+otimes s}}}"',
+ from=4-1,
+ to=5-3]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["{{?}}"{description},
+ equals,
+ from=4-5,
+ to=2-5]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["
+\backslash
+Omega"',
+ curve={height=1em},
+ from=4-5,
+ to=4-6]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow["
+\backslash
+triangleleft"',
+ from=5-3,
+ to=4-5]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+arrow[shorten <=3pt,
+ shorten >=3pt,
+ Rightarrow,
+ 2tail reversed,
+ from=0,
+ to=1]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzcd}
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Corollary
+If 
+\begin_inset Formula $L$
+\end_inset
+
+ is a regular language,
+ so is 
+\begin_inset Formula $\sum_{k\in B}\frac{1}{k}L$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+If 
+\begin_inset Formula $L$
+\end_inset
+
+ is regular,
+ it admits an automata 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ with a finite number of states 
+\begin_inset Formula $M$
+\end_inset
+
+.
+ By the correctness proof,
+ the automata 
+\begin_inset Formula $\sum_{k\in B}\frac{1}{k}\mathcal{A}$
+\end_inset
+
+ recognizes 
+\begin_inset Formula $\sum_{k\in B}\frac{1}{k}L$
+\end_inset
+
+.
+ That automata has 
+\begin_inset Formula $M\otimes K^{N}$
+\end_inset
+
+ as a state set,
+ which is still finite since 
+\begin_inset Formula $M$
+\end_inset
+
+ and 
+\begin_inset Formula $N$
+\end_inset
+
+ are.
+ 
+\end_layout
+
+\begin_layout Standard
+The chain of reasoning is:
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[
+\end_layout
+
+\begin_layout Plain Layout
+
+	every node/.style={align=center,
+ font=
+\backslash
+small},
+\end_layout
+
+\begin_layout Plain Layout
+
+	arrow/.style={
+\end_layout
+
+\begin_layout Plain Layout
+
+		>={Classical TikZ Rightarrow[scale=0.5]},
+\end_layout
+
+\begin_layout Plain Layout
+
+		double distance=1.5pt,
+\end_layout
+
+\begin_layout Plain Layout
+
+		->
+\end_layout
+
+\begin_layout Plain Layout
+
+	},
+\end_layout
+
+\begin_layout Plain Layout
+
+	baseline=(M.south)
+\end_layout
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+    % Nodes with controlled spacing
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node (M) {$M$ is finite};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node (EndM) [below=1em of M] {$
+\backslash
+End M$ is finite};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node (sigma) [below=1em of EndM] {$
+\backslash
+sigma_{n}$ is eventually periodic};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node (N) [below=1em of sigma] {$N=
+\backslash
+mathbb{N}/
+\backslash
+sim$ is finite};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node (hatM) [below=1em of N] {$
+\backslash
+hat{M}=K^{N}
+\backslash
+otimes M$ is finite};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    % Arrows styled like =>
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow]  (M.south) -- (EndM.north);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow] (EndM.south) -- (sigma.north);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow] (sigma.south) -- (N.north);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+draw[arrow] (N.south) -- (hatM.north);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+More duality
+\end_layout
+
+\begin_layout Standard
+Alternatively,
+ we could have defined the 
+\begin_inset Formula $\sum_{k\in B}\frac{1}{k}\mathcal{A}$
+\end_inset
+
+ automata by 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\backslash
+begin{tikzcd}[row sep=normal,
+ column sep=large]
+\end_layout
+
+\begin_layout Plain Layout
+
+	& {A
+\backslash
+otimes M
+\backslash
+otimes (K^N
+\backslash
+otimes M)^*} 
+\backslash
+arrow["
+\backslash
+triangleleft
+\backslash
+otimes
+\backslash
+triangleleft^*"'{xshift=-3},
+ d]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	{*}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+arrow["{s
+\backslash
+otimes (
+\backslash
+Omega
+\backslash
+circ
+\backslash
+hat
+\backslash
+sigma)}",
+ r]
+\end_layout
+
+\begin_layout Plain Layout
+
+	& M 
+\backslash
+otimes (K^N
+\backslash
+otimes M)^*
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+arrow[r,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+tr
+\backslash
+circ(0
+\backslash
+otimes)
+\begin_inset Quotes erd
+\end_inset
+
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+	& K
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzcd}
+\backslash
+]
+\end_layout
+
+\end_inset
+
+so that the states 
+\begin_inset Formula $\hat{M}=M\otimes(K^{N}\otimes M)^{*}$
+\end_inset
+
+ track the actual backpointers in the cache 
+\begin_inset Formula $(K^{N}\otimes M)^{*}$
+\end_inset
+
+ and not just a number (
+\begin_inset Formula $K^{N}$
+\end_inset
+
+).
+ The start state is 
+\begin_inset Formula 
+\[
+\hat{s}\coloneqq s\otimes(\Omega\circ\hat{\sigma}),
+\]
+
+\end_inset
+
+ i.e.
+ the backpointers are set to the final states,
+ the transition action is simply advancing the 
+\begin_inset Formula $M$
+\end_inset
+
+-state and the backpointers simultaneously 
+\begin_inset Formula 
+\[
+\left(m\otimes f\right)\mathrel{\hat{\triangleleft}}w\coloneqq(m\triangleleft w)\otimes(f\mathrel{\triangleleft^{*}}w)
+\]
+
+\end_inset
+
+where the dual action is 
+\begin_inset Formula 
+\[
+(f\mathrel{\triangleleft^{*}}w)(n\otimes m)\equiv f\left((n\triangleleft w)\otimes(m\triangleleft w)\right)
+\]
+
+\end_inset
+
+as before,
+ and the final states are determined by evaluating the backpointer 
+\begin_inset Formula 
+\[
+\hat{\Omega}(m\otimes f)\coloneqq f(0\otimes m).
+\]
+
+\end_inset
+
+ We pass 0 because the backpointer 
+\begin_inset Formula $f$
+\end_inset
+
+ will internaly advance it as much as necessary,
+ as a consequence of the 
+\begin_inset Formula $\triangleleft^{*}$
+\end_inset
+
+ action on it.
+\end_layout
+
+\begin_layout Standard
+This way of presenting it highlights the forward-state/backpointer duality better,
+ much like our 
+\begin_inset Formula $\frac{1}{k}\mathcal{A}$
+\end_inset
+
+ construction:
+ notice here how 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ is used in the start state and 
+\begin_inset Formula $0$
+\end_inset
+
+ is used in the finals observer,
+ which is the opposite of the construction in definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:union-construction"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+ It is more abstract though and might be confusing to understand on a first read,
+ so we went with the direct 
+\begin_inset Formula $K^{N}$
+\end_inset
+
+-tracking approach above.
+ It has the same feature of only using the forward 
+\begin_inset Formula $\triangleleft$
+\end_inset
+
+ operator,
+ applied on covariant and contravariant positions as necessary,
+ like in discussion 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "rem:duality"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Classical construction
+\end_layout
+
+\begin_layout Standard
+A deficiency of the linear framework in our case is that it does not lend itself easily to arbitrary predicates on the set of the backpointers in the superposition 
+\begin_inset Formula $\sigma_{n}(m)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The classical set-theoretic definition of 
+\begin_inset Formula $\frac{1}{k}L$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+\frac{1}{k}L=\{w\in\Sigma^{*}:ww'\in L\text{ for some }w'\text{ with }k|w|=|ww'|\}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Assume a classical automata 
+\begin_inset Formula $A=(s,Q,\delta,F)$
+\end_inset
+
+ is given that recognizes the language 
+\begin_inset Formula $L$
+\end_inset
+
+.
+ Fix a set 
+\begin_inset Formula $B\subset\mathbb{N}$
+\end_inset
+
+ and ask:
+ is 
+\begin_inset Formula $\bigcup_{k\in B}\frac{1}{k}L$
+\end_inset
+
+ regular?
+ 
+\end_layout
+
+\begin_layout Subsection
+Preparation
+\end_layout
+
+\begin_layout Standard
+For ease of notation,
+ instead of 
+\begin_inset Formula $\delta$
+\end_inset
+
+,
+ we use relation 
+\begin_inset Formula 
+\[
+q\xrightarrow{n}q'\leftrightharpoons\exists w\in\Sigma^{*}:\left(\left|w\right|=n\text{ and }q'\in\delta(q,w)\right)
+\]
+
+\end_inset
+
+for 
+\begin_inset Formula $n\in\mathbb{N}_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $q,q'\in Q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Now we define the classical analogues of the linear operators 
+\begin_inset Formula ${\left(\triangleleft A_{n}\right),\sigma_{n}\in\End M}$
+\end_inset
+
+:
+ 
+\begin_inset Formula 
+\begin{gather*}
+\beta_{n}:2^{Q}\to2^{Q}\\
+\beta_{n}\left(S\right)\coloneqq\bigcup_{q\in S}\left\{ q'\in Q:q\xrightarrow{n}q'\right\} ,
+\end{gather*}
+
+\end_inset
+
+ and 
+\begin_inset Formula 
+\begin{gather*}
+\sigma_{n}:2^{Q}\to2^{Q}\\
+\sigma_{n}\left(S\right)\coloneqq\bigcup_{k\in B}\beta_{kn}.
+\end{gather*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now 
+\begin_inset Formula $\beta_{n}=\left(\beta_{1}\right)^{n}$
+\end_inset
+
+ is the 
+\begin_inset Formula $n$
+\end_inset
+
+-fold iteration 
+\begin_inset Formula $\beta_{1}\circ\cdots\circ\beta_{1}$
+\end_inset
+
+,
+ so each next term 
+\begin_inset Formula $\beta_{n+1}=\beta_{1}\circ\beta_{n}$
+\end_inset
+
+ depends only on the previous one.
+ Combined with the finiteness of 
+\begin_inset Formula $2^{Q}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left\{ \beta_{n}\right\} _{n}$
+\end_inset
+
+ is thus eventually periodic of some period 
+\begin_inset Formula $p$
+\end_inset
+
+,
+ starting from some position 
+\begin_inset Formula $n_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Again,
+ for 
+\begin_inset Formula $n\ge n_{0},$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\sigma_{n+p}\equiv\bigcup_{k\in B}\beta_{k(n+p)}=\bigcup_{k\in B}\left(\beta_{p}\right)^{k}\circ\beta_{kn}\overset{!}{=}\bigcup_{k\in B}\beta_{kn}\equiv\sigma_{n}
+\]
+
+\end_inset
+
+where in 
+\begin_inset Formula $\overset{!}{=}$
+\end_inset
+
+ we use that 
+\begin_inset Formula $\beta_{p}$
+\end_inset
+
+ is the identity on its input coming from 
+\begin_inset Formula $\beta_{kn}$
+\end_inset
+
+,
+ because 
+\begin_inset Formula $n\ge n_{0}$
+\end_inset
+
+ (except for 
+\begin_inset Formula $k=0$
+\end_inset
+
+ when the 
+\begin_inset Formula $\beta_{p}$
+\end_inset
+
+ term does not participate at all).
+\end_layout
+
+\begin_layout Standard
+So 
+\begin_inset Formula $\left\{ \sigma_{n}\right\} _{n}$
+\end_inset
+
+ is periodic too.
+ Now redefine 
+\begin_inset Formula $p$
+\end_inset
+
+ to be the period of 
+\begin_inset Formula $\sigma_{n}$
+\end_inset
+
+ (just in case 
+\begin_inset Formula $\sigma_{n}$
+\end_inset
+
+ has a shorter period than 
+\begin_inset Formula $\beta_{n}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Put 
+\begin_inset Formula $N=\{0,\ldots,n_{0},\ldots,n_{0}+p-1\}$
+\end_inset
+
+ and a successor action on it by
+\begin_inset Formula 
+\begin{gather*}
+\text{suc}:N\to N\\
+\text{suc}(n)\coloneqq\begin{cases}
+n+1 & \text{if}\;n<n_{0}+p-1\\
+n_{0} & \text{if}\;n=n_{0}+p-1
+\end{cases}.
+\end{gather*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We're ready to define an automata recognizing 
+\begin_inset Formula $\bigcup_{k}\frac{1}{k}L$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Automata construction
+\end_layout
+
+\begin_layout Standard
+Define a common state set and transition function:
+\begin_inset Formula 
+\begin{align*}
+\hat{Q} & \coloneqq Q\times N\\
+\hat{s} & \coloneqq(s,0)\\
+\hat{\delta}((q,n),a) & \coloneqq\left(\delta(q,a),\text{suc}(n)\right).
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To define an automata 
+\begin_inset Formula $\overline{\mathcal{A}}\coloneqq(\hat{s},\hat{Q},\hat{\delta},\hat{F}),$
+\end_inset
+
+ all that is left is to choose the final states.
+ When in state 
+\begin_inset Formula $(q,n)$
+\end_inset
+
+ we can do a few different comparisons between the set of the future states 
+\begin_inset Formula $\sigma_{n}\{q\}$
+\end_inset
+
+ and the set of original finals 
+\begin_inset Formula $F$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+To recognize 
+\begin_inset Formula $\bigcup_{k}\frac{1}{k}L$
+\end_inset
+
+,
+ we check if 
+\emph on
+any
+\emph default
+ of the relevant future states is final:
+\begin_inset Formula 
+\[
+(q,n)\in F_{\cup}\leftrightharpoons\sigma_{n}\{q\}\cap F\neq\emptyset
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\SpecialChar ldots
+ but just as well we can also consider what would happen if 
+\emph on
+all
+\emph default
+ of the relevant future states are final:
+\begin_inset Formula 
+\[
+(q,n)\in F_{\supset}\leftrightharpoons\sigma_{n}\{q\}\subset F.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+In 
+\begin_inset Formula $F_{\cup}$
+\end_inset
+
+ we checked disjointness,
+ in 
+\begin_inset Formula $F_{\supset}$
+\end_inset
+
+ – one way inclusivity;
+ we can also check inclusivity in the other direction:
+\begin_inset Formula 
+\[
+(q,n)\in F_{\subset}\leftrightharpoons F\subset\sigma_{n}\{q\}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To prove correctness,
+ assume a word 
+\begin_inset Formula $w\in\Sigma^{*}$
+\end_inset
+
+ has been read and the automatas are in the state 
+\begin_inset Formula $(q,n)$
+\end_inset
+
+.
+ It is an invariant of the automata
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+that is elementary to prove by induction.
+ Here lies the elegance of the 
+\begin_inset Formula $K$
+\end_inset
+
+-linear approach for the unions - it does not require upfront invariant proofs.
+ Correctness is embedded in the definition of 
+\begin_inset Formula $\hat{\sigma}_{n}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ that 
+\begin_inset Formula $|w|$
+\end_inset
+
+ and 
+\begin_inset Formula $n$
+\end_inset
+
+ differ by a multiple of 
+\begin_inset Formula $p$
+\end_inset
+
+ (a period of 
+\begin_inset Formula $\sigma_{n}$
+\end_inset
+
+),
+ so 
+\begin_inset Formula $\sigma_{|w|}=\sigma_{n}.$
+\end_inset
+
+ But 
+\begin_inset Formula $\sigma_{|w|}\{q\}$
+\end_inset
+
+ is the set of states reachable from 
+\begin_inset Formula $q$
+\end_inset
+
+ by any relevant
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+by 
+\begin_inset Quotes eld
+\end_inset
+
+relevant multiple
+\begin_inset Quotes erd
+\end_inset
+
+ we mean that the multiplicator is in 
+\begin_inset Formula $B$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ multiple of 
+\begin_inset Formula $\left|w\right|$
+\end_inset
+
+ steps.
+ So with
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $\hat{F}=F_{\cup}$
+\end_inset
+
+:
+ 
+\begin_inset Formula $\sigma_{|w|}\{q\}$
+\end_inset
+
+ contains a final state in 
+\begin_inset Formula $F$
+\end_inset
+
+ iff 
+\begin_inset Formula $w$
+\end_inset
+
+ is a prefix of a word of length some multiple of 
+\begin_inset Formula $|w|$
+\end_inset
+
+ that is in 
+\begin_inset Formula $L$
+\end_inset
+
+,
+ i.e.
+ 
+\begin_inset Formula $w\in\bigcup_{k\in B}\frac{1}{k}L$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $\hat{F}=F_{\supset}$
+\end_inset
+
+:
+ 
+\begin_inset Formula $\sigma_{|w|}\{q\}$
+\end_inset
+
+ contains 
+\emph on
+only
+\emph default
+ final states iff all 
+\begin_inset Formula $\Sigma^{*}$
+\end_inset
+
+ words 
+\begin_inset Formula $ww'$
+\end_inset
+
+ of length some multiple of 
+\begin_inset Formula $|w|$
+\end_inset
+
+ are in 
+\begin_inset Formula $L$
+\end_inset
+
+,
+ i.e.
+ 
+\begin_inset Formula ${w\left(\Sigma^{|w|}\right)^{*}\in L}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $\hat{F}=F_{\subset}$
+\end_inset
+
+:
+ we don't know what happens.
+\end_layout
+
+\begin_layout Section
+Further questions
+\end_layout
+
+\begin_layout Standard
+It is interesting to research what bounds on the size of 
+\begin_inset Formula $N=\mathbb{N}\mathrel{/}\sim$
+\end_inset
+
+ can be established so that we know how much the 
+\begin_inset Formula $\sum_{k\in B}\frac{1}{k}\mathcal{A}$
+\end_inset
+
+ automata grows with respect to 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+.
+ The gut feel of the author is that 
+\begin_inset Formula $N$
+\end_inset
+
+ is bounded by the least common multiple of the lengths of the simple cycles in the classical picture of 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ viewed as a graph.
+\end_layout
+
+\end_body
+\end_document
