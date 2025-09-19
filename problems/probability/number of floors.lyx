@@ -1,0 +1,551 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children no
+\language american
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008080
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Formula $X$
+\end_inset
+
+ people (Poisson-distributed with mean 10) enter an elevator on the ground floor of a 
+\begin_inset Formula $N$
+\end_inset
+
+-floor building (
+\begin_inset Formula $N\in\mathbb{N}$
+\end_inset
+
+ fixed).
+ Each passenger is equally likely to get off at any floor,
+ independently from the rest (and from the number of the passengers).
+ Determine the expected number of stops the elevator will make to deliver all passangers.
+\end_layout
+
+\begin_layout Standard
+This writeup here is a very complicated solution to this problem.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Problem
+\end_layout
+
+\begin_layout Subparagraph*
+Given
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $N\in\mathbb{N}$
+\end_inset
+
+:
+ number of floors
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X\sim\text{Poisson}(10)$
+\end_inset
+
+:
+ number of people entering the elevator
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $F_{i}\sim\text{Uniform}(1,N)$
+\end_inset
+
+:
+ the floor at which person 
+\begin_inset Formula $i$
+\end_inset
+
+ wants to get off,
+ for 
+\begin_inset Formula $i\in\mathbb{N}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X$
+\end_inset
+
+ and all 
+\begin_inset Formula $F_{i}$
+\end_inset
+
+ are mutually independent
+\end_layout
+
+\begin_layout Subparagraph*
+Find
+\end_layout
+
+\begin_layout Standard
+the expected number of stops until all passangers leave the elevator.
+\end_layout
+
+\begin_layout Paragraph
+Solution
+\end_layout
+
+\begin_layout Subparagraph*
+Compact
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\left(\#\left\{ F_{1},\ldots,F_{X}\right\} \right) & =\mathbb{E}\left(\text{stops}_{X}(\vec{F}_{X})\right)\\
+ & =\sum_{s\in\mathbb{N}}s\mathbb{P}\left(\text{stops}_{X}(\vec{F}_{X})=s\right)\\
+ & =\sum_{s\in\mathbb{N}}s\sum_{k\in\mathbb{N}}\mathbb{P}\left(\text{stops}_{k}(\vec{F}_{k})=s\right)\mathbb{P}\left(X=k\right)\\
+ & \overset{!}{=}\sum_{s\in\mathbb{N}}s\sum_{k\in\mathbb{N}}\left(\frac{1}{N^{k}}\binom{N}{s}\sum_{i=0}^{s}(-1)^{s-i}\binom{s}{i}i^{k}\right)\mathbb{P}\left(X=k\right)\\
+ & =\sum_{s\in\mathbb{N}}s\binom{N}{s}e^{-\lambda}\left(e^{\lambda/N}-1\right)^{s}\\
+ & =N(1-e^{-\lambda/N}).
+\end{align*}
+
+\end_inset
+
+where in 
+\begin_inset Formula $\overset{!}{=}$
+\end_inset
+
+ we do
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left(\text{stops}_{k}(\vec{F}_{n})=s\right) & =\mathbb{P}_{\vec{F}_{k}}\left(\text{stops}_{k}=s\right)\\
+ & =\frac{1}{N^{k}}\#\left(\text{stops}_{k}=s\right)\\
+ & =\frac{1}{N^{k}}\binom{N}{s}\sum_{i=0}^{s}(-1)^{s-i}\binom{s}{i}i^{k}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph*
+Goal
+\end_layout
+
+\begin_layout Standard
+We're tasked to find the expected size of the (random) set 
+\begin_inset Formula $\left\{ F_{1},\ldots,F_{X}\right\} $
+\end_inset
+
+ of the floors each person chose.
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+ (a particular number of passangers),
+ put 
+\begin_inset Formula 
+\[
+\vec{F}_{k}=\left(F_{1},\ldots,F_{k}\right),
+\]
+
+\end_inset
+
+ and the number of unique stops among the 
+\begin_inset Formula $k$
+\end_inset
+
+ choices,
+\begin_inset Formula 
+\begin{align*}
+\text{stops}_{k}:\left\{ 1,\ldots,N\right\} ^{k} & \to\left\{ 1,\ldots,k\right\} \\
+\text{stops}_{k}(f_{1},\ldots,f_{k}) & \coloneqq\#\{f_{1},\ldots,f_{k}\}.
+\end{align*}
+
+\end_inset
+
+ so that what we seek is the expected size of the random set
+\begin_inset Formula 
+\[
+\text{stops}_{X}(\vec{F}_{X}).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We keep the 
+\begin_inset Formula $k$
+\end_inset
+
+ index on both the vector 
+\begin_inset Formula $\vec{F}_{k}$
+\end_inset
+
+ and the function
+\begin_inset Formula $\text{stops}_{k}$
+\end_inset
+
+ to remind us that their domains depend on this parameter.
+\end_layout
+
+\begin_layout Subparagraph*
+Meaning of independence
+\end_layout
+
+\begin_layout Standard
+Independence of all 
+\begin_inset Formula $F_{i}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $i=1,\ldots,k,$
+\end_inset
+
+ means that 
+\begin_inset Formula $\vec{F}_{k}$
+\end_inset
+
+'s law decomposes as
+\begin_inset Formula 
+\[
+\mathbb{P}_{\vec{F}_{k}}=\mathbb{P}_{\vec{F}_{1}}\otimes\cdots\otimes\mathbb{P}_{F_{k}}.
+\]
+
+\end_inset
+
+Moreover,
+ 
+\begin_inset Formula $F_{i}\sim\text{Uniform}(1,N)$
+\end_inset
+
+ means that 
+\begin_inset Formula $\mathbb{P}_{F_{i}}(S)=\frac{\#S}{N}$
+\end_inset
+
+ for any 
+\begin_inset Formula $S\subset\left\{ 1,\ldots,N\right\} $
+\end_inset
+
+,
+ i.e.
+ 
+\begin_inset Formula $\mathbb{P}_{F_{i}}=\frac{1}{N}\#$
+\end_inset
+
+,
+ so in fact
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+the 
+\begin_inset Formula $\#$
+\end_inset
+
+ in the first equality counts subsets of 
+\begin_inset Formula $\{1,\ldots,N\}$
+\end_inset
+
+,
+ while the RHS's 
+\begin_inset Formula $\#$
+\end_inset
+
+ counts subsets of 
+\begin_inset Formula $\{1,\ldots,N\}^{n}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\mathbb{P}_{\vec{F}_{k}}=\frac{1}{N}\#\otimes\cdots\otimes\frac{1}{N}\#=\frac{1}{N^{k}}\#.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph*
+Calculation of the goal
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\left(\#\left\{ F_{1},\ldots,F_{X}\right\} \right) & =\mathbb{E}\left(\text{stops}_{X}(\vec{F}_{X})\right)\\
+ & =\sum_{s\in\mathbb{N}}s\mathbb{P}\left(\text{stops}_{X}(\vec{F}_{X})=s\right).
+\end{align*}
+
+\end_inset
+
+Thanks to my colleague Alex who noticed we can eliminate the random dependence of 
+\begin_inset Formula $X$
+\end_inset
+
+ here by writing 
+\begin_inset Formula 
+\[
+\mathbb{P}\left(\text{stops}_{X}(\vec{F}_{X})=s\right)=\sum_{k\in\mathbb{N}}\mathbb{P}\left(\text{stops}_{k}(\vec{F}_{k})=s\right)\mathbb{P}\left(X=k\right).
+\]
+
+\end_inset
+
+ The second multiple is known,
+ all is left is to compute for 
+\begin_inset Formula $s,n\in\mathbb{N}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left(\text{stops}_{k}(\vec{F}_{n})=s\right) & =\mathbb{P}_{\vec{F}_{k}}\left(\text{stops}_{k}=s\right)\\
+ & =\frac{1}{N^{k}}\#\left(\text{stops}_{k}=s\right)
+\end{align*}
+
+\end_inset
+
+The first equality here follows from standard pushforward-measure nonsense that is found at the end of this writeup,
+ and the second equality uses 
+\begin_inset Formula $\mathbb{P}_{\vec{F}_{k}}=\frac{1}{N^{k}}\#$
+\end_inset
+
+ that we proved above.
+\end_layout
+
+\begin_layout Standard
+Finally,
+ we need to find the size of 
+\begin_inset Formula $\text{stops}_{n}^{-1}\left\{ s\right\} \subset\left\{ 1,\ldots,N\right\} ^{n}$
+\end_inset
+
+,
+ which is an entirely combinatorial problem solved at the end below.
+ The result is 
+\begin_inset Formula 
+\[
+\#\left(\text{stops}_{k}=s\right)=\binom{N}{s}\sum_{i=0}^{s}(-1)^{s-i}\binom{s}{i}i^{k}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left(\text{stops}_{X}(\vec{F}_{X})=s\right) & =\sum_{k\in\mathbb{N}}\mathbb{P}\left(\text{stops}_{k}(\vec{F}_{k})=s\right)\mathbb{P}\left(X=k\right)\\
+ & =\sum_{k\in\mathbb{N}}\left(\frac{1}{N^{k}}\binom{N}{s}\sum_{i=0}^{s}(-1)^{s-i}\binom{s}{i}i^{k}\right)\left(\frac{\lambda^{k}}{k!}e^{-\lambda}\right)\\
+\text{(reorder)}\quad & =\binom{N}{s}e^{-\lambda}\sum_{i=0}^{s}(-1)^{s-i}\binom{s}{i}\left(\sum_{k\in\mathbb{N}}\frac{1}{N^{k}}i^{k}\frac{\lambda^{k}}{k!}\right)\\
+\text{(Tailor series)}\quad & =\binom{N}{s}e^{-\lambda}\sum_{i=0}^{s}(-1)^{s-i}\binom{s}{i}e^{i\lambda/N}\\
+\text{(binomial formula)}\quad & =\binom{N}{s}e^{-\lambda}\left(e^{\lambda/N}-1\right)^{s}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Putting it all together,
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\left(\#\left\{ F_{1},\ldots,F_{X}\right\} \right) & =e^{-\lambda}\sum_{s\in\mathbb{N}}s\binom{N}{s}\left(e^{\lambda/N}-1\right)^{s}\\
+ & =e^{-\lambda}\left(e^{\lambda/N}-1\right)\sum_{s\in\mathbb{N}}s\binom{N}{s}\left(e^{\lambda/N}-1\right)^{s-1}\\
+ & \overset{!}{=}e^{-\lambda}(e^{\frac{\lambda}{N}}-1)Ne^{\lambda\frac{N-1}{N}}\\
+ & =Ne^{-\lambda/N}(e^{\lambda/N}-1)\\
+ & =N(1-e^{-\lambda/N}).
+\end{align*}
+
+\end_inset
+
+ In 
+\begin_inset Formula $\overset{!}{=}$
+\end_inset
+
+ the (derivative of the) binomial formula is used.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph*
+Justification for 
+\end_layout
+
+\begin_layout Standard
+the equality 
+\begin_inset Formula $\mathbb{P}\left(\text{stops}_{n}(\vec{F}_{n})=s\right)=\mathbb{P}_{\vec{F}_{n}}\left(\text{stops}_{n}=s\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathbb{P}\left(\text{stops}_{n}(\vec{F}_{n})=s\right) & =\mathbb{P}\left(\left(\text{stops}_{n}\circ\vec{F}_{n}\right)^{-1}\left\{ s\right\} \right)\\
+ & =\mathbb{P}\left(\left(\vec{F}_{n}^{-1}\circ\text{stops}_{n}^{-1}\right)\left\{ s\right\} \right)\\
+ & =\mathbb{P}\left(\vec{F}_{n}^{-1}\left(\text{stops}_{n}^{-1}\left\{ s\right\} \right)\right)\\
+ & =\mathbb{P}_{\vec{F}_{n}}\left(\text{stops}_{n}^{-1}\left\{ s\right\} \right)\\
+ & =\mathbb{P}_{\vec{F}_{n}}\left(\text{stops}_{n}=s\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph*
+Combinatorics
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\#\left(\text{stops}_{k}=s\right) & =\#\left\{ (f_{1}\ldots f_{k}):\text{stops}_{k}(f_{1}\ldots f_{k})=s\right\} \\
+ & =\#\left\{ (f_{1}\ldots f_{k}):\#\left\{ f_{1}\ldots f_{k}\right\} =s\right\} \\
+ & =\#\bigcup_{S\subset\left\{ 1,\ldots N\right\} }\left\{ (f_{1}\ldots f_{k}):\begin{array}{c}
+\#\left\{ f_{1}\ldots f_{k}\right\} =s\\
+\text{ and }\left\{ f_{1}\ldots f_{k}\right\} =S
+\end{array}\right\} \\
+ & =\#\bigcup_{S\subset\left\{ 1,\ldots N\right\} }^{\#S=s}\left\{ (f_{1}\ldots f_{k}):\left\{ f_{1}\ldots f_{k}\right\} =S\right\} \\
+ & \overset{!}{=}\sum_{S\subset\left\{ 1,\ldots N\right\} }^{\#S=s}\#\left\{ (f_{1}\ldots f_{k}):\left\{ f_{1}\ldots f_{k}\right\} =S\right\} \\
+ & \overset{!!}{=}\sum_{S\subset\left\{ 1,\ldots N\right\} }^{\#S=s}\sum_{i=0}^{s}(-1)^{s-i}\binom{s}{i}i^{k}\\
+ & =\binom{N}{s}\sum_{i=0}^{s}(-1)^{s-i}\binom{s}{i}i^{k}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In 
+\begin_inset Formula $\overset{!}{=}$
+\end_inset
+
+ we can do the 
+\begin_inset Formula $\#\bigcup=\sum\#$
+\end_inset
+
+ swap because all the sets are disjoint.
+ In 
+\begin_inset Formula $\overset{!!}{=}$
+\end_inset
+
+ we apply the inclusion-exclusion principle to get 
+\begin_inset Formula 
+\[
+\#\left\{ (f_{1}\ldots f_{k}):\left\{ f_{1}\ldots f_{k}\right\} =S\right\} =\sum_{i=0}^{s}(-1)^{s-i}\binom{s}{i}i^{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
